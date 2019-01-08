@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>商品信息</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+		<script type="text/javascript" src="__PUBLIC__/js/payfor.js" ></script>
+	</head>
+	<style>
+	#full_feature{
+		padding-top:700px !important;
+	}
+	</style>
+	<body>
+		<!--酿酒顶部-->
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>商品</div></div>
+		<!--商品内容-->
+		<div class="spnr">
+			<div class="spnr_img">
+			<section>
+				<figure id="full_feature" class="swipslider">
+					<ul class="sw-slides" style="transition-duration: 50000ms; transition-timing-function: ease-out; transition-property: all; transform: translateX(-3840px);">
+						  <volist name='sxw_goodsPic' id='vo' >
+						    <li class="sw-slide"><img src="{$vo}" /></li>
+						  </volist>
+						
+					</ul>
+				</figure>
+			</section>
+		<script type="text/javascript" src="__PUBLIC__/js/swipeslider.min.js"></script>
+		<script type="text/javascript">
+			$(window).load(function() {
+			      $('#full_feature').swipeslider();
+			      $('#content_slider').swipeslider({
+			        transitionDuration: 600,
+			        autoPlayTimeout: 10000,
+			        sliderHeight: '300px'
+			      });
+			      $('#responsiveness').swipeslider();
+			      $('#customizability').swipeslider({
+			        transitionDuration: 1500, 
+			        autoPlayTimeout: 4000, 
+			        timingFunction: 'cubic-bezier(0.38, 0.96, 0.7, 0.07)',
+			        sliderHeight: '30%'});
+			    });
+		</script>
+			</div>
+			<div class="row">
+				<h2>{$info.g_name}</h2>
+				<span>商品价格：￥{$info.g_price}</span>
+			</div>
+		</div>
+		<!--商品详情-->
+		<div class="spxq">
+			<div class="row">
+				<h2>商品详情</h2>
+				<p>{$info.g_content}</p>
+			</div>
+		</div>
+		<!--购买按钮-->
+		<div class="gman">立即购买</div>
+		<!--购买-->
+		<div class="sp_tc" style="display: none;">
+		
+			<form action="{:U('index/index/vip_jrdd')}" method="get">
+			<input type="hidden" name="goods_id" value="{$info.id}" />
+			<div class="row">
+				<div class="p_number">
+					<div class="p_img"><img src="{$sxw_goodsPic[0]}"></div>
+					<div style="font-size:3rem;float: left;width: 65%;margin-left: 5%;padding: 50px 0 20px 0;">
+						<strong id="price_item_1" style="color: #CD0200;">￥{$info.g_price}</strong>
+					</div>
+					<div class="f_l add_chose">
+						<a class="reduce" onClick="" href="javascript:void(0)">-</a>
+						<input type="text" name="qty_item_1" value="1" id="qty_item_1" onKeyUp="" readonly class="text" />
+						<a class="add" onClick="" href="javascript:void(0)">+</a>
+					</div>
+					<div class="f_l buy">
+						<span style="color:red;">每人限购1份</span>
+						<input type="hidden" name="total_price" id="total_price" value="{$info.g_price}" />
+					</div>
+				</div>
+			</div>
+				<input type="submit" value="确定" class="ljgm" />
+			</form>
+		</div>
+		<d class="mb" style="display: none;"></d>
+		<script>
+			$(".gman").click(function(){
+				aa=$(".sp_tc").css("display")
+				if(aa=="none"){
+					$(".sp_tc").show();
+					$(".mb").show();
+				}else{
+					$(".sp_tc").hide();
+					$(".mb").hide();
+				}
+			});
+			$(".mb").click(function(){
+				aa=$(".sp_tc").css("display");
+					$(".sp_tc").hide();
+					$(".mb").hide();
+			});
+		</script>
+	</body>
+</html>

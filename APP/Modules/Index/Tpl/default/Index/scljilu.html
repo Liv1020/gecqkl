@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/swiper-3.2.7.min.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+		<!--产力记录-->
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>产力记录</div></div>
+		<!--导航图-->
+		<div class="nljl_t"><span>当前产力值</span><h2>{$nl}</h2></div>
+		<!--产力记录-->
+		<div class="nljl_jl">
+			<div class="row">
+				<ul>
+					<li><h2 style="font-weight: bold;font-size: 3rem;">产力记录</h2></li>
+					<li><a href="{:U('Index/index/powder',array('status'=>1))}"><h2>基础和学习</h2><span>查看></span></a></li>
+					<li><a href="{:U('Index/index/powder',array('status'=>2))}"><h2>邀请和奖励</h2><span>查看></span></a></li>
+					<li><a href="{:U('Index/index/powder',array('status'=>3))}"><h2>购买奖励</h2><span>查看></span></a></li>
+				</ul>
+			</div>
+		</div>
+		<!--产力简介-->
+		<div class="nljj">
+			<div class="row">
+				<div class="nljj_bt">{$info.title}</div>
+				<p>{$info.content}
+				</p>
+			</div>
+		</div>
+		<!--获取产力-->
+		<div class="hq"><a href="{:U('Index/index/production')}">获取产力</a></div>
+	</body>
+</html>

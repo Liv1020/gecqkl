@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我的土地</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+		<!--头部-->
+		<div class="nj_top" style="z-index:999;"><div class="row"><a href="javascript:history.go(-1);"><</a>我的农田</div></div>
+		<div class="ddtb" style="z-index:999;">
+			<ul>
+				<li style="background: #007AFF;width:50%;">
+					<a href="{:U('Index/emoney/ntlist')}"  style="color: #fff;">我的土地</a>
+				<li style="width:50%;">
+					<a href="{:U('Index/shop/plist')}" >购买土地</a>
+				</li>
+			</ul>
+		</div>
+	
+		<!--农田-->
+		<figure id="full_feature" class="swipslider" style="margin-top: 200px;">
+				<ul class="sw-slides" style="transition-duration: 50000ms; transition-timing-function: ease-out; transition-property: all; transform: translateX(-3840px);">
+					<volist name="adv_list" id="vo">
+					<li class="sw-slide">
+						<a href="{$vo.adv_url}">
+							<img src="{$vo.adv_pic}" alt="{$vo.adv_name}" width="100%" height="100%" />
+						</a>
+					</li>
+					</volist>
+					
+				</ul>
+			</figure>
+		</section>
+		<script type="text/javascript" src="__PUBLIC__/js/swipeslider.min.js"></script>
+		<script type="text/javascript">
+			$(window).load(function() {
+			      $('#full_feature').swipeslider();
+			      $('#content_slider').swipeslider({
+			        transitionDuration: 600,
+			        autoPlayTimeout: 10000,
+			        sliderHeight: '300px'
+			      });
+			      $('#responsiveness').swipeslider();
+			      $('#customizability').swipeslider({
+			        transitionDuration: 1500, 
+			        autoPlayTimeout: 4000, 
+			        timingFunction: 'cubic-bezier(0.38, 0.96, 0.7, 0.07)',
+			        sliderHeight: '30%'});
+			    });
+		</script>
+		<div class="nt">
+			
+			<div class="row">
+				<ul>
+				<foreach name="nt" item="ty">
+			        <li>
+						<a href="javascript:;">
+							<div class="nt_l"><img src="{$ty.imagepath}"></div>
+							<div class="nt_n" style="width:60%;">
+								<h2>{$ty.title}</h2>
+								<span>购买时间：{$ty.addtime}</span>
+								<span>运行时间：
+									<if condition="$ty['yxtime']['day']">
+									{$ty['yxtime']['day']}天
+									</if>
+									{$ty['yxtime']['hour']}:{$ty['yxtime']['min']}
+									
+								</span>
+								<span>剩余时间：
+									<if condition="$ty['sytime']['day']">
+									{$ty['sytime']['day']}天
+									</if>
+									{$ty['sytime']['hour']}:{$ty['sytime']['min']}</span>
+							</div>
+						</a>
+					</li>
+		        </foreach>	
+					
+				</ul>
+			</div>
+		</div>
+		<!--底部导航-->
+		
+		<include file="Public:footer" />
+	</body>
+</html>

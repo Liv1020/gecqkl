@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>种子交易</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+		<!--种子市场单页顶部-->
+		<div class="sjsc_top">
+			<div class="row"><a href="javascript:history.go(-1);" class="fh"><</a>种子市场<a href="#" class="gz">交易规则</a></div>
+			<div class="menus menus2" style="margin: 0;">
+			<div class="row">
+				<ul class="abc" style="height: 100px;">
+					<div class="bg" style="height: 100px;left:50%;"></div>
+					<li class="li" style="height: 100px;line-height: 100px;"><a style="display:block;height:100%;width:100%" href="{:U('Index/Emoney/zzjylist')}"><span>出让种子</span></a></li>
+					<li class="li" style="height: 100px;line-height: 100px;"><span>交易完成</span></li>
+				</ul>
+				
+			</div>
+			<!--<div class="sjsc_a" style="border-bottom: 1px solid #888888;">
+					<ul>
+						<li style="background: #fff;">
+							<span class="m_one" style="width: 30%;">时间</span>
+							<span class="m_two">数量</span>
+							<span class="m_three">单价</span>
+							<span class="m_four" style="text-align: center;">状态</span>
+						</li>
+					</ul>
+				</div>-->
+		</div>
+		</div>
+		<div class="row" style="background: #fff;margin-top: 310px;">
+			<div class="tab tab1 ">
+					<ol>
+					
+						<li style="position: fixed;left: 0;top: 200px;background: #fff;text-align: center;">
+							<span class="m_one" style="width: 30%;">时间</span>
+							<span class="m_two">数量</span>
+							<span class="m_three" style="width: 25%;">单价</span>
+							<span class="m_four" style="text-align: center;">状态</span>
+						</li>
+						
+					</ol>
+			</div>
+				<div class="tab tab1 show">
+					<ol>
+						<li style="position: fixed;left: 0;top: 200px;text-align: center;background: #fff;">
+							<span class="m_one" style="width: 30%;">购入时间</span>
+							<span class="m_two">数量</span>
+							<span class="m_three">单价</span>
+							<span class="m_four" style="text-align: center;">完成时间</span>
+						</li>
+						<foreach name="zzlist" item="v">
+	            			
+							<li>
+								<span class="m_one">{$v.add_time|date='m-d h:i',###}</span>
+								<span class="m_two">{$v.zz_num}滴</span>
+								<span class="m_three">￥{$v.zz_price}</span>
+								<span class="m_four">{$v.trans_time|date='m-d h:i',###}</span>
+							</li>
+						</foreach> 
+						
+					</ol>
+				</div>
+		</div>
+		
+		<include file="Public:footer" />
+		<script type="text/javascript" src="__PUBLIC__/js/tab.js" ></script>
+		<script>
+			//$(function() {
+                // 自定义标题、按钮
+                
+               function gr(obj) {
+					var json = {
+						title:"购入",
+						msg:"打款账户：*****提交后可查看",
+						cde:"联系电话：*****提交后可查看",
+						dj:"购入种子单价：￥24.19",
+						sl:"购入种子数量：100",
+						je:"合计应付金额：￥2419.00",
+						fx:"风险提示：种子是酒链世界的数字产权，种子交易属于个人行为，酒链世界提供信息发布及展示；种子价格又跌有张，市场有风险交易需谨慎",
+						buttons:[
+							{ title:"放弃",color:"red",click:function(){alert("你点了Delete")} },
+							{ title:"提交订单",click:function(){alert("你点了Cancel")} }
+						]
+					}
+                    $.alertView(json);
+                };
+            //});
+		</script>
+	</body>
+</html>

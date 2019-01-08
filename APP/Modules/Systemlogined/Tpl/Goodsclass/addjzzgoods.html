@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>添加商品</title>
+		<meta name="description" content="Minimal empty page" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="__PUBLIC__/css/bootstrap-responsive.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/kindeditor/themes/default/default.css" />
+		<script charset="utf-8" src="__PUBLIC__/kindeditor/kindeditor-min.js"></script>
+		<script charset="utf-8" src="__PUBLIC__/kindeditor/lang/zh_CN.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/My97DatePicker/WdatePicker.js"></script>
+		<!--自定义样式-->
+		<link rel="stylesheet" href="__PUBLIC__/css/custom.css" />
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+		<link rel="stylesheet" href="__PUBLIC__/css/bbc.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/bbc-responsive.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/bbc-skins.min.css" />
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/css/bbc-ie.min.css" />
+		<![endif]-->
+	</head>
+
+	<body>
+		<!--导航-->
+		<include file="Public:navbar" />
+		<div class="container-fluid" id="main-container">
+			<a id="menu-toggler" href="#">
+				<span></span>
+			</a>
+			<!--边栏-->
+			<include file="Public:sidebar" />
+			<div id="main-content" class="clearfix">
+				<div id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="icon-home"></i>
+							<a href="#">Home</a>
+
+							<span class="divider">
+								<i class="icon-angle-right"></i>
+							</span>
+						</li>
+						<li>
+							<a href="#">商品管理</a>
+
+							<span class="divider">
+								<i class="icon-angle-right"></i>
+							</span>
+						</li>
+					</ul><!--.breadcrumb-->
+				</div>
+				<div id="page-content" class="clearfix">
+					<div class="page-header position-relative">
+						<h1>
+							添加商品
+						</h1>
+					</div><!--/.page-header-->
+					<div class="row-fluid">
+						<!--PAGE CONTENT BEGINS HERE-->
+							<form class="form-horizontal" name="addProductHandle"  enctype="multipart/form-data" action="" method="post">
+								<div class="control-group">
+									<label class="control-label" for="gname"> 商品名称</label>
+									<div class="controls">
+										<input type="text" value="" name="gname" id="gname" placeholder="" />
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="goldprice"> 市场价</label>
+									<div class="controls">
+										<input type="text" value="" name="goldprice" id="goldprice" placeholder="" />
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="gprice"> 种子数量</label>
+									<div class="controls">
+										<input type="text" value="" name="gprice" id="gprice" placeholder="" />
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="gprice"> 邮费</label>
+									<div class="controls">
+										<input type="text" value="" name="postage" id="postage" placeholder="" />
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="goods_num"> 库存</label>
+									<div class="controls">
+										<input type="text" value="" name="goods_num" id="goods_num" placeholder="" />
+									</div>
+								</div>		
+								<div class="control-group">
+									<label class="control-label" for="goods_spec"> 规格</label>
+									<div class="controls">
+										<input type="text" value="" name="goods_spec" id="goods_spec" placeholder="" />
+									</div>
+								</div>	
+								<div class="control-group">
+									<label class="control-label" for="stock"> 商品图片</label>
+									<div class="controls">
+    <div class="item">
+        <img class="icon addImg" onclick="clickImg(this);" src="__PUBLIC__/images/addImg.png" />
+        <input name="gpic[]" type="file" class="upload_input" onchange="change(this)"/>
+        <div class="preBlock">
+          <img class="preview" alt="" name="pic" width="190" height="190" />
+        </div>      
+        <img class="delete" onclick="deleteImg(this)" src="__PUBLIC__/images/delete.png"/>
+    </div>
+    <div class="item">
+        <img class="icon addImg" onclick="clickImg(this);" src="__PUBLIC__/images/addImg.png" />
+        <input name="gpic[]" type="file" class="upload_input" onchange="change(this)"/>
+        <div class="preBlock">
+          <img class="preview" alt="" name="pic" width="190" height="190" />
+        </div>      
+        <img class="delete" onclick="deleteImg(this)" src="__PUBLIC__/images/delete.png"/>
+    </div>
+    <div class="item">
+        <img class="icon addImg" onclick="clickImg(this);" src="__PUBLIC__/images/addImg.png" />
+        <input name="gpic[]" type="file" class="upload_input" onchange="change(this)"/>
+        <div class="preBlock">
+          <img class="preview" alt="" name="pic" width="190" height="190" />
+        </div>      
+        <img class="delete" onclick="deleteImg(this)" src="__PUBLIC__/images/delete.png"/>
+    </div>
+    <div class="item">
+        <img class="icon addImg" onclick="clickImg(this);" src="__PUBLIC__/images/addImg.png" />
+        <input name="gpic[]" type="file" class="upload_input" onchange="change(this)"/>
+        <div class="preBlock">
+          <img class="preview" alt="" name="pic" width="190" height="190" />
+        </div>      
+        <img class="delete" onclick="deleteImg(this)" src="__PUBLIC__/images/delete.png"/>
+    </div>
+    <div class="item">
+        <img class="icon addImg" onclick="clickImg(this);" src="__PUBLIC__/images/addImg.png" />
+        <input name="gpic[]" type="file" class="upload_input" onchange="change(this)"/>
+        <div class="preBlock">
+          <img class="preview" alt="" name="pic" width="190" height="190" />
+        </div>      
+        <img class="delete" onclick="deleteImg(this)" src="__PUBLIC__/images/delete.png"/>
+    </div>
+    <div class="item">
+        <img class="icon addImg" onclick="clickImg(this);" src="__PUBLIC__/images/addImg.png" />
+        <input name="gpic[]" type="file" class="upload_input" onchange="change(this)"/>
+        <div class="preBlock">
+          <img class="preview" alt="" name="pic" width="190" height="190" />
+        </div>      
+        <img class="delete" onclick="deleteImg(this)" src="__PUBLIC__/images/delete.png"/>
+    </div>
+    <div class="item">
+        <img class="icon addImg" onclick="clickImg(this);" src="__PUBLIC__/images/addImg.png" />
+        <input name="gpic[]" type="file" class="upload_input" onchange="change(this)"/>
+        <div class="preBlock">
+          <img class="preview" alt="" name="pic" width="190" height="190" />
+        </div>      
+        <img class="delete" onclick="deleteImg(this)" src="__PUBLIC__/images/delete.png"/>
+    </div>
+    <div style="clear: left;"></div>
+									</div>
+								</div>	
+							<div class="control-group">
+									<label class="control-label" for="gintroduce"> 商品描述</label>
+									<div class="controls">
+										<textarea name="center" id="center" style="width:700px; height:300px"></textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="gintroduce"> 商品详情</label>
+									<div class="controls">
+										<textarea name="gintroduce" id="gintroduce" style="width:700px; height:300px"></textarea>
+									</div>
+								</div>
+								<div class="form-actions">
+									<button class="btn btn-info no-border" type="submit">
+										<i class="icon-ok bigger-110"></i>
+										保存添加
+									</button>
+								</div>
+							</form>
+						<!--PAGE CONTENT ENDS HERE-->
+					</div><!--/row-->
+				</div><!--/#page-content-->
+				<!--/#ace-settings-container-->
+			</div><!--/#main-content-->
+		</div><!--/.fluid-container#main-container-->
+		<script src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
+		<!--page specific plugin scripts-->
+		<script src="__PUBLIC__/js/bootbox.min.js"></script>
+		<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+		<!--bbc scripts-->
+		<script src="__PUBLIC__/js/jquery.validate.min.js"></script>
+		<!--自定义JS-->
+		<script type="text/javascript">
+		function classxz(){
+			id1=$("#pid1").val();
+			id2=$("#pid2").val();
+			id3=$("#pid3").val();
+			if(id3 > 0){
+				$("#gclassification").val(id3);
+			}
+			else if(id2 > 0){
+				$("#gclassification").val(id2);
+			}
+			else{
+				$("#gclassification").val(id1);
+			}
+		}
+		$("#pid1").change(function(){
+			id=$("#pid1").val();
+			$.ajax({
+				type:'post',
+				url:"/index.php/systemlogined/Goodsclass/ajaxclass",	
+				data:{cid:id},
+ 				dataType:'json',
+				success:function(result){
+					$("#pid2").html('<option value="0" selected>请选择分类</option>');
+					if(result){
+						for(i=0;i<result.length;i++){
+							$("#pid2").append('<option value="'+result[i]["cid"]+'">'+result[i]["cname"]+'</option>');
+						}
+					}
+				}
+			});
+			classxz();
+		})
+		$("#pid2").change(function(){
+			id=$("#pid2").val();
+			$.ajax({
+				type:'post',
+				url:"/index.php/systemlogined/Goodsclass/ajaxclass",	
+				data:{cid:id},
+ 				dataType:'json',
+				success:function(result){
+					$("#pid3").html('<option value="0" selected>请选择分类</option>');
+					if(result){
+						for(i=0;i<result.length;i++){
+							$("#pid3").append('<option value="'+result[i]["cid"]+'">'+result[i]["cname"]+'</option>');
+						}
+					}
+				}
+			});
+			classxz();
+		})
+		$("#pid3").change(function(){
+			id=$("#pid3").val();
+			classxz();
+		})
+		$('form[name="addProductHandle"]').validate({
+					//默认为lable
+					errorElement : 'span',
+					//失败时先移除成功的class
+					validClass : 'success',
+					//指定成功的样式
+					success : function(span){
+						span.addClass('success');
+					},
+					rules:{
+						gname:{required : true},
+						gclassification:{min : 1},
+						gprice:{required : true},
+						goods_num:{required : true,min : 1},
+					},
+					messages:{
+						gname:{required:'商品名称不能为空'},
+						gclassification:{min:'请选择商品分类'},	
+                        gprice:{required:'商品价格不能为空'},
+                        goods_num:{required:'库存不能为空',min:'库存不能小于等于0'},			
+					}
+				});
+		//点击
+		  var clickImg = function(obj){
+		    $(obj).parent().find('.upload_input').click();
+		  }
+		  //删除
+		  var deleteImg = function(obj){
+		    $(obj).parent().find('input').val('');
+		    $(obj).parent().find('img.preview').attr("src","");
+		    //IE9以下
+		    $(obj).parent().find('img.preview').css("filter","");
+		    $(obj).hide();
+		    $(obj).parent().find('.addImg').show();
+		  }
+		  //选择图片
+		  function change(file) {
+		      //预览
+		      var pic = $(file).parent().find(".preview");
+		      //添加按钮
+		      var addImg = $(file).parent().find(".addImg");
+		      //删除按钮
+		      var deleteImg = $(file).parent().find(".delete");
+		      var ext=file.value.substring(file.value.lastIndexOf(".")+1).toLowerCase();
+		       // gif在IE浏览器暂时无法显示
+		       if(ext!='png'&&ext!='jpg'&&ext!='jpeg'){
+		          if (ext != '') {
+		            alert("图片的格式必须为png或者jpg或者jpeg格式！"); 
+		          } 
+		           return;
+		       }
+		       //判断IE版本
+		       var isIE = navigator.userAgent.match(/MSIE/)!= null,
+		           isIE6 = navigator.userAgent.match(/MSIE 6.0/)!= null;
+		           isIE10 = navigator.userAgent.match(/MSIE 10.0/)!= null;
+		       if(isIE && !isIE10) {
+		          file.select();
+		          var reallocalpath = document.selection.createRange().text;
+		           // IE6浏览器设置img的src为本地路径可以直接显示图片
+		           if (isIE6) {
+		              pic.attr("src",reallocalpath);
+		           }else{
+		              // 非IE6版本的IE由于安全问题直接设置img的src无法显示本地图片，但是可以通过滤镜来实现             
+		              pic.css("filter","progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src=\"" + reallocalpath + "\")");
+		              // 设置img的src为base64编码的透明图片 取消显示浏览器默认图片
+		              pic.attr('src','data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==');             
+		           }
+		           addImg.hide();
+		           deleteImg.show();
+		       }else {
+		          html5Reader(file,pic,addImg,deleteImg);
+		       }
+		  }
+		 //H5渲染
+		  function html5Reader(file,pic,addImg,deleteImg){
+		     var file = file.files[0];
+		     var reader = new FileReader();
+		     reader.readAsDataURL(file);
+		     reader.onload = function(e){
+		         pic.attr("src",this.result);
+		     }
+		     addImg.hide();
+		     deleteImg.show();
+		  }
+		</script>
+		<script src="__PUBLIC__/js/bbc-elements.min.js"></script>
+		<script src="__PUBLIC__/js/bbc.min.js"></script>
+		<script>
+			var editor;
+			var editor1;
+			KindEditor.ready(function(K) {
+				editor = K.create('textarea[name="gintroduce"]', {
+					allowFileManager : true
+				});
+			});
+			KindEditor.ready(function(K) {
+				editor1 = K.create('textarea[name="center"]', {
+					allowFileManager : true
+				});
+			});
+		</script>
+	</body>
+</html>

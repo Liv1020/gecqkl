@@ -1,0 +1,82 @@
+/*****jQuery Validate 错误信息*****/
+input.error{
+	border:1px solid red;
+}
+input.valid {
+	border:1px solid #1d95f6;
+}
+span.error{
+	background : url(../Images/unchecked.gif) no-repeat 0 0;
+	padding-left: 16px;
+	color: #f00;
+}
+span.success{
+	background : url(../Images/checked.gif) no-repeat 0 0;
+	padding-left: 16px;
+}
+/*邮件顶部图片*/
+.mail-modal
+{
+    background: #fff url(../images/mail-stripes.png) repeat-x left top;
+    background-size: 45px 6px;
+    border-top: 0;
+    padding-top: 6px;
+}
+
+
+
+.item {
+  width: 90px;
+  height: 90px;
+	float: left;
+	position: relative;
+	margin: 20px;
+}
+.addImg {
+	width: 90px;
+	height: 90px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+.preview,.preBlock{
+	position: absolute;
+  display: block;
+	width: 90px;
+	height: 90px;
+	left: 0;
+	top: 0;
+}
+.delete {
+  width: 16px;
+	position: absolute;
+	right: -16px;
+	top: -8px;
+	cursor: pointer;
+	display: none;
+}
+.preBlock img {
+  display: block;
+	width: 90px;
+	height: 90px;
+}
+.upload_input{
+  display: block;
+  width: 0;
+  height: 0;
+  -webkit-opacity: 0.0;  
+  /* Netscape and Older than Firefox 0.9 */  
+  -moz-opacity: 0.0;  
+  /* Safari 1.x (pre WebKit!) 老式khtml内核的Safari浏览器*/  
+  -khtml-opacity: 0.0;  
+  /* IE9 + etc...modern browsers */  
+  opacity: .0;  
+  /* IE 4-9 */  
+  filter:alpha(opacity=0);  
+  /*This works in IE 8 & 9 too*/  
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";  
+  /*IE4-IE9*/  
+  filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0); 
+}

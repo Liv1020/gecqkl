@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>区域代理</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/swiper-3.2.7.min.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+	<style>
+	input{
+		line-height: 4rem;
+		font-size:3rem;
+		width: 69%;
+		border-radius: 5px;
+		border:none;
+		padding-left: 5px;
+		-webkit-appearance:none;
+	}
+	select{
+		line-height: 4rem;
+		font-size:3rem;
+		width: 30%;
+		border-radius: 5px;
+		border:none;
+		padding-left: 5px;
+		-webkit-appearance:none;
+	}
+	</style>
+	
+	
+	
+		<!--确认订单-->
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>区域代理</div></div>
+			<div class="ddtb">
+			<ul>
+				<li style="width:50%;">
+					<a href="{:U('Index/shop/jiameng')}" >商家</a>
+				<li style="width:50%;background: #007AFF;">
+					<a href="{:U('Index/emoney/daili')}" style="color:#fff;" >代理</a>
+				</li>
+			</ul>
+		</div>
+	
+		<!--农田-->
+		<figure id="full_feature" class="swipslider" style="margin-top: 200px;">
+				<ul class="sw-slides" style="transition-duration: 50000ms; transition-timing-function: ease-out; transition-property: all; transform: translateX(-3840px);">
+					<volist name="adv_list" id="vo">
+					<li class="sw-slide">
+						<a href="{$vo.adv_url}">
+							<img src="{$vo.adv_pic}" alt="{$vo.adv_name}" width="100%" height="100%" />
+						</a>
+					</li>
+					</volist>
+					
+				</ul>
+			</figure>
+		</section>
+		<script type="text/javascript" src="__PUBLIC__/js/swipeslider.min.js"></script>
+		<script type="text/javascript">
+			$(window).load(function() {
+			      $('#full_feature').swipeslider();
+			      $('#content_slider').swipeslider({
+			        transitionDuration: 600,
+			        autoPlayTimeout: 10000,
+			        sliderHeight: '300px'
+			      });
+			      $('#responsiveness').swipeslider();
+			      $('#customizability').swipeslider({
+			        transitionDuration: 1500, 
+			        autoPlayTimeout: 4000, 
+			        timingFunction: 'cubic-bezier(0.38, 0.96, 0.7, 0.07)',
+			        sliderHeight: '30%'});
+			    });
+		</script>
+		<!--充值列表-->
+		<form  method="post" action="" id="form" style="margin-bottom:80px;font-size:14px" enctype="multipart/form-data">
+		<div class="person_wallet_recharge">
+		<if condition="empty($dlinfo)">
+			<div class="pic">选择代理区域：<br/>
+				<select name="area1" id="area1">
+					<option value="0" selected>请选择</option>
+					<volist name="arealst" id="vo">
+						<option value="{$vo.area_id}">{$vo.area_name}</option>
+					</volist>
+				</select>
+				<select name="area2" id="area2">
+					
+				</select>
+				<select name="area3" id="area3">
+					
+				</select>
+			</div>
+			<div class="pic">姓名：<br/>
+				<input name="name" id="tel" placeholder="输入姓名" />
+			</div>
+			<div class="pic">联系电话：<br/>
+				<input id="tel" placeholder="输入联系电话" name="tel" />
+			</div>
+			<a id="submit" class="botton" style="width: 100%;line-height: 5rem;border-radius: 1rem;font-size:3rem;border: 0px;display:block;text-align:center; background-color:#ff7387;margin-top: 5px;color: #FFFFFF;-webkit-appearance: none;">提 交</a>
+		<else/>
+			<div class="pic">代理区域：<br/>
+				<span style="color:#969696;">{$area1.area_name}->{$area2.area_name}->{$area3.area_name}</span>
+			</div>
+			<div class="pic">姓名：<br/>
+				<span style="color:#969696;">{$dlinfo.name}</span>
+			</div>
+			<div class="pic">联系电话：<br/>
+				<span style="color:#969696;">{$dlinfo.tel}</span>
+			</div>
+			<div class="pic">状态：<br/>
+				<span style="color:#969696;">
+				<if condition="$dlinfo.state eq 0">
+					审核中
+				</if>
+				<if condition="$dlinfo.state eq 1">
+					审核通过
+					
+				</if>
+				</span>
+			</div>
+			
+		</if>
+		</div>
+		</form>	
+		<script>
+		
+		$("#area1").change(function(){
+			id=$("#area1").val();
+			$.ajax({
+				type:'post',
+				url:"{:U('index/emoney/ajaxarea')}",	
+				data:{id:id},
+ 				dataType:'json',
+				success:function(result){
+					$("#area2").html('<option value="0" selected>请选择</option>');
+					$("#area3").html('<option value="0" selected>请选择</option>');
+					if(result){
+						for(i=0;i<result.length;i++){
+							$("#area2").append('<option value="'+result[i]["area_id"]+'">'+result[i]["area_name"]+'</option>');
+						}
+					}
+					
+				}
+			});
+		})
+		$("#area2").change(function(){
+			id=$("#area2").val();
+			$.ajax({
+				type:'post',
+				url:"{:U('index/emoney/ajaxarea')}",	
+				data:{id:id},
+ 				dataType:'json',
+				success:function(result){
+					$("#area3").html('<option value="0" selected>请选择</option>');
+					if(result){
+						for(i=0;i<result.length;i++){
+							$("#area3").append('<option value="'+result[i]["area_id"]+'">'+result[i]["area_name"]+'</option>');
+						}
+					}
+					
+				}
+			});
+		})
+		$("#submit").click(function(){
+			res1 = true;
+			res2 = true;
+			res3 = true;
+			if($("#area3").val() == 0 || $("#area3").val()==""){
+				alert("请将地区选择完");
+				res1 = false;
+				return false;
+			}
+			if($("#name").val() == ''){
+				alert("请填写姓名");
+				res2 = false;
+				return false;
+			}
+			if($("#tel").val() == ''){
+				alert("请填写联系电话");
+				res3 = false;
+				return false;
+			}
+			if(res1 && res2 && res3){
+				$("#form").submit();
+			}
+				
+		})
+		</script>
+		<include file="Public:footer" />
+	</body>
+</html>

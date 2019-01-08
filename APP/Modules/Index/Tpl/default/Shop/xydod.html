@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>种子交易</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<style>
+	.adr{
+		height:auto;
+		margin-top:1rem;
+		padding:12px 0;
+	}
+	.adr span{
+		display:block;
+	}
+	.adr_one{
+		
+	}
+	.adr_two{
+	}
+	.adr_three{
+	}
+	.area{
+		height:80px;
+		width:80%;
+		border-radius:100px;
+		background-color:red;
+		color:#fff;
+		display:block;
+		margin:10px auto 0 auto;
+		font-size:2.8rem;
+		line-height:80px;
+		text-align:center;
+	}
+	
+	</style>
+	<body>
+		<!--种子市场单页顶部-->
+		<div class="sjsc_top">
+			<div class="row"><a href="javascript:history.go(-1);" class="fh"><</a>收货地址<a href="#" style="height:100px;" class="gz"></a></div>
+			<div class="menus menus2" style="margin: 0;">
+			
+		</div>
+		</div>
+		<form id="form" action="" method="post">
+		<input type="hidden" name="xyd_id" value="{$info.id}" />
+		<input type="hidden" id="xyd_zz" name="xyd_price" value="{$info.xyd_price}" />
+		<input type="hidden" name="jinbi" id="jinbi" value="{$user.jinbi}" />
+		<div class="row" style="background: #fff;margin-top: 130px;">
+			<div class="tab tab1 show">
+					<ol>
+							<li class="adr">
+								<span class="adr_one">所需种子：<span style="text-align:right;color:red;padding-right:20px;">￥{$info.xyd_price}粒</span></span>
+							</li>
+							<li class="adr">
+								<span class="adr_one">
+								<img style="display:block;height:100px;max-width:100px;float:left;" src="/Public/kj/img/zhifubao.jpg" /> 
+								<span style="display:block;float:left;margin-left:1rem;font-weight:bold;">种子兑换<br/>可用种子：{$user.jinbi}</span>
+								</span>
+							</li>
+					</ol>
+			</div>
+			<a id="submit" class="area" >确认支付</a>
+		</div>
+		</form>
+		<script type="text/javascript" src="__PUBLIC__/js/tab.js" ></script>
+		<script>
+		$("#submit").click(function(){
+			xyd_zz = $("#xyd_zz").val();
+			jinbi = $("#jinbi").val();
+			if(jinbi*1 > xyd_zz*1){
+				
+				$("#form").submit();
+			}
+			else{
+				alert("抱歉，您的种子余额不足"+xyd_zz+"点，无法参与此兑换活动");
+			}
+				
+		})
+		</script>
+	</body>
+</html>

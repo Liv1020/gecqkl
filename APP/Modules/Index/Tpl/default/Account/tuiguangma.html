@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>推广中心</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/swiper-3.2.7.min.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+		<script src="//gate.myapp.ltd/cdn/jsbridge-mini.js"></script>
+<style>
+.top img{
+	margin-top:6rem;
+}
+.zhong{
+	height:78rem;
+	background:url('__PUBLIC__/img/erwedi.png');
+	background-size:100% auto;
+}
+.zhong img{
+	margin-top:24rem;
+	width:57%;
+	
+}
+.bottom h2{
+	font-size:3rem;
+	line-height:3.5rem;
+}
+.bottom a{
+	font-size:3rem;
+	line-height:3.5rem;
+	padding-top:2rem;
+	display:block;
+}
+
+</style>
+	</head>
+	<body>
+	<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>推广中心</div></div>
+	<div style="text-align:center;padding-bottom:80px;margin-top:105px;background:#71e01f;">	
+		<div class="top">
+			<img src="__PUBLIC__/img/sys.png" />
+		</div>
+		<div class="zhong">
+			<img src="{$erwei}" />
+		</div>
+		<div class="bottom">
+			<h2>推广账号：{$username}</h2>
+			<a onclick="toshare()">分享到微信:<img style="margin-top:-1rem;" src="__PUBLIC__/images/wechat.png" /></a>
+			
+		</div>
+	</div>
+		<include file="Public:footer" />
+	</body>
+</html>
+<script>
+function toshare(){
+
+	jsBridge.share({
+	//分享到，0 微信朋友圈，1 微信好友，2 QQ好友，3 QQ空间；未指定则弹出分享菜单
+	to : '',
+	//标题，未指定则为当前页面 title 标题
+	title : "推广",
+	//链接，未指定则为当前页面链接
+	link : "{$tuiguangma}",
+	//图标，未指定则为 App 图标
+	imgUrl: "",
+	//描述，如未指定，App 会尝试抓取页面 meta description content，<meta name="description" content="页面描述..." />
+	//均无描述内容则显示链接
+	desc: "" 
+	}, function(succ) {
+	alert(succ ? "分享成功" : "分享失败或取消了分享");
+	});
+
+	/*//弹出分享菜单，并处理分享结果
+	jsBridge.share(null, function(succ) {
+	//do something...
+	}); 
+
+	//弹出分享菜单，并指定分享标题
+	jsBridge.share({
+	title: "指定分享出去的标题"
+	});*/
+}
+</script>

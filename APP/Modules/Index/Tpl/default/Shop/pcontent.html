@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>农田详情</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+		<!--头部-->
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>农田兑换</div></div>
+		<!--农田详情-->
+		<div class="ntxq">
+			<div class="row">
+				<div class="ntxq_top"><img src="{$product.thumb}"></div>
+				<div class="ntxq_nav">
+					<h2>{$product.title}</h2>
+					<h2>兑换价格：<b>{$product.price}种子</b></h2>
+					<span>土地满载：{$product.gonglv}</span>
+					<span>运行周期：{$product.yszq}天</span>
+					<p>{$product.content}</p>
+				</div>
+				<div class="ntxq_dh">
+					<a href="javascript:location.href='{:U('Shop/buy',array('id'=>$product['id']))}'">立即兑换</a>
+				</div>
+			</div>
+		</div>
+		<!--底部导航-->
+		<include file="Public:footer" />
+	</body>
+</html>

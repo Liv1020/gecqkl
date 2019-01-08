@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我的粉丝</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+		<!--头部-->
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>我的粉丝</div></div>
+	
+		
+		<div class="t_top" style="margin-top:120px;">
+			<div class="fensi">
+				<h2>我的粉丝介绍</h2>
+				<div class="fstextent">
+					{$anninfo.content}
+				</div>
+			</div>
+			<div class="fensi">
+				<h2>我的粉丝:</h2>
+				<table class="fslist">
+					<tr>
+						<th>姓名</th>
+						<th>联系电话</th>
+						<th></th>
+					</tr>
+					<foreach name="mem_list" item="item">
+						<tr>
+							<td>{$item.truename}</td>
+							<td><a href="tel:{$item.mobile}">{$item.mobile}</a></td>
+							<td></td>
+						</tr>
+					</foreach>
+				</table>
+			</div>
+		</div>
+		<!--底部导航-->
+		
+		<include file="Public:footer" />
+	</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>种子出让</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+		<!--头部-->
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>出让种子</div></div>
+		<!--出让种子-->
+		<div class="crzz">
+			<div class="row">
+				<form action="" method="POST" id="form1" style="font-size:14px; padding-bottom:26px;">
+				    <input type="hidden" name="mid" value="{$mem_info.id}" />
+					<div class="crzz_k">
+						<div class="crzz_1">
+							<h2>收款账户:</h2>
+							<img src="__PUBLIC__/img/b.png"><b>{$mem_info.username}({$mem_info.zhifubao})</b>
+							<p>提示：收款账户为您钱包绑定的账户！</p>
+						</div>
+						<div class="crzz_2">
+							<h2>出让种子单价:</h2>
+							<span>￥</span><input name="price" id="price" type="text" placeholder="不得低于{$dijia}元/粒" style="border-bottom: 1px solid #ccc;"/>
+							<p>今日种子兑换价格：{$danjia}元/滴</p>
+						</div>
+						<div class="crzz_3">
+							<h2>出让种子数量:</h2>
+							<input style="border-bottom: 1px solid #ccc;" type="text" onkeyup="value=value.replace(/[^\d]/g,'')" name="num" id="num" placeholder="输入数量不得低于{$num}粒" />
+							<p>最多出让：{:sprintf ($mem_info[jinbi] * 0.95)}粒</p>
+						</div>
+					</div>
+					<div class="crtj">
+						<a href="javascript:;" id="submit" style="color: #fff;">提交</a>
+					</div>
+	  			</form>
+				<div class="shm">
+					<p></p>
+				</div>
+			</div>
+		</div>
+<script>
+   var dijia={$dijia};
+   var gaojia={$gaojia};
+   var jinbi={:sprintf ($mem_info[jinbi] * 0.95)};
+   var nums={$num};
+	$("#submit").click(function(){
+		res1=true;
+		res2=true;
+		res3=true;
+		res4=true;
+		price=$("#price").val();
+		num=$("#num").val();
+		if(price < dijia){
+			alert("出让价格不得低于"+dijia+"元/粒，请重新输入");
+			res1=false;
+		}
+		if(price > gaojia){
+			alert("出让价格不得高于"+gaojia+"元/粒，请重新输入");
+			res2=false;
+		}
+		if(jinbi<num){
+			alert("出让数量超过最多可出让数量！");
+			res3=false;
+		}
+		if(num<nums){
+			alert("出让数量不得少于"+nums);
+			res4=false;
+		}
+		if(res1 && res2 && res3 && res4){
+			$("#form1").submit();
+		}
+			
+	})
+</script>
+	</body>
+</html>

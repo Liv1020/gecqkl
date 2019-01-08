@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>出让订单</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/swiper-3.2.7.min.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<style>
+	.czan{
+		font-size:2rem;
+	}
+	.czan span{
+		display:block;
+		width:35%;
+		height:2.5rem;
+		float:left;
+		color:#dabd78;
+		line-height:2.5rem;
+		margin-top:10px;
+	}
+	.fqgr{
+		display:block;
+		width:25%;
+		height:2.5rem;
+		float:left;
+		margin-left:2%;
+		line-height:2.5rem;
+		border-radius:2rem;
+		border:#dabd78 1px solid;
+		text-align:center;
+		margin-top:10px;
+		color:#dabd78;
+	}
+	.wyfk{
+		display:block;
+		width:25%;
+		hieght:2.5rem;
+		line-height:2.5rem;
+		margin-left:3%;
+		border-radius:2rem;
+		float:left;
+		background:#fea02b;
+		text-align:center;
+		margin-top:10px;
+		color:#fff;
+	}
+	
+	
+	</style>
+	<body>
+		<!--订单详情-->
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>出让订单</div></div>
+		<!--订单地址-->
+		<div class="dddz" style="width: 100%;height: 0px;margin-top: 100px;">
+		</div>
+	
+		<!--商品-->
+		<div class="qrsp" style="background-color:#ededed;">
+		<volist name='list' id='v'>
+			<div class="row" style="margin-bottom:15px; background:#fff;padding-bottom:15px;">
+				<div class="sc"><h2 style="float: left;">卖家：{$user.truename}</h2>
+				<span style="float: right;font-size: 2rem;color: #FF9846;">{$user.mobile}</span></div>
+				<div class="spa">
+				<a href="{:U('Index/seed/zzjiaoyi',array('id'=>$v[id]))}" style="display:block;height:100%;width:100%;">
+					<div class="spa_r" style="width:100%;">
+						<h2><em style="font-size:2.8rem;">{$v.zz_num}</em>&nbsp;粒</h2>
+						<p style="color:#0231ff;">卖家收款支付宝:{$user.zhifubao}</p>
+						<p style="width: 60%;float: left;">种子单价：￥{$v.zz_price}</p><span>合计金额：￥{$v.sum_price}</span>
+					</div>
+				</a>
+				</div>
+				<div class="czan">
+				<span>
+				<if condition="$v['trans_state'] eq 1">
+					出让中
+				<elseif condition="$v['trans_state'] eq 2"/>
+					交易中
+				<elseif condition="$v['trans_state'] eq 3"/>
+					已打款
+				<else/>
+					已完成
+				</if>
+				</span>
+				<if condition="$v['trans_state'] eq 1">
+					<a class="wyfk" href="javascript:;">无人购买</a>
+				<elseif condition="$v['trans_state'] eq 2"/>
+					<a class="wyfk" href="javascript:;">等待打款</a>
+				<elseif condition="$v['trans_state'] eq 3"/>
+					
+					<a class="wyfk" href="{:U('Index/seed/crqueren',array('id'=>$v[id]))}">确认已打款</a>
+				<else/>
+					<a class="wyfk" href="javascript:;">已完成</a>
+				</if>
+			
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+		</volist>
+		</div>
+		
+		<include file="Public:footer" />
+	</body>
+</html>

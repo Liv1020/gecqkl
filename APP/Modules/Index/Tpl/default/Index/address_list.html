@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>种子交易</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<style>
+	.adr{
+		height:auto;
+		margin-top:1rem;
+		padding:12px 0;
+	}
+	.adr span{
+		display:block;
+	}
+	.adr_one{
+		
+	}
+	.adr_two{
+	}
+	.adr_three{
+	}
+	.area{
+		height:80px;
+		width:80%;
+		border-radius:100px;
+		background-color:red;
+		color:#fff;
+		display:block;
+		margin:10px auto 0 auto;
+		font-size:2.8rem;
+		line-height:80px;
+		text-align:center;
+	}
+	
+	</style>
+	<body>
+		<!--种子市场单页顶部-->
+		<div class="sjsc_top">
+			<div class="row"><a href="{:U('Index/index/index')}" class="fh"><</a>收货地址<a href="#" style="height:100px;" class="gz"></a></div>
+			<div class="menus menus2" style="margin: 0;">
+			
+		</div>
+		</div>
+		<div class="row" style="background: #fff;margin-top: 130px;">
+			<div class="tab tab1 show">
+					<ol>
+					
+						<foreach name="list" item="v">
+	            			<li class="adr">
+								<span class="adr_one">地区：{$v.area}</span>
+								<span class="adr_two">地址：{$v.address}</span>
+								<span class="adr_three">tel：{$v.tel}</span>
+							</li>
+						</foreach> 
+						
+					</ol>
+			</div>
+			<a href="{:U('Index/index/address')}" class="area">新增收货地址</a>
+				
+		</div>
+		
+		<include file="Public:footer" />
+		<script type="text/javascript" src="__PUBLIC__/js/tab.js" ></script>
+		
+	</body>
+</html>

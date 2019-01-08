@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>农田购买</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+		<!--头部-->
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>农田购买</div></div>
+		<div class="ddtb">
+			<ul>
+				<li style="width:50%;">
+					<a href="{:U('Index/emoney/ntlist')}" >我的土地</a>
+				<li style="background: #007AFF;width:50%;">
+					<a href="{:U('Index/shop/plist')}"  style="color: #fff;">购买土地</a>
+				</li>
+			</ul>
+		</div>
+		<!--农田-->
+		<figure id="full_feature" class="swipslider" style="margin-top: 200px;z-index: -1;">
+				<ul class="sw-slides" style="transition-duration: 50000ms; transition-timing-function: ease-out; transition-property: all; transform: translateX(-3840px);">
+					<volist name="adv_list" id="vo">
+					<li class="sw-slide">
+						<a href="{$vo.adv_url}">
+							<img src="{$vo.adv_pic}" alt="{$vo.adv_name}" width="100%" height="100%" />
+						</a>
+					</li>
+					</volist>
+					
+				</ul>
+			</figure>
+		</section>
+		<script type="text/javascript" src="__PUBLIC__/js/swipeslider.min.js"></script>
+		<script type="text/javascript">
+			$(window).load(function() {
+			      $('#full_feature').swipeslider();
+			      $('#content_slider').swipeslider({
+			        transitionDuration: 600,
+			        autoPlayTimeout: 10000,
+			        sliderHeight: '300px'
+			      });
+			      $('#responsiveness').swipeslider();
+			      $('#customizability').swipeslider({
+			        transitionDuration: 1500, 
+			        autoPlayTimeout: 4000, 
+			        timingFunction: 'cubic-bezier(0.38, 0.96, 0.7, 0.07)',
+			        sliderHeight: '30%'});
+			    });
+		</script>
+		<div class="nt">
+			<div class="row">
+				<ul>
+				<foreach name="typeData" item="ty">
+			        <li>
+						<a href="{:U('Index/Shop/pcontent',array('id'=>$ty['id']))}">
+							<div class="nt_l"><img src="{$ty.thumb}"></div>
+							<div class="nt_n">
+								<h2>{$ty.title}</h2>
+								<span>兑换价格：{$ty.price}种子</span>
+								<span>土地满载：{$ty.gonglv}</span>
+								<span>运行周期：{$ty.yszq}天</span>
+							</div>
+							<div class="nt_r">
+								<a href="{:U('Index/Shop/pcontent',array('id'=>$ty['id']))}" class="nt_ra">兑换</a>
+							</div>
+						</a>
+					</li>
+		        </foreach>	
+					
+				</ul>
+			</div>
+		</div>
+		<!--底部导航-->
+		<include file="Public:footer" />
+	</body>
+</html>

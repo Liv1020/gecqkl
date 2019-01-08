@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>赠送订单</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/swiper-3.2.7.min.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<style>
+	.czan{
+		font-size:2rem;
+	}
+	.czan span{
+		display:block;
+		width:35%;
+		height:2.5rem;
+		float:left;
+		color:#dabd78;
+		line-height:2.5rem;
+		margin-top:10px;
+	}
+	.fqgr{
+		display:block;
+		width:25%;
+		height:2.5rem;
+		float:left;
+		margin-left:2%;
+		line-height:2.5rem;
+		border-radius:2rem;
+		border:#dabd78 1px solid;
+		text-align:center;
+		margin-top:10px;
+		color:#dabd78;
+	}
+	.wyfk{
+		display:block;
+		width:25%;
+		hieght:2.5rem;
+		line-height:2.5rem;
+		margin-left:3%;
+		border-radius:2rem;
+		float:left;
+		background:#fea02b;
+		text-align:center;
+		margin-top:10px;
+		color:#fff;
+	}
+	
+	
+	</style>
+	<body>
+		<!--订单详情-->
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>出让订单</div></div>
+		<!--订单地址-->
+		<div class="dddz" style="width: 100%;height: 0px;margin-top: 100px;">
+		</div>
+	
+		<!--商品-->
+		<div class="qrsp" style="background-color:#ededed;">
+		<a href="{:U('Index/seed/zzgive')}" style="display:block;background:#fff;border-bottom:1px solid #ededed;width:100%;height:3.5rem;font-size:2.8rem;line-height:3.5rem;text-align:center;" >新增赠送</a>
+		<volist name='givelist' id='v'>
+			<div class="row" style="margin-bottom:15px; background:#fff;padding-bottom:15px;">
+				<div class="sc"><h2 style="float: left;">赠送人：{$v.user}</h2>
+				<span style="float: right;font-size: 2rem;color: #FF9846;">{$user.mobile}</span></div>
+				<div class="spa" style="height:225px;">
+				<a href="{:U('Index/seed/zzjiaoyi',array('id'=>$v[id]))}" style="display:block;height:100%;width:100%;">
+					<div class="spa_r" style="width:100%;">
+						<h2><em style="font-size:2.8rem;">{$v.yield}</em>&nbsp;粒</h2>
+						<p style="color:#0231ff;">接收人:{$v.suser}</p>
+					</div>
+				</a>
+				</div>
+				<div class="czan">
+				<span>
+				<if condition="$v['state'] eq 1">
+					赠送中
+				<elseif condition="$v['state'] eq 2"/>
+					已接收
+				</if>
+				</span>
+				<if condition="$v['state'] eq 1">
+					<a class="wyfk" href="{:U('index/seed/qxgive',array('id'=>$v['id']))}">取消赠送</a>
+				<else/>
+					<a class="wyfk" href="javascript:;">已完成</a>
+				</if>
+			
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+		</volist>
+		</div>
+		<div id="pages">{$page}</div>
+		<a href="" id="xiayiye"></a>
+		<style>
+		#pages{
+			display:none;
+		}
+		#xiayiye{
+			color:#0012ff;
+			width:100%;
+			height:5rem;
+			line-height:5rem;
+			text-align:center;
+			display:block;
+			font-size:3rem;
+		}
+	</style>
+	<script>
+		$(function(){
+			xiayiyeurl = $("#next").attr("href");
+			if(xiayiyeurl){
+				var index = xiayiyeurl .lastIndexOf("\/");  
+				str  = xiayiyeurl .substring(index + 1,xiayiyeurl.length);
+				url="{:U('index/index/gongyichi')}/p/"+str;
+				$("#xiayiye").attr("href",url);
+				$("#xiayiye").html("下一页>>");
+			}
+			else{
+				$("#xiayiye").html("");
+				$("#xiayiye").css("color","#cecece");
+			}
+		})
+	</script>
+		<include file="Public:footer" />
+	</body>
+</html>

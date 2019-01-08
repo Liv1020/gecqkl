@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+		<!--酿酒顶部-->
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>生产任务</div></div>
+		<!--酿酒任务-->
+		<div class="njrw">
+			<div class="njrw_img"><img src="__PUBLIC__/img/borderlands_tiny_tina.jpg"></div>
+			<div class="njrw_nr">
+				<ul>
+					<li>
+						<a href="{:U('index/account/tuiguangma')}">
+							<img src="__PUBLIC__/img/liangliandashi.png">
+							<h2>农链推广</h2>
+							<p>邀请好友</p>
+							<span>+加产力</span>
+						</a>
+					</li>
+					<li>
+						<a href="{:U('Index/Shop/jzzshop')}">
+							<img src="__PUBLIC__/img/nlsc.png">
+							<h2>农链商城</h2>
+							<p></p>
+							<span>买产品+产力</span>
+						</a>
+					</li>
+					<li>
+						<a href="{:U('Index/index/shangxy')}">
+							<img src="__PUBLIC__/img/shangxueyuan.png">
+							<h2>商学院</h2>
+							<p></p>
+							<if condition="$user['sxy_scl'] eq 0">
+							<span>+5产力</span>
+							<else/>
+							<span style="background:none;color:#000;">已完成</span>
+							</if>
+						</a>
+					</li>
+					<li style="border-right: none;">
+						<a href="{:U('Index/index/caozuo')}">
+							<img src="__PUBLIC__/img/caozuozhinan.png">
+							<h2>操作指南</h2>
+							<p></p>
+							<if condition="$user['cz_scl'] eq 0">
+							<span>+5产力</span>
+							<else/>
+							<span style="background:none;color:#000;">已完成</span>
+							</if>
+						</a>
+					</li>
+					<li>
+						<a href="{:U('Index/emoney/fensi')}">
+							<img src="__PUBLIC__/img/wodefensi.png">
+							<h2>我的粉丝</h2>
+							<p>邀请好友</p>
+							<span></span>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<img src="__PUBLIC__/img/meiridenglu.png">
+							<h2>每日登陆</h2>
+							<p></p>
+							<span style="background:none;color:#000;">已完成</span>
+						</a>
+					</li>
+					<li>
+						<a href="{:U('Index/index/address')}">
+							<img src="__PUBLIC__/img/wz.png">
+							<h2>添加地址</h2>
+							<p>首次完善地址</p>
+							<if condition="$user['area_scl'] eq 0">
+							<span>+5产力</span>
+							<else/>
+							<span style="background:none;color:#000;">已完成</span>
+							</if>
+						</a>
+					</li>
+					<li style="border-right: none;">
+						<a href="">
+							<img src="__PUBLIC__/img/qyyuhezuo.png">
+							<h2>区域合作</h2>
+							<p></p>
+							<span></span>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="__PUBLIC__/img/wodefensi.png">
+							<h2>关注公众号</h2>
+							<p></p>
+							<span>+5产力</span>
+						</a>
+					</li>
+					<li style="border-right: none;">
+						<a href="#">
+							<img src="__PUBLIC__/img/a.png">
+							<h2>客服专属群</h2>
+							<p></p>
+							<span></span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="__PUBLIC__/img/a.png" />
+							<h2>食品溯源</h2>
+							<p></p>
+							<span></span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="__PUBLIC__/img/a.png">
+							<h2>农链基地</h2>
+							<p></p>
+							<span></span>
+						</a>
+					</li>
+					
+					<!--
+					
+					<li>
+						<a href="#">
+							<img src="__PUBLIC__/img/a.png">
+							<h2>酒链大师</h2>
+							<p>邀请9名好友</p>
+							<span>+90产力</span>
+						</a>
+					</li>
+					<li style="border-right: none;">
+						<a href="#">
+							<img src="__PUBLIC__/img/a.png">
+							<h2>酒链大师</h2>
+							<p>邀请9名好友</p>
+							<span>+90产力</span>
+						</a>
+					</li>-->
+					
+					
+				</ul>
+			</div>
+		</div>
+		
+		<include file="Public:footer" />
+	</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>VIP商品</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+		<!--顶部菜单-->
+		<div class="dbcd"><h2>VIP商品</h2></div>
+		<!--第二页顶部-->
+		<div class="t_top">
+			<div class="t_top_img">
+			<section>
+			<figure id="full_feature" class="swipslider">
+				<ul class="sw-slides" style="transition-duration: 50000ms; transition-timing-function: ease-out; transition-property: all; transform: translateX(-3840px);">
+					<volist name="adv_list" id="vo">
+					<li class="sw-slide">
+						<a href="{$vo.adv_url}">
+							<img src="{$vo.adv_pic}" alt="{$vo.adv_name}" width="100%" height="100%" />
+						</a>
+					</li>
+					</volist>
+					
+				</ul>
+			</figure>
+		</section>
+		<script type="text/javascript" src="__PUBLIC__/js/swipeslider.min.js"></script>
+		<script type="text/javascript">
+			$(window).load(function() {
+			      $('#full_feature').swipeslider();
+			      $('#content_slider').swipeslider({
+			        transitionDuration: 600,
+			        autoPlayTimeout: 10000,
+			        sliderHeight: '300px'
+			      });
+			      $('#responsiveness').swipeslider();
+			      $('#customizability').swipeslider({
+			        transitionDuration: 1500, 
+			        autoPlayTimeout: 4000, 
+			        timingFunction: 'cubic-bezier(0.38, 0.96, 0.7, 0.07)',
+			        sliderHeight: '30%'});
+			    });
+		</script>
+			</div>
+			
+			<div class="t_top_l" style="border-right: 1px solid #C0C0C0;">
+				<a href="{:U('/index/index/vipgods')}"><!-- <img src="__PUBLIC__/img/b.png"> -->
+				<div class="t_top_n"><h2>VIP专享</h2></div></a>
+			</div>
+			<div class="t_top_l" style="border-left: 1px solid #888888;border-right: 1px solid #C0C0C0;">
+				<a href="{:U('/index/shop/jzzgoods')}"><!-- <img src="__PUBLIC__/img/b.png"> -->
+				<div class="t_top_n"><h2>开心兑</h2></div></a>
+			</div>
+			<div class="t_top_l" style="border-left: 1px solid #888888;">
+				<a href="{:U('/index/shop/xyd')}"><!--{:U('/index/shop/xygoods')} <img src="__PUBLIC__/img/b.png"> -->
+				<div class="t_top_n"><h2>幸运兑</h2></div></a>
+			</div>
+		</div>
+		<!--第二页产品-->
+		<div class="t_cp">
+			<ul>
+			<foreach name="gods_list" item="ty">
+		    	<li>
+					<div class="row">
+						<a href="{:U('Index/index/vipgods_info',array('id'=>$ty['id']))}">
+							<div class="t_cp_left"><img src="{$ty.gpic}"></div>
+							<div class="t_cp_right"><h2>{$ty.g_name}</h2>
+							<b>￥{$ty.g_price}</b>
+							<span>立即购买</span></div>
+						</a>
+					</div>
+				</li>
+	    	</foreach>
+				
+				
+			</ul>
+		</div>
+		<!--底部导航-->
+		
+		<include file="Public:footer" />
+	</body>
+</html>

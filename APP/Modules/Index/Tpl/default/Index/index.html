@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>个人中心</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+		<!--第四页头部-->
+		<div class="f_top">
+			<div class="row">
+				我的农链
+				<a href="javascript:history.go(-1);"><img src="__PUBLIC__/img/sz.png" style="width:4rem;"></a>
+			</div>
+		</div>
+		<!--个人-->
+		<div class="f_aa">
+			<div class="f_gr">
+				<div class="row">
+					<div class="f_gr_l"><h2>{$minfo.truename}</h2><p>农链世界第{$minfo.id}位生产师</p></div>
+					<div class="f_gr_r"><img src="__PUBLIC__/img/d.png"></div>
+				</div>
+			</div>
+			<!--钱包-->
+			<div class="f_qb">
+				<div class="row">
+					<div class="f_qb_t"><h2>我的钱包</h2></div>
+					<div class="f_qb_n">
+						<a href="{:U('Index/seed/index')}">
+							<h2>我的钱包地址</h2>
+							<p>ajflkjalksfjaslhjglkdshjgfkjfdhgjfjgejhhlwk2s2fg4dfgmlkdmg</p>
+							<span>金种子余额：{$minfo.jinbi}</span>
+						</a>
+					</div>
+					<ul>
+						<!-- <li><a href="{:U('Index/index/scljilu')}"><img src="__PUBLIC__/img/nl.png"><p>我的生产力</p></a></li> -->
+						<li><a href="#"><img src="__PUBLIC__/img/xj.png"><p>零钱</p></a></li>
+						<li><a href="#"><img src="__PUBLIC__/img/dengji.png"><p>我的等级</p></a></li>
+						<li><a href="{:U('Index/Emoney/fensi')}"><img src="__PUBLIC__/img/wd.png"><p>我的好友</p></a></li>
+						<li><a href=""><img src="__PUBLIC__/img/nl.png"><p>粮票</p></a></li> 
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--交易订单-->
+		<div class="jydd">
+			<div class="row">
+				<div class="jydd_top"><h2>金种子交易订单</h2><a href="{:U('Index/Emoney/zzjylist')}">查看更多订单></a></div>
+				<ul>
+					<li><a href="{:U('Index/seed/grlist')}"><img src="__PUBLIC__/img/grdd.png"><p>购入订单</p></a></li>
+					<li><a href="{:U('Index/seed/crlist')}"><img src="__PUBLIC__/img/crdd.png"><p>出让订单</p></a></li>
+				</ul>
+				<ul>
+					<li><a href="{:U('Index/seed/zzgive_list')}"><img src="__PUBLIC__/img/grdd.png"><p>赠送种子</p></a></li>
+					<li><a href="{:U('Index/seed/zzsgive')}"><img src="__PUBLIC__/img/crdd.png"><p>收赠种子</p></a></li>
+				</ul>
+			</div>
+		</div>
+		<!--酒品订单-->
+		<div class="jpdd">
+			<div class="row">
+				<div class="jpdd_top"><h2>产品订单</h2><a href="{:U('Index/Shop/order_list')}">查看更多订单></a></div>
+				<ul>
+					<li><a href="{:U('Index/Shop/order_list',array('state'=>0))}"><img src="__PUBLIC__/img/daifukuan.png"><p>待付款</p></a></li>
+					<li><a href="{:U('Index/Shop/order_list',array('state'=>1))}"><img src="__PUBLIC__/img/yifukuan.png"><p>已付款</p></a></li>
+					<li><a href="{:U('Index/Shop/order_list',array('state'=>3))}"><img src="__PUBLIC__/img/shouhuo.png"><p>已完成</p></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="jpdd">
+			<div class="row">
+				<div class="jpdd_top"><h2>VIP商品订单</h2><a href="{:U('Index/Shop/order_list')}">查看更多订单></a></div>
+				<ul>
+					<li><a href="{:U('Index/index/order_list',array('state'=>0))}"><img src="__PUBLIC__/img/daifukuan.png"><p>待付款</p></a></li>
+					<li><a href="{:U('Index/index/order_list',array('state'=>1))}"><img src="__PUBLIC__/img/yifukuan.png"><p>已付款</p></a></li>
+					<li><a href="{:U('Index/index/order_list',array('state'=>3))}"><img src="__PUBLIC__/img/shouhuo.png"><p>已完成</p></a></li>
+				</ul>
+			</div>
+		</div>
+		<!--酒品订单-->
+		<div class="jpdd">
+			<div class="row">
+				<div class="jpdd_top"><h2>兑换订单</h2><a href="{:U('Index/Shop/zyorder_list')}">查看更多订单></a></div>
+				<ul>
+					<li><a href="{:U('Index/Shop/zyorder_list',array('state'=>0))}"><img src="__PUBLIC__/img/daifukuan.png"><p>待付款</p></a></li>
+					<li><a href="{:U('Index/Shop/zyorder_list',array('state'=>1))}"><img src="__PUBLIC__/img/yifukuan.png"><p>已付款</p></a></li>
+					<li><a href="{:U('Index/Shop/zyorder_list',array('state'=>3))}"><img src="__PUBLIC__/img/shouhuo.png"><p>已完成</p></a></li>
+				</ul>
+			</div>
+		</div>
+		<!--列表分类-->
+		<div class="lbf">
+			<ul>
+				<li><div class="row"><a href="{:U('Index/shop/plist')}"><h2>购买农田</h2><span>></span></a></div></li>
+				<li><div class="row"><a href="{:U('Index/emoney/ntlist')}"><h2>我的农田</h2><span>></span></a></div></li>
+				<li><div class="row"><a href="{:U('Index/index/production')}"><h2>加速生产</h2><span>></span><div style="clear:both;"></div></a></div></li>
+				<li><div class="row"><a href="{:U('Index/emoney/zzchurang')}"><h2>种子出让</h2><span>></span></a></div></li>
+				<li><div class="row"><a href="{:U('Index/emoney/zzjylist')}"><h2>种子购入</h2><span>></span></a></div></li>
+				<li><div class="row"><a href="{:U('Index/index/address_list')}"><h2>收货地址</h2><span>></span></a></div></li>
+				<li><div class="row"><a href="{:U('Index/index/gongyichi')}"><h2>公益池</h2><span>></span></a></div></li>
+				<li><div class="row"><a href="{:U('Index/Index/logout')}"><h2>退出登陆</h2><span>></span></a></div></li>
+			</ul>
+		</div>
+		<!--底部导航-->
+		<include file="Public:footer" />
+	</body>
+</html>

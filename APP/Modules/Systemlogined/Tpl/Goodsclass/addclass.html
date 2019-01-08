@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>添加产品分类</title>
+
+		<meta name="description" content="Minimal empty page" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!--basic styles-->
+
+		<link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="__PUBLIC__/css/bootstrap-responsive.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/kindeditor/themes/default/default.css" />
+		<script charset="utf-8" src="__PUBLIC__/kindeditor/kindeditor-min.js"></script>
+		<script charset="utf-8" src="__PUBLIC__/kindeditor/lang/zh_CN.js"></script>
+
+		<script type="text/javascript" src="__PUBLIC__/My97DatePicker/WdatePicker.js"></script>
+		<!--自定义样式-->
+		<link rel="stylesheet" href="__PUBLIC__/css/custom.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!--page specific plugin styles-->
+
+		<!--bbc styles-->
+
+		<link rel="stylesheet" href="__PUBLIC__/css/bbc.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/bbc-responsive.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/bbc-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/css/bbc-ie.min.css" />
+		<![endif]-->
+	</head>
+
+	<body>
+		<!--导航-->
+		<include file="Public:navbar" />
+
+		<div class="container-fluid" id="main-container">
+			<a id="menu-toggler" href="#">
+				<span></span>
+			</a>
+			<!--边栏-->
+			<include file="Public:sidebar" />
+
+
+			<div id="main-content" class="clearfix">
+				<div id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="icon-home"></i>
+							<a href="#">Home</a>
+
+							<span class="divider">
+								<i class="icon-angle-right"></i>
+							</span>
+						</li>
+
+						<li>
+							<a href="#">产品分类</a>
+
+							<span class="divider">
+								<i class="icon-angle-right"></i>
+							</span>
+						</li>
+					</ul><!--.breadcrumb-->
+				</div>
+
+				<div id="page-content" class="clearfix">
+					<div class="page-header position-relative">
+						<h1>
+							添加产品分类
+						</h1>
+					</div><!--/.page-header-->
+
+					<div class="row-fluid">
+						<!--PAGE CONTENT BEGINS HERE-->
+							<form class="form-horizontal" name="addProductHandle"  enctype="multipart/form-data" action="" method="post">
+								<div class="control-group">
+									<label class="control-label" for="title"> 分类名称</label>
+
+									<div class="controls">
+										<input type="text" value="" name="cname" id="cname" placeholder="" />
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="tid"> 上级分类</label>
+
+									<div class="controls">
+									   <select name="pid1" id="pid1">
+									     <option value="0" selected>请选择分类</option>	   
+											<foreach name="class_list" item="vo">
+												<option value="{$vo.cid}">{$vo.cname}</option>
+											</foreach>
+										</select>
+										<select name="pid2" id="pid2">
+									     <option value="0" selected>请选择分类</option>	   
+										</select>
+										<!-- <select name="pid3" id="pid3">
+									     <option value="0" selected>请选择分类</option>	   
+										</select> -->
+										<input type="hidden" name="parentid" id="parentid"/>
+									</div>
+								</div>
+              						
+								<div class="form-actions">
+									<button class="btn btn-info no-border" type="submit">
+										<i class="icon-ok bigger-110"></i>
+										保存添加
+									</button>
+								</div>
+
+							</form>
+						<!--PAGE CONTENT ENDS HERE-->
+					</div><!--/row-->
+				</div><!--/#page-content-->
+<!--/#ace-settings-container-->
+			</div><!--/#main-content-->
+		</div><!--/.fluid-container#main-container-->
+
+
+
+		<script src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
+		<!--page specific plugin scripts-->
+
+		<script src="__PUBLIC__/js/bootbox.min.js"></script>
+		
+		<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+			
+		<!--bbc scripts-->
+		<script src="__PUBLIC__/Js/jquery.validate.min.js"></script>
+		<!--自定义JS-->
+											
+                                    
+		<script type="text/javascript">
+		function classxz(){
+			id1=$("#pid1").val();
+			id2=$("#pid2").val();
+			id3=$("#pid3").val();
+
+			if(id3 > 0){
+				$("#parentid").val(id3);
+			}
+			else if(id2 > 0){
+				$("#parentid").val(id2);
+			}
+			else{
+				$("#parentid").val(id1);
+			}
+		}
+		$("#pid1").change(function(){
+			id=$("#pid1").val();
+			$.ajax({
+				type:'post',
+				url:"/index.php/systemlogined/Goodsclass/ajaxclass",	
+				data:{cid:id},
+ 				dataType:'json',
+				success:function(result){
+					$("#pid2").html('<option value="0" selected>请选择分类</option>');
+					if(result){
+						for(i=0;i<result.length;i++){
+							$("#pid2").append('<option value="'+result[i]["cid"]+'">'+result[i]["cname"]+'</option>');
+						}
+					}
+					
+				}
+			});
+
+			classxz();
+		})
+		$("#pid2").change(function(){
+			id=$("#pid2").val();
+			/*$.ajax({
+				type:'post',
+				url:"/index.php/systemlogined/Goodsclass/ajaxclass",	
+				data:{cid:id},
+ 				dataType:'json',
+				success:function(result){
+					$("#pid3").html('<option value="0" selected>请选择分类</option>');
+					if(result){
+						for(i=0;i<result.length;i++){
+							$("#pid3").append('<option value="'+result[i]["cid"]+'">'+result[i]["cname"]+'</option>');
+						}
+					}
+				}
+			});*/
+			classxz();
+			
+		})
+		$("#pid3").change(function(){
+			id=$("#pid3").val();
+			classxz();
+			
+		})
+		$('form[name="addProductHandle"]').validate({
+					//默认为lable
+					errorElement : 'span',
+					//失败时先移除成功的class
+					validClass : 'success',
+					//指定成功的样式
+					success : function(span){
+						span.addClass('success');
+					},
+
+					rules:{
+						cname:{required : true}
+					},
+					messages:{
+						cname:{required:'产品分类名称不能为空'}			
+					}
+
+				});
+		</script>
+		<script src="__PUBLIC__/js/bbc-elements.min.js"></script>
+		<script src="__PUBLIC__/js/bbc.min.js"></script>
+		<script>
+			var editor;
+			KindEditor.ready(function(K) {
+				editor = K.create('textarea[name="content"]', {
+					allowFileManager : true
+				});
+			});
+		</script>
+	</body>
+</html>

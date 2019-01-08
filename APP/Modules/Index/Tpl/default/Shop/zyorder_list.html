@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>商品订单列表</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+		<!--头部-->
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>商品订单列表</div></div>
+		<!--订单头部-->
+		<div class="ddtb">
+			<ul>
+				<li <if condition="$state eq 0">style="background: #007AFF;"</if>>
+					<a href="{:U('Index/Shop/zyorder_list',array('state'=>0))}"  <if condition="$state eq 0">style="color: #fff;"</if>>待付款</a>
+				</li>
+				<li <if condition="$state eq 1">style="background: #007AFF;"</if>>
+					<a href="{:U('Index/Shop/zyorder_list',array('state'=>1))}" <if condition="$state eq 1">style="color: #fff;"</if>>已付款</a>
+				</li>
+				<li <if condition="$state eq 2">style="background: #007AFF;"</if>>
+					<a href="{:U('Index/Shop/zyorder_list',array('state'=>2))}" <if condition="$state eq 2">style="color: #fff;"</if>>已发货</a>
+				</li>
+				<li <if condition="$state eq 2">style="background: #007AFF;"</if>>
+					<a href="{:U('Index/Shop/zyorder_list',array('state'=>3))}" <if condition="$state eq 3">style="color: #fff;"</if>>已完成</a>
+				</li>
+			</ul>
+		</div>
+			
+		<!--订单列表-->
+		<div class="ddlb">
+			<div class="row">
+			<foreach name="list" item="v">
+				<div class="ddxq">
+					<a href="{:U('Index/Shop/zyorder_info',array('id'=>$v['id']))}" style="display:block;">
+						<div class="ddxq_l"><img src="{$v.gpic}"></div>
+						<div class="ddxq_r">
+							<h2>{$v.shangname}</h2>
+							<p>
+								商品规格:{$v.goods_spec}<br/>
+								所需种子：{$v.jzzg_price}粒<br/>
+							</p>
+							<span>￥{$v.order_price}</span>
+						</div>
+					</a>
+				</div>
+			</foreach> 
+				
+			</div>
+		</div>
+		<!--底部导航-->
+		
+		<include file="Public:footer" />
+	</body>
+</html>

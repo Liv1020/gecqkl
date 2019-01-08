@@ -1,0 +1,102 @@
+.klk{
+			width:100%;
+			height:70rem;
+			position:fixed;
+			bottom:-71rem;
+			z-index:999;
+			background:#fff;
+			display:none;
+		}
+		#klimg{
+			width:100%;
+			height:30rem;
+			display:block;
+		}
+		.kltitle{
+			height:7rem;
+			color:#969696;
+			font-size:2rem;
+			line-height:7rem;
+		}
+		.kltitle span{
+			margin-left:2%;
+			margin-right:2%;
+		}
+		.kltitle span em{
+			color:red;
+			font-style: normal;
+		}
+		.klval{
+			height:6rem;
+			background-color:#e3e3e3;
+			padding-top:10px;
+			padding-bottom:10px;
+			text-align:center;
+			overflow:hidden;
+			position:relative;
+		}
+		.klval ul{
+			float:left;
+			position:relative;
+			padding:0;
+			margin:0;
+			left:50%;
+		}
+		.klval ul a{
+			position:relative;
+			right:50%;
+			float:left;
+			margin:0 5px;
+			line-height:6rem;
+			border-radius:5px;
+		}
+		.klval a{
+			text-align:center;
+			display:block;
+			height:10vw;
+			font-size:2.5rem;
+			width:10vw;
+			color:#f8a907;
+		}
+		
+		.klanniu{
+		
+			padding-top:2rem;
+			text-align:center;
+			overflow:hidden;
+			position:relative;
+		}
+		.klanniu ul{
+			float:left;
+			position:relative;
+			padding:0;
+			margin:0;
+			left:50%;
+		}
+		.klanniu ul li{
+			position:relative;
+			right:50%;
+			float:left;
+			margin:0 5px;
+			line-height:11vw;
+		}
+		.klanniu a{
+			display:block;
+			height:11vw;
+			width:11vw;
+			float:left;
+			margin:3.8vw;
+			border:1px solid #c9c9c9;
+			border-radius:1.5rem;
+			background-color:#eee;
+			font-size:3rem;
+		}
+		#klmb{
+			display:none;
+			width:100%;
+			height:100%;
+			background:#00000070;
+			position:fixed;
+			z-index:0;
+			top:100%;
+		}

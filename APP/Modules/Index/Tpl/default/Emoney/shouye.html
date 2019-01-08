@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>首页</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/klys.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+		 <!-- ShareTo Button BEGIN -->
+    <script type="text/javascript" src="http://s.shareto.com.cn/js/shareto_float.js#color=0&align=right&move=1" charset="utf-8"></script>
+    <!-- ShareTo Button END -->
+	</head>
+	<style>
+	.shouzz{
+		display:none;
+	}
+	</style>
+	<body>
+		<!--公告-->
+		<div class="gg">
+			<div class="row">
+				<div class="t_news">
+					<b>首页</b>
+					<ul class="swap"></ul>
+				</div>
+			</div>
+		</div>
+		<script>
+			function b() {
+				t = parseInt(x.css('top'));
+				y.css('top', '80px');
+				x.animate({
+					top: t - 80 + 'px'
+				}, 'slow');
+				if(Math.abs(t) == h - 80) {
+					y.animate({
+						top: '0px'
+					}, 'slow');
+					z = x;
+					x = y;
+					y = z;
+				}
+				setTimeout(b, 3000);
+			}
+			$(document).ready(function() {
+				$('.swap').html($('.news_li').html());
+				x = $('.news_li');
+				y = $('.swap');
+				h = $('.news_li li').length * 80;
+				setTimeout(b, 3000);
+			})
+		</script>
+		<!--头部-->
+		<div class="tb">
+			<div class="row">
+				<div class="tb_top">
+					<div class="tb_top_l"><a href="#">
+					<img src="__PUBLIC__/img/liangpiao.png" style="width:18px;">金种子：<span id="zongzi">{$user.jinbi}</span></a>
+					<a href="#"><img src="__PUBLIC__/img/b.png">生产力:{$nl}</a>
+					<a href="#"><img src="__PUBLIC__/img/td.png">金土地:{$tdsum}块 </a>
+					</div>
+					<div class="tb_top_r"><a href="#"><img src="__PUBLIC__/img/c.png"/><span></span></a></div>
+				</div>
+				<div class="tb_nav" >
+					<ul class="aa" id="aa">
+					</ul>
+					<img src="__PUBLIC__/img/zhongzi.gif" class="qiu">
+				
+				</div>
+				<div class="tb_bottom">
+					<ul>
+						<li><a href="{:U('index/index/production')}">加速生产</a></li>
+						<li><a href="{:U('index/emoney/ntlist')}">土地维护</a></li>
+						<li style="width:6%;background:none;border:none;"></li>
+						<li><a href="{:U('index/account/tuiguangma')}">邀请好友</a></li>
+						<li><a href="{:U('index/shop/jiameng')}">商务合作</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 收取种子口令板块 -->
+		<div class="klk">
+		<!-- __PUBLIC__/img/shouyebeijing.jpg -->
+		<img src="" id="klimg" />
+		<div class="kltitle">
+			<span style="float:left;">输入口令：</span>
+			<span style="float:right;">金种子：<em id="zjjzz"></em></span>
+		</div>
+		<div class="klval">
+			<ul id="yz">
+			</ul>
+		</div>
+		<div class="klanniu">
+			<ul id="xz">
+				
+			</ul>
+		</div>
+	</div>
+	<div id="klmb"></div>
+		<script>
+		var zzid = '';
+		var zz = '';
+		var yanz = 0;
+		var hanzi = "兄志南一傻游损难遭表";
+		var yz = new Array();
+		$("#klmb").click(function(){
+			
+			$(".klk").css("display","none");
+			$("#klmb").css("display","none");
+			$(".klk").animate({"bottom":"-520px"});
+			$("#klmb").animate({"top":"100%"});
+			$("#zjjzz").html("");
+			$("#klimg").attr("src","");
+		})
+
+		function wzkl(obj,id){
+			$.ajax({
+				type:'post',
+				url:"/index.php/index/Emoney/ajaxwztp",	
+				data:{}, 
+ 				dataType:'json',
+				success:function(result){
+					$("#klimg").attr("src",result.pic);	
+					var wenzis = new Array();
+					$("#yz").html(" ");
+					$("#xz").html(" ");
+					n=0;
+					for(i=0;i<result.val.length;i++){
+						n++;
+						$("#yz").append('<a yz="'+result.val.substr(i,1)+'" xz="" id="yz'+n+'" class="qrzt">'+result.val.substr(i,1)+'</a>');
+					}
+
+					
+					wenzi = result.val+hanzi;
+					wenzi = wenzi.substring(0,10);
+					var wenzis = new Array();
+					for(i=0;i<10;i++){
+						wenzis[i] = wenzi.substr(i,1);
+					}
+					wenzis = shuffle(wenzis);
+					for(j=0;j<wenzis.length;j++){
+
+						$("#xz").append("<li><a xz='"+wenzis[j]+"' id='xz"+j+"' class='wz' onclick='zxuanze(\"xz"+j+"\",\""+wenzis[j]+"\")'>"+wenzis[j]+"</a></li>");
+
+						
+					}
+					console.log(wenzis);		
+				}
+			});
+			$(".klk").css("display","block");
+			$("#klmb").css("display","block");
+			$(".klk").animate({"bottom":"0"});
+			$("#klmb").animate({"top":"0"});
+			$("#zjjzz").html("+"+$(obj).attr("yield"));
+			zz = obj;
+			zzid = id;
+		}
+		/*打乱数组*/
+		function shuffle(a) {
+		       var len = a.length;
+		       for(var i=0;i<len;i++){
+		           var end = len - 1 ;
+		           var index = (Math.random()*(end + 1)) >> 0;
+		           var t = a[end];
+		           a[end] = a[index];
+		           a[index] = t;
+		       }
+		       return a;
+		}
+		function zxuanze(id,zi){
+			//var yz = new Array();
+
+		    $('.qrzt').each(function(key,value){
+				yz[key] = new Array();
+		    	yz[key]["yz"] = $(this).attr("yz");      //如果是其他标签 用 html();
+		    	yz[key]["xz"] = $(this).attr("xz");      //如果是其他标签 用 html();
+		    	yz[key]["id"] = $(this).attr("id"); 
+				// 或btn[key] = $(value).val();
+		    });
+			
+			for(var i=0;i<yz.length;i++){
+				if(yz[i]['xz'] == ''){
+					tianzi(id,yz[i]['id'],yz[i]["yz"],zi);
+					break;
+				}
+			}
+		}
+		function tianzi(xid,yid,yzi,gzi){
+			if(yzi == gzi){
+				$("#"+xid).attr("onclick","qxxuanze('"+xid+"','"+yid+"','"+gzi+"')");
+				$("#"+xid).css({"border":"1px solid #a2a2a2","background-color":"#c9c9c9","color":"#f0af0a"});
+				
+				$("#"+yid).css({"background-color":"#00d100","color":"#fff"});
+				$("#"+yid).attr("xz",gzi);
+				$("#"+yid).attr("onclick","qxxuanze('"+xid+"','"+yid+"','"+gzi+"')");
+				$("#"+yid).html(gzi);
+				
+			}
+			else{
+				$("#"+xid).attr("onclick","qxxuanze('"+xid+"','"+yid+"','"+gzi+"')");
+				$("#"+xid).css({"border":"1px solid #a2a2a2","background-color":"#c9c9c9","color":"#f0af0a"});
+				
+				$("#"+yid).css({"background-color":"red","color":"#fff"});
+				$("#"+yid).attr("xz",gzi);
+				$("#"+yid).attr("onclick","qxxuanze('"+xid+"','"+yid+"','"+gzi+"')");
+				$("#"+yid).html(gzi);
+			}
+			yanzheng();
+		}
+		function qxxuanze(xid,yid,gzi){
+			$("#"+yid).html($("#"+yid).attr("yz"));//removeAttr
+			$("#"+yid).attr("xz","");
+			$("#"+yid).removeAttr("onclick");
+			$("#"+yid).css({"background-color":"","color":"#f8a907"});
+			
+			$("#"+xid).attr("onclick","zxuanze('"+xid+"','"+gzi+"')");
+			$("#"+xid).css({"border":"1px solid #c9c9c9","background-color":"#eee","color":"#000"});
+		}
+		function yanzheng(){
+
+		    $('.qrzt').each(function(key,value){
+				yz[key] = new Array();
+		    	yz[key]["yz"] = $(this).attr("yz");      //如果是其他标签 用 html();
+		    	yz[key]["xz"] = $(this).attr("xz");      //如果是其他标签 用 html();
+		    	yz[key]["id"] = $(this).attr("id"); 
+				// 或btn[key] = $(value).val();
+		    });
+			
+			console.log(yz);
+			for(var i=0;i<yz.length;i++){
+				if(yz[i]["yz"] == yz[i]["xz"]){
+					//yanz = true;
+				}
+				else{
+					yanz++;
+				}
+			}
+			if(yanz > 0){
+				console.log("失败");
+				yanz = 0;
+			}
+			else{
+				shouqu(zz,zzid);
+				//console.log("成功");
+			}
+		}
+		
+		$(function() {
+			var data = new Array;
+			var yieid = new Array;
+			<volist name='zz_list' id='vo' >
+			data[{$key}] = {$vo.yield};
+			yieid[{$key}] = {$vo.id};
+		  	</volist>
+		 
+			function productivity() {
+				if(data.length != 0) {
+					
+					for(i=0;i<data.length;i++){
+						$("#aa").append("<li>"
+						+"<a href='javascript:;' onclick='wzkl(this,"+yieid[i]+")' yield='"+data[i]+"'>"
+						+"<img src='__PUBLIC__/img/shouzz.gif'>"
+						+"<p>"+data[i]+"</p>"
+						+"</a>"
+						+"</li>");
+					}
+				}else{
+					
+				}
+			}
+			//if(sqcs === 0 && data.length > 0){
+				productivity();
+			//}
+			
+			});
+		function shouqu(obj,id){
+			yieldid=$(obj).attr("yield");
+			$.ajax({
+				type:'post',
+				url:"/index.php/index/Emoney/ajaxsshouqu",	
+				data:{
+					id:id,
+					yieldid:yieldid
+				},
+ 				dataType:'json',
+				success:function(result){
+					console.log(result);
+					if(result.result == 1){
+						$(obj).remove();
+						$("#zongzi").html(result.yield);
+						$(".klk").css("display","none");
+						$("#klmb").css("display","none");
+						$(".klk").animate({"bottom":"-520px"});
+						$("#klmb").animate({"top":"100%"});
+						
+						$("#klimg").attr("src","");
+						$("#zjjzz").html("");
+						zz = '';
+						zzid = '';
+					}
+					else{
+						alert("领取失败！");
+						$(obj).remove();
+						$("#zongzi").html(result.yield);
+
+						$(".klk").css("display","none");
+						$("#klmb").css("display","none");
+						$(".klk").animate({"bottom":"-520px"});
+						$("#klmb").animate({"top":"100%"});
+						
+						$("#klimg").attr("src","");
+						$("#zjjzz").html("");
+						zz = '';
+						zzid = '';
+					}
+					$(".wz").removeAttr("style");
+					$(".qrzt").removeAttr("style");
+					$(".qrzt").removeAttr("xz");
+					$(".qrzt").removeAttr("xz");
+					yz = new Array();
+					$('.wz').each(function(key,value){
+						$(this).attr("onclick","zxuanze('"+$(this).attr("id")+"','"+$(this).attr("xz")+"')");
+				    });
+				}
+			});
+		}
+		</script>
+		<!--新闻-->
+		<div class="xw">
+			<div class="row">
+				<div class="xw_t_news">
+					<font>最新播报：</font>
+					<ul class="xw_news_li">
+						<volist name='announce_list' id='vo'>
+						<li><a href="{:U('Index/New/newsdetails',array('news_id'=>$vo['id']))}">{$vo.title}</a></li>
+						</volist>
+					</ul>
+					<ul class="xw_swap"></ul>
+				</div>
+			</div>
+		</div>
+		<script>
+			function font() {
+				tt = parseInt(xx.css('top'));
+				yy.css('top', '100px');
+				xx.animate({
+					top: tt - 100 + 'px'
+				}, 'slow');
+				if(Math.abs(tt) == hh - 100) {
+					yy.animate({
+						top: '0px'
+					}, 'slow');
+					z = xx;
+					xx = yy;
+					yy = z;
+				}
+				setTimeout(font, 3000);
+			}
+			$(document).ready(function() {
+				$('.xw_swap').html($('.xw_news_li').html());
+				xx = $('.xw_news_li');
+				yy = $('.xw_swap');
+				hh = $('.xw_news_li li').length * 100;
+				setTimeout(font, 3000);
+			})
+		</script>
+		<!--轮播图-->
+		<section>
+			<figure id="full_feature" class="swipslider">
+				<ul class="sw-slides" style="transition-duration: 50000ms; transition-timing-function: ease-out; transition-property: all; transform: translateX(-3840px);">
+					<volist name="adv_list" id="vo">
+					<li class="sw-slide">
+						<a href="{$vo.adv_url}">
+							<img src="{$vo.adv_pic}" alt="{$vo.adv_name}" width="100%" height="100%" />
+						</a>
+					</li>
+					</volist>
+					
+				</ul>
+			</figure>
+		</section>
+		<script type="text/javascript" src="__PUBLIC__/js/swipeslider.min.js"></script>
+		<script type="text/javascript">
+			$(window).load(function() {
+			      $('#full_feature').swipeslider();
+			      $('#content_slider').swipeslider({
+			        transitionDuration: 600,
+			        autoPlayTimeout: 10000,
+			        sliderHeight: '300px'
+			      });
+			      $('#responsiveness').swipeslider();
+			      $('#customizability').swipeslider({
+			        transitionDuration: 1500, 
+			        autoPlayTimeout: 4000, 
+			        timingFunction: 'cubic-bezier(0.38, 0.96, 0.7, 0.07)',
+			        sliderHeight: '30%'});
+			    });
+		</script>
+		<script type="text/javascript" src="__PUBLIC__/js/highcharts.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/js/dynamic-update.js"></script>
+		<!--货币-->
+		<div class="qkl">
+			<div class="row">
+				<b>排行榜</b><span></span><a href="javascript:;" style="color:#7f7f7f;">排行榜一小时更新一次</a>
+			</div>
+		</div>
+		<div class="menus menus2">
+			<div class="row">
+				<!--<ul class="abc">
+					<div class="bg"></div>
+					<li class="li"><span>出让种子</span></li>
+					<li class="li"><span>交易完成</span></li>
+				</ul>-->
+				<div class="tab tab1 show">
+					<ol>
+						<!--<li>
+							<span class="m_one"></span>
+							<span class="m_two">数量</span>
+							<span class="m_three">单价</span>
+							<span class="m_four">状态</span>
+						</li>
+						<volist name='jylist' id='v' >
+						<li>
+							<span class="m_one">{$v.add_time|date='m-d h:i',###}</span>
+								<span class="m_two">{$v.zz_num}粒</span>
+								<span class="m_three">￥{$v.zz_price}</span>
+								<a class="m_four" style=" color: #ff9417;" onclick="gr(this,{$v.id})" href="javascript:;">立即购入</a>
+						</li>
+					  	</volist>-->
+					  	<li>
+							<span class="m_one">玩家</span>
+							<span class="m_two" style="width:40%;">金种子</span>
+							<span class="m_four">生产力</span>
+						</li>
+						<volist name='u_list' id='v' >
+						<li>
+							<span class="m_one">{$v.truename}</span>
+								<span class="m_two" style="width:40%;">{$v.jinbi}粒</span>
+								<span class="m_four">{$v.shengchanli}</span>
+						</li>
+					  	</volist>
+						
+					</ol>
+				</div>
+				<!--<div class="tab tab1">
+					<ol>
+						<li>
+							<span class="m_one">购入时间</span>
+							<span class="m_two">数量</span>
+							<span class="m_three">单价</span>
+							<span class="m_four">完成时间</span>
+						</li>
+						<volist name='wclist' id='v' >
+							<li>
+								<span class="m_one">{$v.add_time|date='m-d h:i',###}</span>
+								<span class="m_two">{$v.zz_num}滴</span>
+								<span class="m_three">￥{$v.zz_price}</span>
+								<span class="m_four">{$v.trans_time|date='m-d h:i',###}</span>
+							</li>
+					  	</volist>
+					
+					</ol>
+				</div>-->
+			</div>
+		</div>
+		<!--<div class="kgd"><a href="{:U('Index/Emoney/zzjylist')}">点击查看更多></a></div>
+		--><script type="text/javascript" src="__PUBLIC__/js/tab.js" ></script>
+		<script>
+		   function gr(obj,id) {
+       	   	$.ajax({
+          	 		url : "/index.php/index/emoney/ajax_zzjy",
+          	 		data:{
+          				id:id
+          	 		},
+          	 		type:'post',
+          	 		dataType:'json',
+          	 		success:function(data){
+	           	 		if(data.result == 1){
+	           	 			var json = {
+	    						title:"购入",
+	    						msg:"打款账户：*****提交后可查看",
+	    						cde:"联系电话：*****提交后可查看",
+	    						dj:"购入种子单价：￥"+data.zz_price,
+	    						sl:"购入种子数量："+data.zz_num,	
+	    						je:"合计应付金额：￥"+data.sum_price,
+	    						fx:"风险提示：种子是粮链世界的数字产权，种子交易属于个人行为，粮链世界提供信息发布及展示；种子价格有跌有张，市场有风险交易需谨慎",
+	    						buttons:[
+	    							{ title:"放弃",color:"red",click:function(){
+
+										} },
+	    							{ title:"提交订单",click:function(){
+			    							location.href="/index.php/index/seed/zzjiaoyi/id/"+data.id;
+			    						} }
+	    						]
+	    					}
+	                        $.alertView(json);
+	           	 		}
+	           	 		else{
+		           	 		alert(data.msg);
+	           	 		}
+          	 		}
+      	 		});
+				
+           }
+		</script>
+		<!--底部导航-->
+		<include file="Public:footer" />
+	</body>
+</html>

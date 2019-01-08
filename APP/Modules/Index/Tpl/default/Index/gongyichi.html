@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>公益池</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+		<!--头部-->
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>公益池</div></div>
+	
+		<div style=" font-size:6rem;color:#fff;line-height:300px;margin-top:120px;height:300px;width:100%;background:url('__PUBLIC__/img/gycbj.jpg'); background-size:100% 100%;">
+			&nbsp;&nbsp;{$zshu}粒
+		</div>
+		<div class="t_top" style="margin-top:0px;">
+			<div class="fensi">
+				<h2>公益池介绍</h2>
+				<div class="fstextent">
+					每日00:00开始分配种子，
+					1、每人每天10份不叠加，若前一日的种子未收取则自动流入公益池；
+					2、根据算法每日会有剩余量种子未分配，未分配的种子自动流入公益池；
+				</div>
+			</div>
+			<div class="fensi">
+				<h2>公益池记录:</h2>
+				<table class="fslist">
+					
+					<foreach name="list" item="item">
+						<tr>
+							<td style="height:11rem;text-align:left;">
+								&nbsp;&nbsp;&nbsp;{$item.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$item.reason}<em style="color:#ff7d1e;">{$item.yield}</em>粒种子<br/>
+								&nbsp;&nbsp;&nbsp;<span style="color:#666;">{$item.time}</span>
+							</td>
+						</tr>
+					</foreach>
+				</table>
+				<a href="" id="xiayiye"></a>
+				<div id="pages">{$page}</div>
+			</div>
+		</div>
+		<!--底部导航-->
+		
+		<include file="Public:footer" />
+	</body>
+	<style>
+		#pages{
+			display:none;
+		}
+		#xiayiye{
+			color:#0012ff;
+			width:100%;
+			height:5rem;
+			line-height:5rem;
+			text-align:center;
+			display:block;
+			font-size:3rem;
+		}
+	</style>
+	<script>
+		$(function(){
+			xiayiyeurl = $("#next").attr("href");
+			if(xiayiyeurl){
+				var index = xiayiyeurl .lastIndexOf("\/");  
+				str  = xiayiyeurl .substring(index + 1,xiayiyeurl.length);
+				url="{:U('index/index/gongyichi')}/p/"+str;
+				$("#xiayiye").attr("href",url);
+				$("#xiayiye").html("下一页>>");
+			}
+			else{
+				$("#xiayiye").html("没有了");
+				$("#xiayiye").css("color","#cecece");
+			}
+		})
+	</script>
+</html>
