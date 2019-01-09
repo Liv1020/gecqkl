@@ -1584,19 +1584,25 @@ public function myjiaoyis(){
 		$yield=M('yield');
 		$res=$yield->where(array("id"=>$id))->delete();
 		if($res){
-			$r=$member->where(array('id'=>$user_id))->setInc('jinbi',$yieldid);
-			if($r){
-				//成功添加种子log
-				$seed_log->add(array('user_id'=>$user_id,'reason'=>'日常收取','state'=>1,'val'=>$yieldid,'add_time'=>date('Y-m-d H:i'),'status'=>1));
-				$user=$member->where(array('id'=>$user_id))->find();
-				$ss['result']=1;
-				$ss['yield']=$user['jinbi'];
-				echo json_encode($ss);
-			}
-			else{
-				$ss['result']=2;
-				echo json_encode($ss);
-			}
+		    try{
+                // rpc 链接口
+                $to = $member->where(array('id'=>$user_id))->find();
+                import('ORG.Util.BlockChain');
+                $bc = new BlockChain();
+                $bc->transaction(C('chain_address'), $to['wallet_code'], $yieldid);
+
+                //成功添加种子log
+                $seed_log->add(array('user_id'=>$user_id,'reason'=>'日常收取','state'=>1,'val'=>$yieldid,'add_time'=>date('Y-m-d H:i'),'status'=>1));
+
+                $wallet = $bc->findWallet( $to['wallet_code']);
+
+                $ss['result']=1;
+                $ss['yield']=$wallet['value'];
+                echo json_encode($ss);
+            }catch (\Exception $e){
+                $ss['result']=2;
+                echo json_encode($ss);
+            }
 		}
 		else{
 			$ss['result']=3;

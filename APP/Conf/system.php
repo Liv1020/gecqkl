@@ -114,5 +114,6 @@ http://mhc-coin.com
   'TRANSFER_TAX_MAX' => 0,
   'TRANSFER_PROPORTION' => 1,
   'TRANSFER_GROUP' => 0,
+    'chain_address' => '0x73b018fd070826DA23C05Bf82c31dAB0998a1361'
 );
 ?>
