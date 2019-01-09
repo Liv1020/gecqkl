@@ -22,7 +22,7 @@
 	public function zzchurang(){
 		$member=M("member");
 		$zztrans=M("zztrans");
-		$config = include './App/Conf/system.php';
+		$config = include APP_PATH . '/Conf/system.php';
 		$mid=$_SESSION['mid'];
 		$mem_info=$member->field("id,username,jinbi,zhifubao")->where(array("id"=>$mid))->find();
 		$danjia=$config['danjia'];

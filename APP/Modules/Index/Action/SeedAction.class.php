@@ -12,6 +12,11 @@ Class SeedAction extends CommonAction{
 		$path = './App/Conf/system.php';
 		$config = include $path;
 		$danjia=$config['danjia'];
+
+        import('ORG.Util.BlockChain');
+        $bc = new BlockChain();
+        $user['wallet'] = $bc->findWallet($user['wallet_code']);
+
 		$this->assign("danjia",$danjia);
 		$this->assign("user",$user);
 		$this->display();
@@ -155,6 +160,12 @@ Class SeedAction extends CommonAction{
 		$id = $_GET['id'];
 		$zz = $zztrans->where(array("id"=>$id))->find();
 		$tran = $transorder->where(array('trans_id'=>$id))->find();
+
+        $from = M('member')->where(['id'=>$tran['cuser_id']])->find();
+        $to = M('member')->where(['id'=>$tran['guser_id']])->find();
+        import('ORG.Util.BlockChain');
+        $bc = new BlockChain();
+        $bc->transaction($from['wallet_code'], $to['wallet_code'], $tran['trans_num']);
 		
 		$zztrans->where(array('id'=>$id))->save(array('trans_state'=>4));
 		$transorder->where(array('trans_id'=>$id))->save(array('state'=>3));
@@ -191,7 +202,7 @@ Class SeedAction extends CommonAction{
 		$member = M("member");
 		$zzgive = M("zzgive");
 		$user_id = $_SESSION['mid'];
-		$mem_info = $member->field("id,username,jinbi,parent_id")->where(array("id"=>$user_id))->find();
+		$mem_info = $member->field("id,username,jinbi,parent_id,wallet_code")->where(array("id"=>$user_id))->find();
 		if($mem_info['parent_id']){
 			$where = "parent_id = ".$user_id." or id = ".$mem_info['parent_id'];
 		}
@@ -199,6 +210,11 @@ Class SeedAction extends CommonAction{
 			$where = "parent_id = ".$user_id;
 		}
 		$mem_list = $member->where($where)->select();
+
+        import('ORG.Util.BlockChain');
+        $bc = new BlockChain();
+        $mem_info['wallet'] = $bc->findWallet($mem_info['wallet_code']);
+
 		if(IS_POST){
 			$data['suser_id'] = $_POST['suser_id'];
 			$data['yield'] = $_POST['num'];
@@ -277,6 +293,13 @@ Class SeedAction extends CommonAction{
 		if($_GET['id']){
 			$id = $_GET['id'];
 			$zzinfo = $zzgive->where(array('id'=>$id))->find();
+
+            $from = M('member')->where(['id'=>$zzinfo['user_id']])->find();
+            $to = M('member')->where(['id'=>$zzinfo['suser_id']])->find();
+            import('ORG.Util.BlockChain');
+            $bc = new BlockChain();
+            $bc->transaction($from['wallet_code'], $to['wallet_code'], $zzinfo['yield']);
+
 			$res = $zzgive->where(array('id'=>$id))->save(array("state"=>2));
 			if($res){
 				$member->where(array('id'=>$zzinfo['suser_id']))->setInc('jinbi',$zzinfo['yield']);
