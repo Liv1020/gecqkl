@@ -161,16 +161,20 @@ Class SeedAction extends CommonAction{
 		$zz = $zztrans->where(array("id"=>$id))->find();
 		$tran = $transorder->where(array('trans_id'=>$id))->find();
 
+        $sxf = $tran['trans_num']*0.05;//5%手续费
+        $dszz = $tran['trans_num']-$sxf;
+
         $from = M('member')->where(['id'=>$tran['cuser_id']])->find();
         $to = M('member')->where(['id'=>$tran['guser_id']])->find();
         import('ORG.Util.BlockChain');
         $bc = new BlockChain();
-        $bc->transaction($from['wallet_code'], $to['wallet_code'], $tran['trans_num']);
-		
+        // 先完成交易
+        $bc->transaction($from['wallet_code'], $to['wallet_code'], $dszz);
+        // 扣除手续费
+        $bc->transaction($from['wallet_code'], C('chain_address'), $sxf);
+
 		$zztrans->where(array('id'=>$id))->save(array('trans_state'=>4));
 		$transorder->where(array('trans_id'=>$id))->save(array('state'=>3));
-		$sxf = $tran['trans_num']*0.05;//5%手续费
-		$dszz = $tran['trans_num']-$sxf;
 		$member->where(array("id"=>$tran['guser_id']))->setInc('jinbi',$dszz);
 		
 		$gycdt['user_id'] = 0;
