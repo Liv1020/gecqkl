@@ -154,6 +154,10 @@
 				//未收取的种子进入公益池
 				if($yielst){
 					foreach($yielst as $k=>$v){
+                        import('ORG.Util.BlockChain');
+                        $bc = new BlockChain();
+                        $bc->transaction(C('chain_address'), C('gyc_address'), $v['yield']);
+
 						$gycdata['user_id'] = $v['user_id'];
 						$gycdata['yield'] = $v['yield'];
 						$gycdata['reason'] = '贡献爱心';
@@ -195,6 +199,10 @@
 					}
 				}
 				if(($avg_cl-$fpzl) > 0){
+                    import('ORG.Util.BlockChain');
+                    $bc = new BlockChain();
+                    $bc->transaction(C('chain_address'), C('gyc_address'), $avg_cl-$fpzl);
+
 					$gycdata1['user_id'] = 0;
 					$gycdata1['yield'] = $avg_cl-$fpzl;
 					$gycdata1['reason'] = '未分配出去种子自动进入公益池';
