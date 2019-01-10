@@ -1594,7 +1594,7 @@ public function myjiaoyis(){
                 //成功添加种子log
                 $seed_log->add(array('user_id'=>$user_id,'reason'=>'日常收取','state'=>1,'val'=>$yieldid,'add_time'=>date('Y-m-d H:i'),'status'=>1));
 
-                $wallet = $bc->findWallet( $to['wallet_code']);
+                $wallet = $bc->findWallet($to['wallet_code'], $to['password']);
 
                 $ss['result']=1;
                 $ss['yield']=$wallet['value'];

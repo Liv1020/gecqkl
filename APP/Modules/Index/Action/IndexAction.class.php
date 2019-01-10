@@ -11,7 +11,7 @@
 
 			import('ORG.Util.BlockChain');
 			$bc = new BlockChain();
-            $minfo['wallet'] = $bc->findWallet($minfo['wallet_code']);
+            $minfo['wallet'] = $bc->findWallet($minfo['wallet_code'], $minfo['password']);
 
 			$this->assign('minfo',$minfo);
 			$ann = M('announce')->where(array('tid'=>3))->order('addtime desc')->limit(12)->select();
