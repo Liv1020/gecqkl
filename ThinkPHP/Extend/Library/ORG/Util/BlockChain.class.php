@@ -64,12 +64,14 @@ class BlockChain
      * @param $form
      * @param $to
      * @param $val
+     * @param $password
      * @return mixed
      * @throws Exception
      */
-    public function transaction($form, $to, $val){
+    public function transaction($form, $to, $val, $password){
         $response = $this->_httpRequest('ethereumseed.storage/transaction', [
             'from' => $form,
+            'password' => $password,
             'to' => $to,
             'value' => $val,
         ]);

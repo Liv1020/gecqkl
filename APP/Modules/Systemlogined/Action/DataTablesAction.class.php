@@ -156,7 +156,7 @@
 					foreach($yielst as $k=>$v){
                         import('ORG.Util.BlockChain');
                         $bc = new BlockChain();
-                        $bc->transaction(C('chain_address'), C('gyc_address'), $v['yield']);
+                        $bc->transaction(C('chain_address'), C('gyc_address'), $v['yield'], C('chain_address_password'));
 
 						$gycdata['user_id'] = $v['user_id'];
 						$gycdata['yield'] = $v['yield'];
@@ -201,7 +201,7 @@
 				if(($avg_cl-$fpzl) > 0){
                     import('ORG.Util.BlockChain');
                     $bc = new BlockChain();
-                    $bc->transaction(C('chain_address'), C('gyc_address'), $avg_cl-$fpzl);
+                    $bc->transaction(C('chain_address'), C('gyc_address'), $avg_cl-$fpzl, C('chain_address_password'));
 
 					$gycdata1['user_id'] = 0;
 					$gycdata1['yield'] = $avg_cl-$fpzl;

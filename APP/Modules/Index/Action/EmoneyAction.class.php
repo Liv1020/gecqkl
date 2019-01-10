@@ -1589,7 +1589,7 @@ public function myjiaoyis(){
                 $to = $member->where(array('id'=>$user_id))->find();
                 import('ORG.Util.BlockChain');
                 $bc = new BlockChain();
-                $bc->transaction(C('chain_address'), $to['wallet_code'], $yieldid);
+                $bc->transaction(C('chain_address'), $to['wallet_code'], $yieldid, C('chain_address_password'));
 
                 //成功添加种子log
                 $seed_log->add(array('user_id'=>$user_id,'reason'=>'日常收取','state'=>1,'val'=>$yieldid,'add_time'=>date('Y-m-d H:i'),'status'=>1));

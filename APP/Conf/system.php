@@ -115,6 +115,7 @@ http://mhc-coin.com
   'TRANSFER_PROPORTION' => 1,
   'TRANSFER_GROUP' => 0,
     'chain_address' => '0x73b018fd070826DA23C05Bf82c31dAB0998a1361',
+    'chain_address_password' => '0826DA23C0',
     'gyc_address' => '0x7a06B60B8c8E1514bb54F1bb9265966b27DaDbf6'
 );
 ?>
