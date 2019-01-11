@@ -76,7 +76,7 @@ Class SeedAction extends CommonAction{
 			$this->assign("info",$info);
 		}
 		$this->assign("zzjy",$zzjy);
-		
+		$this->assign("user_id",$user_id);
 		$this->display();
 	}
 	/**
