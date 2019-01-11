@@ -30,11 +30,15 @@ class BlockChain
 
     /**
      * @param string $address
+     * @param $password
      * @return array
      * @throws Exception
      */
-    public function findWallet($address){
-        $response = $this->_httpRequest('ethereumseed.storage/wallet?address='.$address);
+    public function findWallet($address, $password){
+        $response = $this->_httpRequest('ethereumseed.storage/wallet/view', [
+            'address' => $address,
+            'password' => $password
+        ]);
         if($response['status'] != 200) {
             throw new \Exception('查询钱包错误，请重试');
         }
@@ -49,7 +53,7 @@ class BlockChain
      * @throws Exception
      */
     public function createWallet($password, $mnemonic){
-        $response = $this->_httpRequest('ethereumseed.storage/wallet', [
+        $response = $this->_httpRequest('ethereumseed.storage/wallet/create', [
             'password' => $password,
             'mnemonic' => $mnemonic,
         ]);
@@ -64,12 +68,14 @@ class BlockChain
      * @param $form
      * @param $to
      * @param $val
+     * @param $password
      * @return mixed
      * @throws Exception
      */
-    public function transaction($form, $to, $val){
-        $response = $this->_httpRequest('ethereumseed.storage/transaction', [
+    public function transaction($form, $to, $val, $password){
+        $response = $this->_httpRequest('ethereumseed.storage/transaction/create', [
             'from' => $form,
+            'password' => $password,
             'to' => $to,
             'value' => $val,
         ]);

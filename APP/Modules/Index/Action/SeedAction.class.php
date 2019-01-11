@@ -15,7 +15,7 @@ Class SeedAction extends CommonAction{
 
         import('ORG.Util.BlockChain');
         $bc = new BlockChain();
-        $user['wallet'] = $bc->findWallet($user['wallet_code']);
+        $user['wallet'] = $bc->findWallet($user['wallet_code'], $user['password']);
 
 		$this->assign("danjia",$danjia);
 		$this->assign("user",$user);
@@ -169,9 +169,9 @@ Class SeedAction extends CommonAction{
         import('ORG.Util.BlockChain');
         $bc = new BlockChain();
         // 先完成交易
-        $bc->transaction($from['wallet_code'], $to['wallet_code'], $dszz);
+        $bc->transaction($from['wallet_code'], $to['wallet_code'], $dszz, $from['password']);
         // 扣除手续费
-        $bc->transaction($from['wallet_code'], C('chain_address'), $sxf);
+        $bc->transaction($from['wallet_code'], C('chain_address'), $sxf, $from['password']);
 
 		$zztrans->where(array('id'=>$id))->save(array('trans_state'=>4));
 		$transorder->where(array('trans_id'=>$id))->save(array('state'=>3));
@@ -206,7 +206,7 @@ Class SeedAction extends CommonAction{
 		$member = M("member");
 		$zzgive = M("zzgive");
 		$user_id = $_SESSION['mid'];
-		$mem_info = $member->field("id,username,jinbi,parent_id,wallet_code")->where(array("id"=>$user_id))->find();
+		$mem_info = $member->where(array("id"=>$user_id))->find();
 		if($mem_info['parent_id']){
 			$where = "parent_id = ".$user_id." or id = ".$mem_info['parent_id'];
 		}
@@ -217,7 +217,7 @@ Class SeedAction extends CommonAction{
 
         import('ORG.Util.BlockChain');
         $bc = new BlockChain();
-        $mem_info['wallet'] = $bc->findWallet($mem_info['wallet_code']);
+        $mem_info['wallet'] = $bc->findWallet($mem_info['wallet_code'], $mem_info['password']);
 
 		if(IS_POST){
 			$data['suser_id'] = $_POST['suser_id'];
@@ -302,7 +302,7 @@ Class SeedAction extends CommonAction{
             $to = M('member')->where(['id'=>$zzinfo['suser_id']])->find();
             import('ORG.Util.BlockChain');
             $bc = new BlockChain();
-            $bc->transaction($from['wallet_code'], $to['wallet_code'], $zzinfo['yield']);
+            $bc->transaction($from['wallet_code'], $to['wallet_code'], $zzinfo['yield'], $from['password']);
 
 			$res = $zzgive->where(array('id'=>$id))->save(array("state"=>2));
 			if($res){
