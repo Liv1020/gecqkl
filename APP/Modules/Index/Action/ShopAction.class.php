@@ -367,6 +367,11 @@ Class  ShopAction extends CommonAction{
 		if($_GET['oid']){
 			$info=$jhorder->where(array("id"=>$_GET['oid']))->find();
 			$user=$member->where(array("id"=>$_SESSION['mid']))->find();
+
+            import('ORG.Util.BlockChain');
+            $bc = new BlockChain();
+            $user['wallet'] = $bc->findWallet($user['wallet_code'], $user['password']);
+
 			$this->assign("user",$user);
 			$this->assign('info',$info);
 		}
