@@ -14,9 +14,9 @@ Class PaymentAction extends CommonAction {
         $body = "购买商品：".$data['subject'];//内容
         $total_fee = $money; //金额
         $spbill_create_ip = $userip; //IP
-        //$notify_url = "http://cs.gsxswl.com/index.php/index/payment/h5_notifys"; //回调地址
-        $notify_url = "http://cs.gsxswl.com/Api/weixinh5/notify_url.php";
-        //$notify_url="http://cs.gsxswl.com/index.php/Index/Payment/h5_notifys";
+        //$notify_url = "http://www.zgllsj.com/index.php/index/payment/h5_notifys"; //回调地址
+        $notify_url = "http://www.zgllsj.com/Api/weixinh5/notify_url.php";
+        //$notify_url="http://www.zgllsj.com/index.php/Index/Payment/h5_notifys";
 
         $trade_type = 'MWEB';//交易类型 具体看API 里面有详细介绍
         $scene_info ='{"h5_info":{"type":"Wap","wap_url":"http://ddsm.site","wap_name":"微信支付"}}';//场景信息 必要参数
@@ -37,7 +37,7 @@ Class PaymentAction extends CommonAction {
                     <nonce_str>$nonce_str</nonce_str>
                     <sign>$sign</sign>
             </xml>";//拼接成XML 格式
-        $nto_html = urlencode("http://cs.gsxswl.com/index.php/Index/Payment/chenggongym/onumber/".$out_trade_no);
+        $nto_html = urlencode("http://www.zgllsj.com/index.php/Index/Payment/chenggongym/onumber/".$out_trade_no);
         $url = "https://api.mch.weixin.qq.com/pay/unifiedorder";//微信传参地址
         $dataxml = $this->postXmlCurl($post_data,$url); //后台POST微信传参地址  同时取得微信返回的参数
         $objectxml = (array)simplexml_load_string($dataxml, 'SimpleXMLElement', LIBXML_NOCDATA); //将微信返回的XML 转换成数组
@@ -58,9 +58,9 @@ Class PaymentAction extends CommonAction {
         $body = "兑换商品".$data['subject'];//内容
         $total_fee = $money; //金额
         $spbill_create_ip = $userip; //IP
-        //$notify_url = "http://cs.gsxswl.com/index.php/index/payment/h5_notifys"; //回调地址
-        $notify_url = "http://cs.gsxswl.com/Api/weixinh5/zynotify_url.php";
-        //$notify_url="http://cs.gsxswl.com/index.php/Index/Payment/h5_notifys";
+        //$notify_url = "http://www.zgllsj.com/index.php/index/payment/h5_notifys"; //回调地址
+        $notify_url = "http://www.zgllsj.com/Api/weixinh5/zynotify_url.php";
+        //$notify_url="http://www.zgllsj.com/index.php/Index/Payment/h5_notifys";
 
         $trade_type = 'MWEB';//交易类型 具体看API 里面有详细介绍
         $scene_info ='{"h5_info":{"type":"Wap","wap_url":"http://ddsm.site","wap_name":"微信支付"}}';//场景信息 必要参数
@@ -81,7 +81,7 @@ Class PaymentAction extends CommonAction {
                     <nonce_str>$nonce_str</nonce_str>
                     <sign>$sign</sign>
             </xml>";//拼接成XML 格式
-        $nto_html = urlencode("http://cs.gsxswl.com/index.php/Index/Payment/zychenggongym/onumber/".$out_trade_no);
+        $nto_html = urlencode("http://www.zgllsj.com/index.php/Index/Payment/zychenggongym/onumber/".$out_trade_no);
         $url = "https://api.mch.weixin.qq.com/pay/unifiedorder";//微信传参地址
         $dataxml = $this->postXmlCurl($post_data,$url); //后台POST微信传参地址  同时取得微信返回的参数
         $objectxml = (array)simplexml_load_string($dataxml, 'SimpleXMLElement', LIBXML_NOCDATA); //将微信返回的XML 转换成数组
@@ -108,8 +108,8 @@ Class PaymentAction extends CommonAction {
         //以上参数接收不必纠结，按照正常接收就行，相信大家都看得懂
         //$spbill_create_ip = '118.144.37.98'; //终端ip测试
 		$trade_type = 'MWEB'; //交易类型 具体看API 里面有详细介绍
-        $notify_url = 'http://cs.gsxswl.com/Api/wexinh5/notify_url.php'; //回调地址
-        $scene_info = '{"h5_info":{"type":"Wap","wap_url":"http://cs.gsxswl.com","wap_name":"微信支付"}}'; //场景信息
+        $notify_url = 'http://www.zgllsj.com/Api/wexinh5/notify_url.php'; //回调地址
+        $scene_info = '{"h5_info":{"type":"Wap","wap_url":"http://www.zgllsj.com","wap_name":"微信支付"}}'; //场景信息
         //对参数按照key=value的格式，并按照参数名ASCII字典序排序生成字符串
         $signA = "appid=$appid&attach=$order_id&body=$subject&mch_id=$mch_id&nonce_str=$nonce_str&notify_url=$notify_url&out_trade_no=$order_id&scene_info=$scene_info&spbill_create_ip=$spbill_create_ip&total_fee=$total_amount&trade_type=$trade_type";
         $strSignTmp = $signA . "&key=$key"; //拼接字符串

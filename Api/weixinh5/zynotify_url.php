@@ -4,7 +4,7 @@
  *
  */
 //
-//$a=header("location: http://cs.gsxswl.com/index.php/Index/Payment/h5_notifys"); 
+//$a=header("location: http://www.zgllsj.com/index.php/Index/Payment/h5_notifys");
 //$_GET['_URL_']= Array(0=>'index',1=>'payment',2=>'h5_notifys');
 //print_r($_GET);
 //echo $_SERVER['SERVER_NAME'];
