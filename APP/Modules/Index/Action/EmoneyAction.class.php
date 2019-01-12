@@ -1510,7 +1510,11 @@ public function myjiaoyis(){
 		$wclist = $zztrans->where(array("trans_state"=>4))->limit(0,10)->select();
 		$zz_list = $yield->where(array('user_id'=>$user_id))->select();
 		$user = $member->where(array("id"=>$user_id))->find();
-		//$nl = $order->where(array("user_id"=>$user_id))->find();
+
+        import('ORG.Util.BlockChain');
+        $bc = new BlockChain();
+        $user['wallet'] = $bc->findWallet($user['wallet_code'], $user['password']);
+
 		//生产力总数
 		$scl = $sclhquqq->where(array("user_id"=>$user_id,"end_time"=>array("gt",time())))->field("sum(scl) as zcl")->find();
 		$nl = $scl['zcl']+$user['shengchanli'];

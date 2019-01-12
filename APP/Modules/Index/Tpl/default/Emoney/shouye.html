@@ -56,7 +56,7 @@
 			<div class="row">
 				<div class="tb_top">
 					<div class="tb_top_l"><a href="#">
-					<img src="__PUBLIC__/img/liangpiao.png" style="width:18px;">金种子：<span id="zongzi">{$user.jinbi}</span></a>
+					<img src="__PUBLIC__/img/liangpiao.png" style="width:18px;">金种子：<span id="zongzi">{$user.wallet.value}</span></a>
 					<a href="#"><img src="__PUBLIC__/img/b.png">生产力:{$nl}</a>
 					<a href="#"><img src="__PUBLIC__/img/td.png">金土地:{$tdsum}块 </a>
 					</div>
@@ -66,7 +66,7 @@
 					<ul class="aa" id="aa">
 					</ul>
 					<img src="__PUBLIC__/img/zhongzi.gif" class="qiu">
-				
+
 				</div>
 				<div class="tb_bottom">
 					<ul>
@@ -79,7 +79,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- 收取种子口令板块 -->
 		<div class="klk">
 		<!-- __PUBLIC__/img/shouyebeijing.jpg -->
@@ -94,7 +94,7 @@
 		</div>
 		<div class="klanniu">
 			<ul id="xz">
-				
+
 			</ul>
 		</div>
 	</div>
@@ -106,7 +106,7 @@
 		var hanzi = "兄志南一傻游损难遭表";
 		var yz = new Array();
 		$("#klmb").click(function(){
-			
+
 			$(".klk").css("display","none");
 			$("#klmb").css("display","none");
 			$(".klk").animate({"bottom":"-520px"});
@@ -118,11 +118,11 @@
 		function wzkl(obj,id){
 			$.ajax({
 				type:'post',
-				url:"/index.php/index/Emoney/ajaxwztp",	
-				data:{}, 
+				url:"/index.php/index/Emoney/ajaxwztp",
+				data:{},
  				dataType:'json',
 				success:function(result){
-					$("#klimg").attr("src",result.pic);	
+					$("#klimg").attr("src",result.pic);
 					var wenzis = new Array();
 					$("#yz").html(" ");
 					$("#xz").html(" ");
@@ -132,7 +132,7 @@
 						$("#yz").append('<a yz="'+result.val.substr(i,1)+'" xz="" id="yz'+n+'" class="qrzt">'+result.val.substr(i,1)+'</a>');
 					}
 
-					
+
 					wenzi = result.val+hanzi;
 					wenzi = wenzi.substring(0,10);
 					var wenzis = new Array();
@@ -144,9 +144,9 @@
 
 						$("#xz").append("<li><a xz='"+wenzis[j]+"' id='xz"+j+"' class='wz' onclick='zxuanze(\"xz"+j+"\",\""+wenzis[j]+"\")'>"+wenzis[j]+"</a></li>");
 
-						
+
 					}
-					console.log(wenzis);		
+					console.log(wenzis);
 				}
 			});
 			$(".klk").css("display","block");
@@ -176,10 +176,10 @@
 				yz[key] = new Array();
 		    	yz[key]["yz"] = $(this).attr("yz");      //如果是其他标签 用 html();
 		    	yz[key]["xz"] = $(this).attr("xz");      //如果是其他标签 用 html();
-		    	yz[key]["id"] = $(this).attr("id"); 
+		    	yz[key]["id"] = $(this).attr("id");
 				// 或btn[key] = $(value).val();
 		    });
-			
+
 			for(var i=0;i<yz.length;i++){
 				if(yz[i]['xz'] == ''){
 					tianzi(id,yz[i]['id'],yz[i]["yz"],zi);
@@ -191,17 +191,17 @@
 			if(yzi == gzi){
 				$("#"+xid).attr("onclick","qxxuanze('"+xid+"','"+yid+"','"+gzi+"')");
 				$("#"+xid).css({"border":"1px solid #a2a2a2","background-color":"#c9c9c9","color":"#f0af0a"});
-				
+
 				$("#"+yid).css({"background-color":"#00d100","color":"#fff"});
 				$("#"+yid).attr("xz",gzi);
 				$("#"+yid).attr("onclick","qxxuanze('"+xid+"','"+yid+"','"+gzi+"')");
 				$("#"+yid).html(gzi);
-				
+
 			}
 			else{
 				$("#"+xid).attr("onclick","qxxuanze('"+xid+"','"+yid+"','"+gzi+"')");
 				$("#"+xid).css({"border":"1px solid #a2a2a2","background-color":"#c9c9c9","color":"#f0af0a"});
-				
+
 				$("#"+yid).css({"background-color":"red","color":"#fff"});
 				$("#"+yid).attr("xz",gzi);
 				$("#"+yid).attr("onclick","qxxuanze('"+xid+"','"+yid+"','"+gzi+"')");
@@ -214,7 +214,7 @@
 			$("#"+yid).attr("xz","");
 			$("#"+yid).removeAttr("onclick");
 			$("#"+yid).css({"background-color":"","color":"#f8a907"});
-			
+
 			$("#"+xid).attr("onclick","zxuanze('"+xid+"','"+gzi+"')");
 			$("#"+xid).css({"border":"1px solid #c9c9c9","background-color":"#eee","color":"#000"});
 		}
@@ -224,10 +224,10 @@
 				yz[key] = new Array();
 		    	yz[key]["yz"] = $(this).attr("yz");      //如果是其他标签 用 html();
 		    	yz[key]["xz"] = $(this).attr("xz");      //如果是其他标签 用 html();
-		    	yz[key]["id"] = $(this).attr("id"); 
+		    	yz[key]["id"] = $(this).attr("id");
 				// 或btn[key] = $(value).val();
 		    });
-			
+
 			console.log(yz);
 			for(var i=0;i<yz.length;i++){
 				if(yz[i]["yz"] == yz[i]["xz"]){
@@ -246,7 +246,7 @@
 				//console.log("成功");
 			}
 		}
-		
+
 		$(function() {
 			var data = new Array;
 			var yieid = new Array;
@@ -254,10 +254,10 @@
 			data[{$key}] = {$vo.yield};
 			yieid[{$key}] = {$vo.id};
 		  	</volist>
-		 
+
 			function productivity() {
 				if(data.length != 0) {
-					
+
 					for(i=0;i<data.length;i++){
 						$("#aa").append("<li>"
 						+"<a href='javascript:;' onclick='wzkl(this,"+yieid[i]+")' yield='"+data[i]+"'>"
@@ -267,19 +267,19 @@
 						+"</li>");
 					}
 				}else{
-					
+
 				}
 			}
 			//if(sqcs === 0 && data.length > 0){
 				productivity();
 			//}
-			
+
 			});
 		function shouqu(obj,id){
 			yieldid=$(obj).attr("yield");
 			$.ajax({
 				type:'post',
-				url:"/index.php/index/Emoney/ajaxsshouqu",	
+				url:"/index.php/index/Emoney/ajaxsshouqu",
 				data:{
 					id:id,
 					yieldid:yieldid
@@ -294,7 +294,7 @@
 						$("#klmb").css("display","none");
 						$(".klk").animate({"bottom":"-520px"});
 						$("#klmb").animate({"top":"100%"});
-						
+
 						$("#klimg").attr("src","");
 						$("#zjjzz").html("");
 						zz = '';
@@ -309,7 +309,7 @@
 						$("#klmb").css("display","none");
 						$(".klk").animate({"bottom":"-520px"});
 						$("#klmb").animate({"top":"100%"});
-						
+
 						$("#klimg").attr("src","");
 						$("#zjjzz").html("");
 						zz = '';
@@ -377,7 +377,7 @@
 						</a>
 					</li>
 					</volist>
-					
+
 				</ul>
 			</figure>
 		</section>
@@ -392,8 +392,8 @@
 			      });
 			      $('#responsiveness').swipeslider();
 			      $('#customizability').swipeslider({
-			        transitionDuration: 1500, 
-			        autoPlayTimeout: 4000, 
+			        transitionDuration: 1500,
+			        autoPlayTimeout: 4000,
 			        timingFunction: 'cubic-bezier(0.38, 0.96, 0.7, 0.07)',
 			        sliderHeight: '30%'});
 			    });
@@ -441,7 +441,7 @@
 								<span class="m_four">{$v.shengchanli}</span>
 						</li>
 					  	</volist>
-						
+
 					</ol>
 				</div>
 				<!--<div class="tab tab1">
@@ -460,7 +460,7 @@
 								<span class="m_four">{$v.trans_time|date='m-d h:i',###}</span>
 							</li>
 					  	</volist>
-					
+
 					</ol>
 				</div>-->
 			</div>
@@ -483,7 +483,7 @@
 	    						msg:"打款账户：*****提交后可查看",
 	    						cde:"联系电话：*****提交后可查看",
 	    						dj:"购入种子单价：￥"+data.zz_price,
-	    						sl:"购入种子数量："+data.zz_num,	
+	    						sl:"购入种子数量："+data.zz_num,
 	    						je:"合计应付金额：￥"+data.sum_price,
 	    						fx:"风险提示：种子是粮链世界的数字产权，种子交易属于个人行为，粮链世界提供信息发布及展示；种子价格有跌有张，市场有风险交易需谨慎",
 	    						buttons:[
@@ -502,7 +502,7 @@
 	           	 		}
           	 		}
       	 		});
-				
+
            }
 		</script>
 		<!--底部导航-->
