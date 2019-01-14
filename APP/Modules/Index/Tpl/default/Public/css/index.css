@@ -62,7 +62,7 @@
 .tb_nav li img{/*width: 100%;*/height:38px;}
 .tb_nav li p{color: #6d6d6d;font-size: 1.5rem;overflow: hidden;
 white-space: nowrap;}
-.tb_bottom{width: 100%;height: 65px;position: relative;z-index:9999;}
+.tb_bottom{width: 100%;height: 65px;position: relative;z-index:999;}
 .tb_bottom li{width: 19.7%;height: 59px;/*border: 3px solid #5d2aa1;*/background: url(../img/biaoqian.png);
     background-size: 100% 100%;/*border-radius:40px;*/margin:0 1.5%;float: left;text-align: center;/*background:#d52828;*/}
 .tb_bottom li a{color: #fff308;font-size: 2rem;line-height: 59px;}
@@ -152,9 +152,9 @@ white-space: nowrap;}
 .t_top{width: 100%; background: #fff;float: left;margin-top: 100px;}
 .t_top_img{width: 100%;height: 387px;}
 .t_top_img img{width: 100%;height: 100%;}
-.t_top_l{width: 33%;float: left;background: #fff;border-bottom: 0.5px solid #888888;height: 200px;}
-.t_top_l img{float: left;width: 20%;margin-left: 15%;margin-top: 50px;}
-.t_top_n{line-height:200px;text-align:center;}
+.t_top_l{width: 33%;float: left;background: #fff;border-bottom: 0.5px solid #888888;height: 120px;}
+.t_top_l img{float: left;width: 20%;margin-left: 5%;margin-top: 30px;}
+.t_top_n{line-height:120px;text-align:center;}
 .t_top_n h2{font-size: 3rem;margin-bottom: 10px;}
 .t_top_n p{font-size: 1.6rem;color: #888888;}
 /*第二页产品*/
@@ -205,7 +205,7 @@ white-space: nowrap;}
 .f_qb_n p{width: 70%;color: #fff;font-size: 1.8rem;padding-left: 30px;}
 .f_qb_n span{font-size: 1.8rem;color: #fff;padding-left: 30px; margin-top:20px;display: block;}
 .f_qb li{width: 25%;float: left;height: 160px;margin-top: 30px;text-align: center;}
-.f_qb li img{width: 45%;}
+.f_qb li img{width: 36%;}
 .f_qb li p{font-size: 1.8rem;padding: 10px;}
 /*交易订单*/
 .jydd{width: 100%;background: #fff;margin-top: 20px;float: left;}
@@ -420,7 +420,7 @@ white-space: nowrap;}
 .jydd_top h2{float: left;font-size: 2.6rem;line-height: 100px;}
 .jydd_top a{float: right;font-size: 1.8rem;line-height: 100px;}
 .jydd li{width: 50%;height: 180px;float: left;text-align: center;}
-.jydd li img{margin-top: 20px;}
+.jydd li img{margin-top: 20px;height:77px;}
 .jydd li p{font-size: 1.8rem;padding: 10px;}
 /*酒品订单*/
 .jpdd{width: 100%;background: #fff;margin-top: 20px;float: left;}
@@ -428,7 +428,7 @@ white-space: nowrap;}
 .jpdd_top h2{float: left;font-size: 2.6rem;line-height: 100px;}
 .jpdd_top a{float: right;font-size: 1.8rem;line-height: 100px;}
 .jpdd li{width: 33%;height: 180px;float: left;text-align: center;}
-.jpdd li img{margin-top: 20px;}
+.jpdd li img{margin-top: 20px;height:77px;}
 .jpdd li p{font-size: 1.8rem;padding: 10px;}
 /*列表分类*/
 .lbf{width: 100%;background: #fff;float: left;margin: 20px 0 150px 0;}
@@ -871,5 +871,13 @@ white-space: nowrap;}
 	padding:1.5rem ;
 }
 
+.fx{width: 100%;background: url(../img/1.jpg) no-repeat;min-height: 700px;background-size: 100%;}
+.fx img{width: 80%;display: block;margin: 0 auto;padding-top: 100px;}
+.ewm{width: 100%;}
+.ewm_k{width: 100%;height: 1000px;background: url(../img/56595644459318141.png) no-repeat;background-size: 100%;margin: 0 auto;position: relative;}
+.ewm_k img{width: 50%;margin: 0 auto ;display: block;padding-top: 270px;}
+.ewm_k a{display: block;margin: 120px auto 0;width: 25%;height: 80px;background: #FFA000;text-align: center;line-height: 80px;color: #fff;font-size: 2.8rem;border-bottom-left-radius: 20px;border-top-right-radius: 20px;}
+.xq{width: 100%;}
+.xq_nav{width: 80%;margin: 120px auto;min-height: 300px;border: 3px solid #fff;color: #fff;}
 
 
