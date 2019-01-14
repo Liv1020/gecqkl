@@ -118,6 +118,14 @@
 		$this->display();
 	}
 	/**
+	 * 土地简介
+	 */
+	public function tdjianjie(){
+		$new=M('announce')->where("tid = 15")->find();
+		$this->assign('new',$new);
+		$this->display();
+	}
+	/**
 	 * 代理
 	 */
 	public function daili(){
