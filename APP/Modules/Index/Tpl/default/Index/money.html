@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/swiper-3.2.7.min.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+		<!--我的现金-->
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>我的现金</div></div>
+		<div class="wdxj">
+			<div class="row">
+				<div class="wdxj_l"><span>账户余额:</span><h2>￥{$user.balance}</h2></div>
+				<div class="wdxj_r"><a href="{:U('Index/index/money_tx')}">提现></a></div>
+				<!-- <div class="yqsy"><span>预期收益</span><h2>￥0.00</h2></div> -->
+			</div>
+		</div>
+		<div class="nljj" style="padding-bottom: 30px;">
+			<div class="row">
+				<div class="nljj_bt">说明</div>
+				<p>
+				推荐奖励：推荐朋友买VIP产品，获得朋友成交订单的现金奖励；
+				推荐买产品奖励到账时间以确认付款为准，名额不限，多推多得。
+				
+				</p>
+			</div>
+		</div>
+		<!--<div class="nljj_bt" style="background: #fff;margin-top: 30px;"><div class="row">收支明细</div></div>-->
+	</body>
+</html>
