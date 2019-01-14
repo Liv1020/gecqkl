@@ -18,11 +18,11 @@
         if($result){
 	        $onumber = $result['out_trade_no'];
 	        
-	        $mysql_server_name='localhost'; //改成自己的mysql数据库服务器
+	        $mysql_server_name='mysql'; //改成自己的mysql数据库服务器
 			 
-			$mysql_username='gec'; //改成自己的mysql数据库用户名
+			$mysql_username='root'; //改成自己的mysql数据库用户名
 			 
-			$mysql_password='H7MPYcm5mhLj8d37'; //改成自己的mysql数据库密码
+			$mysql_password='1qaz@WSX1@3'; //改成自己的mysql数据库密码
 			 
 			$mysql_database='gec'; //改成自己的mysql数据库名
 			
