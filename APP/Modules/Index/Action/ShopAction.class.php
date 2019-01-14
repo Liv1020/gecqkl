@@ -395,6 +395,11 @@ Class  ShopAction extends CommonAction{
 				$info=$jhorder->where(array("oid"=>$res))->find();
 				$member->where(array("id"=>$_SESSION['mid']))->setDec('jinbi',$info['jzzg_price']);
 				$user=$member->where(array("id"=>$_SESSION['mid']))->find();
+
+                import('ORG.Util.BlockChain');
+                $bc = new BlockChain();
+                $user['wallet'] = $bc->findWallet($user['wallet_code'], $user['password']);
+
 				$this->assign("user",$user);
 				$this->assign('info',$info);
 			}
@@ -1055,11 +1060,17 @@ Class  ShopAction extends CommonAction{
 				echo '<script>alert("你已经拥有足够数量的免费农田！");window.history.back(-1);</script>';
 				die;
 		 }else{
-			 $jinbi = getMemberField('jinbi');		
-			 if($jinbi < $data['price']){
-				echo '<script>alert("账户金种子余额不足！");window.history.back(-1);</script>';
-				die;
-			 }	
+             $from = M("member")->where(array('username'=>session('username')))->find();
+
+             import('ORG.Util.BlockChain');
+             $bc = new BlockChain();
+             try{
+                 $bc->transaction($from['wallet_code'], C('chain_address'), $data['price'], $from['password']);
+             }catch (\Exception $e){
+                 echo '<script>alert('.$e->getMessage().');window.history.back(-1);</script>';
+                 die;
+             }
+
 /*              if($id==1){
 				if($zs_count >= C("z_num")){
 					echo '<script>alert("此类型合约机已达上限！");window.history.back(-1);</script>';
@@ -1068,12 +1079,11 @@ Class  ShopAction extends CommonAction{
 				}
 			 } */	
 			 
-			  M("member")->where(array('username'=>session('username')))->setDec('jinbi',$data['price']);
-			  account_log(session('username'),$data['price'],'购买'.$data['title'],0);					 
+            account_log(session('username'),$data['price'],'购买'.$data['title'],0);
 		 }
 		  
 	  
-          $map = array();
+		 $map = array();
          // $yCode = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J');		  
          $ytime=86400;
           $map['kjbh'] = 'S' . date('d') . substr(time(), -5) . sprintf('%02d', rand(0, 99));
@@ -1371,6 +1381,11 @@ Class  ShopAction extends CommonAction{
 			if($id){
 				$user = $member->where(array("id"=>$user_id))->find();
 				$info = $xyd->where(array("id"=>$id))->find();
+
+                import('ORG.Util.BlockChain');
+                $bc = new BlockChain();
+                $user['wallet'] = $bc->findWallet($user['wallet_code'], $user['password']);
+
 				$this->assign("user",$user);
 				$this->assign("info",$info);
 				$this->display();
