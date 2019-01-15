@@ -21,3 +21,5 @@ RUN apt-get purge -y g++ \
     && apt-get autoremove -y \
     && rm -r /var/lib/apt/lists/* \
     && rm -rf /tmp/*
+
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
