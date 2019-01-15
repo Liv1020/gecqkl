@@ -252,7 +252,7 @@
 					if($user['weixin'] == ""){
 						$res = M("member")->where(array("username"=>$data['mobile']))->save(array("weixin"=>$data['weixin']));
 						if($res){
-							@header("location: http://cs.gsxswl.com/index.php/index/emoney/shouye");
+							@header("location: http://www.zgllsj.com/index.php/index/emoney/shouye");
 						}
 						else{
 							$this->error("绑定失败");
