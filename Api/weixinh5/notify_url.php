@@ -27,7 +27,7 @@
 			$mysql_database='gec'; //改成自己的mysql数据库名
 			
 			$conn=mysqli_connect($mysql_server_name,$mysql_username,$mysql_password) ;// or die("error connecting")
-			if (!$connect){
+			if (!$conn){
 				file_put_contents('1.txt',json_encode(mysql_error()));
 			}
 			
