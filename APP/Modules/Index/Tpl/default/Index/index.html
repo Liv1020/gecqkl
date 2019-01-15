@@ -28,10 +28,18 @@
 				<div class="row">
 					<div class="f_qb_t"><h2>我的钱包</h2></div>
 					<div class="f_qb_n">
-						<a href="{:U('Index/seed/index')}">
+						<if condition="$minfo['wallet_state'] eq 1" >
+							<a href="{:U('Index/seed/index')}">
+						<else/>
+							<a href="{:U('Index/Financial/wallet_kt')}">
+						</if>
 							<h2>我的钱包地址</h2>
-							<p>{$minfo.wallet_code}</p>
-							<span>金种子余额：{$minfo.wallet.value}</span>
+							<if condition="$minfo['wallet_state'] eq 1" >
+								<p>{$minfo.wallet_code}</p>
+							<else/>
+								<p>开通钱包</p>
+							</if>
+							<span>金种子余额：{$minfo.jinbi}</span>
 						</a>
 					</div>
 					<ul>
