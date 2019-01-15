@@ -6,7 +6,7 @@
 			 
 	$mysql_database='gec'; //改成自己的mysql数据库名
 		
-	$conn=mysql_connect($mysql_server_name,$mysql_username,$mysql_password) or die("error connecting") ;
+	$conn=mysqli_connect($mysql_server_name,$mysql_username,$mysql_password) or die("error connecting") ;
 	print_R($conn);
 			
 ?>
