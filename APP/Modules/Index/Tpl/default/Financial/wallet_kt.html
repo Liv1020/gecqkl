@@ -4,76 +4,74 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link type="text/css" rel="stylesheet" href="/Public/btb/css/lib.css?2">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1, minimum-scale=1.0"/>
 	<meta content="telephone=no" name="format-detection">
 	<title>钱包开通</title>
-	<script src="/Public/gec/web/js/jquery-1.8.3.min.js"></script>
-	<link rel="stylesheet" href="/Public/gec/web/css/weui.min.css"/>
-	<link rel="stylesheet" href="/Public/gec/web/css/jquery-weui.min.css">
-	<link href="/Public/gec/web/css/font-awesome.min.css" rel="stylesheet">
-	<link href="/Public/gec/web/fonts/iconfont.css" rel="stylesheet">
-	<script src="/Public/gec/web/js/layer.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
 </head>
 </head>
+<style>
+.ktjs{
+	color:#000;
+}
+.ktjs h2{
+	padding:2rem 10% 0 10%;
+	font-size:4.5rem;
+	font-family:"楷体";
+	line-height:5rem;
+}
+.ktjs .jieshao{
+	font-size:2.5rem;
+	font-family:"楷体";
+	line-height:3rem;
+	padding:1.5rem 10% 0 10%;
+}
+.ktqb{
+	width:100%;
+	height:12rem;
+	background:#fff;
+}
+.ktqb a{
+	height:6rem;
+	font-size:3rem;
+	line-height:6rem;
+	text-align:center;
+	width:40%;
+	border-radius:3rem;
+	background:#86c610;
+	margin:0 auto;
+	display:block;
+	margin-top:2rem;
+}
+</style>
 <body>
 <!--顶部开始-->
-<div class="header">
-	<span class="header_l"><a href="javascript:history.go(-1);"><i class="fa fa-chevron-left"></i></a></span>
-	<span class="header_c">钱包开通</span>
-		<!--<span style="position: absolute;right: 10%;top: 0px;text-align:center;width:20%;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;font-size: 12px; ">{$memberinfo['username']} </span>
-		<span class="header_r"><a href="{:U(GROUP_NAME .'/personal_set/myInfo')}"><i class="fa fa-user"></i></a></span>-->
-</div>
-<div class="height40"></div>
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>开通钱包</div></div>
 <!--顶部结束-->
-<style>
-	.hh_btn{
-		float: right !important;
-		padding: 0 !important;
-		display: block;
-		height: 20px;
-		margin: 5px;
-		width: 60px;
-		background-color: #FF6B00;
-		border: 0;
-		border-radius: 5px;
-		color: #FFF;
-	}
-	.zz_btn{
-		height: 20px;
-		width: 150px;
-		margin:5px;
-		background-color: #FF6B00;
-		border: 0;
-		border-radius: 5px;
-		color: #fff;
-	}
-	.level_btn{
-		height: 20px;
-		width: 40px;
-		margin-left:5px;
-		background-color: #23D66B;
-		border: 0;
-		border-radius: 5px;
-		color: #fff;
-	}
-	#content{
-		height: 100px;
-		width: 200px;
-		border:2px solid #FF6B4B;
-	}
-</style>
+
 <!--会员中心开始-->
-<div class="wallet">
-	<form action="" method="post">
-	<input type="hidden" name="wallet_state" value='1' />
-	<input type="submit" value="开通钱包" />
-	</form>
+<div class="t_cp" style="margin-top:130px;">
+	<div class="ktjs">
+		<h2>创建数字钱包</h2>
+		<div class="jieshao">首次创建需支付宝授权并绑定支付宝的真实
+姓名和账号,所绑定的支付宝信息仅用于农
+链世界圣洒市场交易中买卖双方进行线下打
+收款、信息校验、数字资产安全等固有账
+且不可更改,请绑定时务必确保所绑定
+支付宝信息的真实性,以免给您造成和不可
+挽回损失。创建后,将一次性支付2元资源使
+用费。</div>
+	</div>
+	<div class="ktqb">
+		<a href="{:U('index/payment/ktqianbao')}">开通钱包</a>
+	</div>
 </div>
 <!--会员中心结束-->
 <div class="height55"></div>
 <!--底部开始-->
 
-<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
+<include file="Public:footer" />
 </body>
 </html>
 
