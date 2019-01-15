@@ -507,6 +507,7 @@
 					session('username',$user['username']);
 					session('member','memberlogin');
 					$data['res'] = 1;
+					$data['msg']['truename'] = ($user['truename']) ? $user['truename'] : "";
 	        	}
 	        	else{
 	        		$data['res'] = 2;
