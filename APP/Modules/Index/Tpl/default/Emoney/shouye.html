@@ -299,6 +299,7 @@
 						$("#zjjzz").html("");
 						zz = '';
 						zzid = '';
+						showSound("__PUBLIC__/mp3/jb.mp3");
 					}
 					else{
 						alert("领取失败！");
@@ -326,6 +327,11 @@
 				}
 			});
 		}
+		function showSound(audioSrc) {
+            $("#hint").remove();
+            let audioJQ = $("<audio src='" + audioSrc + "' autoplay id='hint'/>");
+            audioJQ.appendTo("body");
+        }
 		</script>
 		<!--新闻-->
 		<div class="xw">
