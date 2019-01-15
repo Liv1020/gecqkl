@@ -490,6 +490,7 @@
 		 */
         public function wxlogin(){
         	$member = M("member");
+        	print_r($_POST['userinfo']);exit;
 	        if(!empty($_POST['code'])) {
 	        	$userinfo = $_POST['userinfo'];
 	        	$weixin = $userinfo['openid'];
