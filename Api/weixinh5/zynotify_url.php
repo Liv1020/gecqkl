@@ -19,7 +19,7 @@
         if($result){
 	        $onumber = $result['out_trade_no'];
 	        
-	        $mysql_server_name='mysql'; //改成自己的mysql数据库服务器
+	        $mysql_server_name='39.106.45.147'; //改成自己的mysql数据库服务器
 			 
 			$mysql_username='root'; //改成自己的mysql数据库用户名
 			 
