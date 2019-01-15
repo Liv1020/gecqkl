@@ -22,7 +22,10 @@
 		 * 会员登录视图
 		 * @return [type] [description]
 		 */
-		public function index(){
+		 public function index(){
+			$this->display();
+		}
+		public function index1(){
 				if(IS_AJAX){
 					
 					    if(I('lang')==2){
@@ -146,7 +149,7 @@
 	
 		//注册推广
 		 public function register(){
-		
+			$this->assign("weixin",$_GET['weixin']);
 			$this->display();			 
 		 }
 		 
@@ -208,9 +211,9 @@
 					$this->ajaxReturn(array('result'=>0,'info'=>'支付宝账号必须与手机号一致!'));
 				}*/
 				
-				if(empty($data['weixin'])){
+				/*if(empty($data['weixin'])){
 					$this->ajaxReturn(array('result'=>0,'info'=>'请填写微信号!'));
-				}
+				}*/
 				
 				
 					
@@ -467,6 +470,30 @@
 			$this->display();
         }
 		
+		/**
+		 * 微信登陆
+		 */
+        public function wxlogin(){
+        	$member = M("member");
+	        if(!empty($_POST['code'])) {
+	        	$userinfo = $_POST['userinfo'];
+	        	$weixin = $userinfo['openid'];
+	        	$user = $member->where(array("weixin"=>$weixin))->find();
+	        	if($user){
+	        		session('mid',$user['id']);
+					session('username',$user['username']);
+					session('member','memberlogin');
+					$data['res'] = 1;
+	        	}
+	        	else{
+	        		$data['res'] = 2;
+	        		$data['weixin'] = $weixin;
+	        	}
+	        } else {
+	        	$data['res'] = 3;
+	        }
+	        echo json_encode($data);
+        }
 		
 		
 		

@@ -59,7 +59,7 @@ Class  ShopAction extends CommonAction{
 			$jzz_glist[$key]["gpic"]=$gpic[0];
 		}
 		
-		$adv_list = $adv->where(array('pos_id'=>2))->order("id desc")->select();
+		$adv_list = $adv->where(array('pos_id'=>6))->order("id desc")->select();
 		$this->assign('adv_list',$adv_list);
 		$this->assign('goods_list',$jzz_glist);
 		$this->assign("page",$show);
@@ -1317,7 +1317,7 @@ Class  ShopAction extends CommonAction{
 				$xyd_list[$key]["xyd_pic"]=$gpic[0];
 			}
 			
-			$adv_list = $adv->where(array('pos_id'=>2))->order("id desc")->select();
+			$adv_list = $adv->where(array('pos_id'=>7))->order("id desc")->select();
 			$this->assign('adv_list',$adv_list);
 			$this->assign('goods_list',$xyd_list);
 			$this->assign("page",$show);
