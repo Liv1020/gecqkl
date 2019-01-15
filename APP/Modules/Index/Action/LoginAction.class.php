@@ -252,7 +252,9 @@
 					if($user['weixin'] == ""){
 						$res = M("member")->where(array("username"=>$data['mobile']))->save(array("weixin"=>$data['weixin']));
 						if($res){
-							@header("location: /index.php/index/emoney/shouye");
+							//@header("location: /index.php/index/emoney/shouye");
+							
+							$this->ajaxReturn(array('result'=>2,'info'=>'账号绑定成功！'));	
 						}
 						else{
 							$this->error("绑定失败");
