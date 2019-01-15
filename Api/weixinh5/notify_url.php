@@ -27,6 +27,7 @@
 			$mysql_database='gec'; //改成自己的mysql数据库名
 			
 			$conn=mysqli_connect($mysql_server_name,$mysql_username,$mysql_password) or die("error connecting") ;
+			file_put_contents('1.txt',json_encode(mysql_error()));
 			mysqli_query($conn,"set names 'utf8'"); //数据库输出编码
 	 
 			mysqli_select_db($conn,$mysql_database); //打开数据库
