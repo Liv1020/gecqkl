@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/swiper-3.2.7.min.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+		<!--提现-->
+		<div class="nj_top"><div class="row"><a href="#"><</a>提现</div></div>
+		<div class="tx">
+			<div class="row">
+				<a href="#"><span>+</span>添加提现账户</a>
+				<p>提示：添加提现的账户后，可以才能提现！</p>
+			</div>
+		</div>
+		<form action="" method="post">
+		<div class="txje">
+			<div class="row">
+				<h2>提现金格:</h2>
+				<div class="txje_a"><span>￥</span><input oninput="validateComments(this)" required type="text" name="balance" id="" value="" /></div>
+				<h3>账户余额：{$user.balance}<b></b></h3>
+			</div>
+		</div>
+		<div class="txan">
+			<div class="row">
+				<input class="txan_a" type="submit" style="display:block;" value="提现">
+				<p>说明：。</p>
+			</div>
+		</div>
+		</form>
+		<script>
+		function validateComments(obj){
+			var yue = {$user.balance};
+			var balance = $(obj).val();
+			if((yue*1) < (balance*1)){
+				obj.setCustomValidity("提现金额大于账户余额");
+			}else{
+				//没有错误。清除任何错误消息
+				obj.setCustomValidity("");
+			}
+		}
+		</script>
+	</body>
+</html>

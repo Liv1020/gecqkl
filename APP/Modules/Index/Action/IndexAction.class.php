@@ -596,6 +596,55 @@
 		$this->display();
 	}
 	/**
+	 * VIP商品分享
+	 */
+	public function vip_fx(){
+		header ( "Content-type: text/html; charset=utf-8");
+		
+		$e_keyid=encrypt(session('mid'),'E','xyb8888');
+		
+		$e_keyid=str_replace('/','AAABBB',$e_keyid);
+		
+		$tuiguangma = "http://".$_SERVER['SERVER_NAME'].U('Index/Sem/regSem',array('u'=>$e_keyid));
+		$erwei = M("member")->where(array('username'=>session('username')))->getField("erwei");
+		
+		if(!$erwei){
+			Vendor('phpqrcode.phpqrcode');
+			//生成二维码图片
+			$object = new QRcode;
+			$level=3;
+			$size=6;
+			$errorCorrectionLevel =intval($level) ;//容错级别
+			$matrixPointSize = intval($size);//生成图片大小
+			$path = "Public/erwei/";
+			// 生成的文件名
+			$fileName = $path.session('username').'.png';
+			$object->png($tuiguangma,$fileName, $errorCorrectionLevel, $matrixPointSize, 2);
+			import('ORG.Util.Image');
+			$Image = new Image();		
+			
+			define('THINKIMAGE_WATER_CENTER', 5);
+			$Image->water(PUBLIC_PATH.'/encard.jpg',$fileName,$fileName,100,array(240,350));	
+            $erwei = '/'.$fileName;		
+			M("member")->where(array('username'=>session('username')))->setField("erwei",$erwei);
+		}
+		$id = $_GET['id'];
+		$vipgods = M("vipgods");
+		$info = $vipgods->where(array("id"=>$id))->find();
+		$gpic=explode(",",$info['g_pic']);
+		$info['gpic'] = $gpic[0];
+		$this->assign("info",$info);
+        $this->assign('erwei',$erwei);//二维码路径
+		$this->assign('tuiguangma',$tuiguangma);
+//		$adurl=C('adurl');
+//		$adurl2=str_replace('[adurl]',$tuiguangma,$adurl);
+//		$user=M("member")->where(array("id"=>session('mid')))->find();
+//		$this->assign("username",$user['username']);
+//		$this->assign('tuiguangma',$tuiguangma);
+//		$this->assign('adurl2',$adurl2);
+		$this->display();
+	}
+	/**
 	 * 公益池
 	 */
 	public function gongyichi(){
@@ -615,6 +664,27 @@
 		$this->assign("zshu",round($sumzz['zshu'],4));
 		$this->assign("page",$show);
 		$this->assign("list",$list);
+		$this->display();
+	}
+	/**
+	 * 现金
+	 */
+	public function money(){
+		$user_id = $_SESSION['mid'];
+		$member = M("member");
+		$user = $member->where(array("id"=>$user_id))->find();
+		
+		$this->assign("user",$user);
+		$this->display();
+	}
+	/**
+	 * 现金体现
+	 */
+	public function money_tx(){
+		$user_id = $_SESSION['mid'];
+		$member = M("member");
+		$user = $member->where(array("id"=>$user_id))->find();
+		$this->assign("user",$user);
 		$this->display();
 	}
 }
