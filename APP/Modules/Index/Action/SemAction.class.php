@@ -335,9 +335,9 @@
 		   exit(json_encode(array('status'=>-1,'msg'=>'图形验证码错误!')));	
 		}
 		
-		if (M('member')->where(array('mobile'=>$mobile))->getField('id')) {
-          exit(json_encode(array('status'=>-1,'msg'=>'手机号码已存在!')));
-        }		
+		// if (M('member')->where(array('mobile'=>$mobile))->getField('id')) {
+          // exit(json_encode(array('status'=>-1,'msg'=>'手机号码已存在!')));
+        // }		
         $code =  rand(1000,9999);
         $send = sms_log($mobile,$code,session_id());
         if($send['status'] != 1){

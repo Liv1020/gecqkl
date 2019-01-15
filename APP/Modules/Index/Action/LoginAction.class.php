@@ -200,9 +200,9 @@
 				if(!preg_match("/^1[34578]{1}\d{9}$/",$data['mobile'])){
 					$this->ajaxReturn(array('result'=>0,'info'=>'手机号码格式不正确!'));
 				}		
-				if (M('member')->where(array('mobile'=>trim($data['mobile'])))->getField('id')) {
+				/*if (M('member')->where(array('mobile'=>trim($data['mobile'])))->getField('id')) {
 					$this->ajaxReturn(array('result'=>0,'info'=>'手机号已存在，请更换！'));
-				}				
+				}*/				
 				/*if(empty($data['zhifubao'])){
 					$this->ajaxReturn(array('result'=>0,'info'=>'请填写支付宝账号!'));
 				}*/
@@ -247,7 +247,22 @@
 			    /*if(empty($data['alipay_voucher'])){
 					$this->ajaxReturn(array('result'=>0,'info'=>'请上传转账凭证!'));
 				}*/
-				
+				$user = M("member")->where(array("username"=>$data['mobile']))->find();
+				if($user){
+					if($user['weixin'] == ""){
+						$res = M("member")->where(array("username"=>$data['mobile']))->save(array("weixin"=>$data['weixin']));
+						if($res){
+							@header("location: http://cs.gsxswl.com/index.php/index/emoney/shouye");
+						}
+						else{
+							$this->error("绑定失败");
+						}
+					}
+					else{
+						$this->error("该手机号码已绑定微信，无法再次绑定，请更换手机号");
+					}
+					exit;
+				}
 
 				$data['acc_type'] = '主账号';
 				$data['password']  = md5($password);
