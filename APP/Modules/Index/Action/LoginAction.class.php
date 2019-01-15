@@ -23,7 +23,7 @@
 		 * @return [type] [description]
 		 */
 		 public function index(){
-			$this->display();
+			$this->display("index_tel");
 		}
 		public function index1(){
 				if(IS_AJAX){
