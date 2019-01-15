@@ -22,10 +22,10 @@
 		 * 会员登录视图
 		 * @return [type] [description]
 		 */
-		 public function index(){
+		 public function index1(){
 			$this->display("index_tel");
 		}
-		public function index1(){
+		public function index(){
 				if(IS_AJAX){
 					
 					    if(I('lang')==2){
@@ -139,7 +139,7 @@
 					
 					$this->assign('rememberusername',$rememberusername);
 					$this->assign('rememberpassword',$rememberpassword);
-					$this->display();
+					$this->display("index_tel");
 				}
 			 	
 
