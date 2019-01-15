@@ -64,13 +64,21 @@
 			<foreach name="gods_list" item="ty">
 		    	<li>
 					<div class="row">
-						<a href="{:U('Index/index/vipgods_info',array('id'=>$ty['id']))}">
+						<div class="t_cp_left">
+								<a href="{:U('Index/index/vipgods_info',array('id'=>$ty['id']))}">
+									<img src="{$ty.gpic}">
+								</a>
+							</div>
+							<div class="t_cp_right">
+								<a href="{:U('Index/index/vipgods_info',array('id'=>$ty['id']))}">
 									<h2>{$ty.g_name}</h2>
 									<b>￥{$ty.g_price}</b>
 									<span>立即购买</span>
 									<div style="clear:both;"></div>
 								</a>
 									<a href="{:U('Index/index/vip_fx',array('id'=>$ty['id']))}" style="display:block;"><span>分享</span></a>
+							</div>
+							<div style="clear:both;"></div>
 					</div>
 				</li>
 	    	</foreach>
