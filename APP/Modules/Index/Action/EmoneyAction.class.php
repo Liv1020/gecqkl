@@ -173,6 +173,35 @@
 		$this->display();
 	}
 	/**
+	 * 广告
+	 */
+	public function guanggao(){
+    	$adv = M("adv");
+    	$advhz = M("advhz");
+		$adv_list = $adv->where(array('pos_id'=>5))->order("id desc")->select();
+		if(IS_POST){
+			
+			$data['name'] = $_POST['name'];
+			$data['tel'] = $_POST['tel'];
+			$data['adv_name'] = $_POST['adv_name'];
+			$data['adv_tel'] = $_POST['adv_tel'];
+			$data['content'] = $_POST['content'];
+			$data['add_time'] = date("Y-m-d H:i:s");
+			$res = $advhz->add($data);
+			if($res){
+				$this->success("广告合作信息提交成功！",U("index/emoney/guanggao"));
+			}
+			else{
+				$this->error("广告合作信息提交失败！");
+			}
+			exit;
+		}
+		$new=M('announce')->where("tid = 16")->find();
+		$this->assign("new",$new);
+		$this->assign('adv_list',$adv_list);
+		$this->display();
+	}
+	/**
 	 * 地址ajax选择
 	 */
 	public function ajaxarea(){
