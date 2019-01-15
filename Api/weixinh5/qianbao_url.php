@@ -37,12 +37,12 @@ if ($result) {
     $query = mysqli_query($conn, "SELECT * FROM ds_member WHERE username = '{$onumber}' LIMIT 1");
     $users = $query->fetch_all();
 
-    import('ORG.Util.BlockChain');
-    $bc = new BlockChain();
-    $wallet = $bc->createWallet($users[0]['password'], $user['username']);
+    // import('ORG.Util.BlockChain');
+    // $bc = new BlockChain();
+    // $wallet = $bc->createWallet($users[0]['password'], $user['username']);
 
-    //修改状态
-    mysqli_query($conn, "update `ds_member` set wallet_state = 1 , wallet_code = " . $wallet['address'] . " where username = " . $onumber);
+    //修改状态 , wallet_code = " . $wallet['address'] . "
+    mysqli_query($conn, "update `ds_member` set wallet_state = 1 where username = " . $onumber);
 
     mysqli_close($conn); //关闭 MySQL连接
     return sprintf("<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>");

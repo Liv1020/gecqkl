@@ -22,10 +22,10 @@
 		 * 会员登录视图
 		 * @return [type] [description]
 		 */
-		 public function index1(){
-			$this->display("index_tel");
+		 public function index(){
+			$this->display();
 		}
-		public function index(){
+		public function index1(){
 				if(IS_AJAX){
 					
 					    if(I('lang')==2){
@@ -253,7 +253,10 @@
 						$res = M("member")->where(array("username"=>$data['mobile']))->save(array("weixin"=>$data['weixin']));
 						if($res){
 							//@header("location: /index.php/index/emoney/shouye");
-							
+							import('ORG.Util.BlockChain');
+						    $bc = new BlockChain();
+						    $wallet = $bc->createWallet($user['password'], $user['username']);
+						    M("member")->where(array("username"=>$data['mobile']))->save(array("wallet_code"=>$wallet['address']));
 							$this->ajaxReturn(array('result'=>2,'info'=>'账号绑定成功！'));	
 						}
 						else{
@@ -278,7 +281,10 @@
 				$data['level']      = 0; 
 				$data['checkdate']     = time();
 				$mid=M('member')->add($data);
-				 
+				import('ORG.Util.BlockChain');
+				$bc = new BlockChain();
+				$wallet = $bc->createWallet($data['password'], $data['mobile']);
+				M("member")->where(array("id"=>$mid))->save(array("wallet_code"=>$wallet['address']));
 				 
 				 
 				 /*$oddata['user']=$data['username'];
