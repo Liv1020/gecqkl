@@ -114,7 +114,7 @@
 										<!-- <th><a href="{:U('systemlogined/Member/check',array('_order'=>'parentcount','_sort'=>0))}">直推人数↑</a></th>
 										<th><a href="{:U('systemlogined/Member/check',array('_order'=>'gamecount','_sort'=>0))}">团队人数↑</a></th> -->
 										<th>注册时间</th>
-										<th><a href="{:U('systemlogined/Member/check',array('_order'=>'jinbi','_sort'=>0))}">种子余额↑</a></th>
+										<!--<th><a href="{:U('systemlogined/Member/check',array('_order'=>'jinbi','_sort'=>0))}">种子余额↑</a></th>-->
 										<th>状态</th>
                                         <th>在线状态</th>
                                         <th><a href="{:U('systemlogined/Member/check',array('_order'=>'shopstatus','_sort'=>0))}">商户状态↑</th>
@@ -134,7 +134,7 @@
 											<!-- <td><a href="{:U('Member/check',array('pid'=>$v['id']))}">{$v.parentcount}</a></td>
 											<td>{$v.gamecount}</td> -->
 											<td>{$v.regdate|date='Y-m-d H:i',###}</td>
-											<td>{$v.jinbi}</td>
+											<!-- <td>{$v.jinbi}</td> -->
 											<td>
 												<if condition='$v["lock"]'>
 													已封停
