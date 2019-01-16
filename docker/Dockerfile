@@ -29,4 +29,8 @@ COPY php.ini $PHP_INI_DIR/
 
 ADD crontab /etc/cron.d/crontab
 
-RUN crontab /etc/cron.d/crontab && cron
+RUN crontab /etc/cron.d/crontab
+
+ADD cmd.sh /root/
+
+CMD ["/root/cmd.sh"]
