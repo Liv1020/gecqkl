@@ -147,6 +147,7 @@
 				/*体验十天 十天后不可分配种子*/
 				$sttime = 86400*10;
 				$user = $member->where("wallet_state = 1 or (wallet_state = 0 and regdate gt ".(time()-$sttime).")")->select();
+				print_r($user);exit;
 				$u_cl=$member->field("sum(shengchanli) as ucl")->find();
 				$scl_cl = $sclhquqq->where(array("end_time"=>array("gt",time())))->field("sum(scl) as scl_cl")->select();
 				$zongcl=$u_cl['ucl']+$scl_cl['scl_cl'];
