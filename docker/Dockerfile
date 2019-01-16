@@ -23,3 +23,5 @@ RUN apt-get purge -y g++ \
     && rm -rf /tmp/*
 
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+COPY php.ini $PHP_INI_DIR/
