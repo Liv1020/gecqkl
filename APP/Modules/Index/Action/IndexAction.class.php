@@ -683,6 +683,22 @@
 	public function money_tx(){
 		$user_id = $_SESSION['mid'];
 		$member = M("member");
+		if(IS_POST){
+			$tqcash = M("tqcash");
+			$data['account'] = $_POST['account'];
+			$data['balance'] = $_POST['balance'];
+			$data['user_id'] = $user_id;
+			$data['add_time'] = date("Y-m-d H:i:s");
+			$res = $tqcash->add($data);
+			if($res){
+				$member->where(array("id"=>$user_id))->setDec("balance",$data['balance']);
+				$this->success("提现申请成功！",U("Index/Index/money"));
+			}
+			else{
+				$this->error("提现申请失败！");
+			}
+			exit;
+		}
 		$user = $member->where(array("id"=>$user_id))->find();
 		$this->assign("user",$user);
 		$this->display();

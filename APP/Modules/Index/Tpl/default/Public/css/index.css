@@ -142,6 +142,7 @@ white-space: nowrap;}
 .kgd{width: 100%;text-align: center;line-height: 110px;font-size: 2.2rem;background: #fff;}
 /*底部导航*/
 .dbdh{width: 100%;height: 130px;border: 1px solid #888888;position: fixed;z-index:100;left: 0;bottom: 0;background: #fff;}
+.dbdh li a{width:100%;height:100%;display:block;}
 .dbdh li{width: 25%;height: 110px;padding-top:20px;text-align: center;float: left;}
 .dbdh li img{width: 25%;}
 .dbdh li p{font-size: 1.6rem;margin-top:0.5rem;}
