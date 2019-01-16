@@ -211,15 +211,15 @@ Class DataTablesAction extends Action
 
         $size = 200;
         $done = 0;
-        $count = M("member")->field('COUNT(*) as count')->find();
+        $count = M("member")->field('COUNT(*) as count')->where('wallet_code IS NOT NULL')->find();
         while ($done < $count['count']) {
-            $users = M("member")->limit($done, $size)->select();
+            $users = M("member")->field('id,wallet_code,password,jinbi')->where('wallet_code IS NOT NULL')->limit($done, $size)->select();
             foreach ($users as $user) {
                 try {
                     $wallet = $bc->findWallet($user['wallet_code'], $user['password']);
-                    M("member")->where('id', $user['id'])->setField('jinbi', $wallet['value']);
+                    M("member")->where(['id' => $user['id']])->setField('jinbi', $wallet['value']);
                 } catch (\Exception $e) {
-                    M("member")->where('id', $user['id'])->setField('jinbi', 0);
+                    M("member")->where(['id' => $user['id']])->setField('jinbi', 0);
                 }
             }
 
