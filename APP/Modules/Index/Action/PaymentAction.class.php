@@ -101,7 +101,7 @@ Class PaymentAction extends CommonAction {
         $data = $_POST;
         $out_trade_no = $_SESSION['username'];//$_SESSION['username'];//平台内部订单号
        // $data['total_amount']=floatval($data['total_amount']);
-        $money= 0.01*100;                     //充值金额 微信支付单位为分
+        $money= 2*100;                     //充值金额 微信支付单位为分
         $nonce_str = $this->createNoncestr(); //随机字符串
         $body = "开通钱包";//内容
         $total_fee = $money; //金额
