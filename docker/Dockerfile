@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
         libssl-dev \
         git \
         ssh \
+        cron \
                 --no-install-recommends
 
 RUN docker-php-ext-install mcrypt zip intl mbstring pdo_mysql mysql mysqli exif xmlrpc \
@@ -25,3 +26,7 @@ RUN apt-get purge -y g++ \
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 COPY php.ini $PHP_INI_DIR/
+
+ADD crontab /etc/cron.d/crontab
+
+RUN crontab /etc/cron.d/crontab && cron
