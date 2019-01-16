@@ -114,6 +114,20 @@
 			}
 		}
 		/**
+		 * 广告合作
+		 */
+		public function guanggao(){
+			$advhz = M("advhz");
+			import("@.ORG.Util.Page");
+			$count = $advhz -> where()->count();
+			$Page       = new Page($count,20);
+			$show = $Page -> show();
+			$list = $advhz -> where() ->order("id desc")-> limit($Page ->firstRow.','.$Page -> listRows)-> select();
+			$this->assign("list",$list);
+			$this->assign("page",$show);
+			$this->display();
+		}
+		/**
 		 * 删除会员等级
 		 */
 		public function delgrade(){
