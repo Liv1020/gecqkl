@@ -37,11 +37,17 @@
 		function validateComments(obj){
 			var yue = {$user.balance};
 			var balance = $(obj).val();
-			if((yue*1) < (balance*1)){
-				obj.setCustomValidity("提现金额大于账户余额");
-			}else{
-				//没有错误。清除任何错误消息
-				obj.setCustomValidity("");
+			if(balance <= 0){
+				obj.setCustomValidity("提现金额必须大于0");
+			}
+			else{
+				if((yue*1) < (balance*1)){
+					obj.setCustomValidity("提现金额大于账户余额");
+				}
+				else{
+					//没有错误。清除任何错误消息
+					obj.setCustomValidity("");
+				}
 			}
 		}
 		</script>
