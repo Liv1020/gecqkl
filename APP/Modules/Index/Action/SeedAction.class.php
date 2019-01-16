@@ -29,7 +29,7 @@ Class SeedAction extends CommonAction{
 		$user_id=$_SESSION['mid'];
 		$seed_log=M('seed_log');
 		$user=$member->where(array("id"=>$user_id))->find();
-		$seed_list=$seed_log->where(array("user_id"=>$user_id))->select();
+		$seed_list=$seed_log->where(array("user_id"=>$user_id))->order("id desc")->select();
 		
 		
 		$this->assign("list",$seed_list);
