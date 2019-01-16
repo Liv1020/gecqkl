@@ -1329,7 +1329,61 @@
 	  }
 	   return $str;
 	}	
-
+	/**
+	 * 提现申请列表
+	 * Enter description here ...
+	 */
+	public function money_tx(){
+		$tqcash = M("tqcash");
+		$member = M("member");
+		import("@.ORG.Util.Page");
+		$count = $tqcash -> where()->count();
+		$Page       = new Page($count,20);
+		$show = $Page -> show();
+		$list = $tqcash -> where() ->order("id desc")-> limit($Page ->firstRow.','.$Page -> listRows)-> select();
+		foreach($list as $key=>$val){
+			$user = $member->where(array("id"=>$val['user_id']))->find();
+			$list[$key]["user_name"] = $user["truename"];
+		}
+		$this->assign("list",$list);
+		$this->display();
+	}
+	/**
+	 * 提现申请操作
+	 */
+	public function money_cz(){
+		$tqcash = M("tqcash");
+		$member = M("member");
+		$id = $_GET['id'];
+		if(IS_POST){
+			$id = $_POST['id'];
+			$state = $_POST['state'];
+			$user_id = $_POST['user_id'];
+			$balance = $_POST['balance'];
+			if($state == 0){
+				$member->where(array("id"=>$user_id))->setInc("balance",$balance);
+				
+			}
+			$res = $tqcash->where(array("id"=>$id))->save(array("state"=>$state));
+			if($res){
+				$this->success("操做成功！",U("Member/money_tx"));
+			}
+			else{
+				$this->error("操作失败！");
+			}
+			exit;
+		}
+		if($id){
+			$info = $tqcash->where(array("id"=>$id))->find();
+			$user = $member->where(array("id"=>$info['user_id']))->find();
+			$info["user_name"] = $user['truename'];
+			$this->assign("info",$info);
+			$this->display();
+		}
+		else{
+			$this->error("参数错误！");
+		}
+	}
 	
 	}
 
