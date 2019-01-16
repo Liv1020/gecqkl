@@ -47,6 +47,12 @@ f>-->
 								</a>
 							</li>
 							<li url="Memberuncheck">
+								<a href="{:U(GROUP_NAME.'/Member/guanggao')}">
+									<i class="icon-double-angle-right"></i>
+									广告合作
+								</a>
+							</li>
+							<li url="Memberuncheck">
 								<a href="{:U(GROUP_NAME.'/Member/daili')}">
 									<i class="icon-double-angle-right"></i>
 									合作代理
@@ -513,7 +519,7 @@ f>-->
 								</a>
 							</li>
 	</if>						
-<if condition="(isset($acc[strtoupper(GROUP_NAME)][strtoupper('Info')][strtoupper('msgReceive')])) or (!empty($_SESSION[C('ADMIN_AUTH_KEY')]))">	
+<!-- <if condition="(isset($acc[strtoupper(GROUP_NAME)][strtoupper('Info')][strtoupper('msgReceive')])) or (!empty($_SESSION[C('ADMIN_AUTH_KEY')]))">	
 							<li url="InfomsgReceive">
 								<a href="{:U(GROUP_NAME.'/Info/msgReceive')}">
 									<i class="icon-double-angle-right"></i>
@@ -528,7 +534,7 @@ f>-->
 									发件箱
 								</a>
 							</li>
-</if>						
+</if> -->						
 						</ul>
 					</li>
 </if>			
@@ -589,14 +595,14 @@ f>-->
 						</a>
 
 						<ul class="submenu" <if condition="MODULE_NAME eq 'System'">style="display: block;"</if>>
-<if condition="(isset($acc[strtoupper(GROUP_NAME)][strtoupper('System')][strtoupper('backUp')])) or (!empty($_SESSION[C('ADMIN_AUTH_KEY')]))">
+<!-- <if condition="(isset($acc[strtoupper(GROUP_NAME)][strtoupper('System')][strtoupper('backUp')])) or (!empty($_SESSION[C('ADMIN_AUTH_KEY')]))">
 							<li url="BakbackUp">
 								<a href="{:U(GROUP_NAME.'/System/backUp')}">
 									<i class="icon-double-angle-right"></i>
 									&#25968;&#25454;&#22791;&#20221;
 								</a>
 							</li>
-</if>	
+</if> -->
 <if condition="(isset($acc[strtoupper(GROUP_NAME)][strtoupper('System')][strtoupper('customSetting')])) or (!empty($_SESSION[C('ADMIN_AUTH_KEY')]))">
 							<li url="SystemcustomSetting">
 								<a href="{:U(GROUP_NAME.'/System/customSetting')}">
