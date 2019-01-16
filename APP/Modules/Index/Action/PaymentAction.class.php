@@ -403,6 +403,40 @@ public function createNoncestr( $length = 32 ){
     	}
     	echo json_encode($res);
     }
+	/**
+     * 钱包开通支付回调页面
+     */
+    public function qianbao(){
+    	$id = $_GET['id'];
+    	$member = M("member");
+    	$info = $member->where(array("username"=>$id))->find();
+    	$this->assign("info",$info);
+    	$this->display();
+    }
+    /**
+     * 钱包支付回调ajax查询
+     */
+    public function qianbao_zf(){
+    	$id = $_POST['id'];
+    	$member = M("member");
+    	$od = $member->where(array("id"=>$id))->find();
+    	if($od){
+    		if($od['wallet_state'] == 1){
+	    		$res['msg'] = 3;
+	    		$res['url'] = U("Index/Index/index");
+    		}
+    		else{
+	    		$res['msg'] = 2;
+	    		$res['error'] = '请先确认付款成功！';
+	    		$res['url'] = U("Index/Financial/wallet_kt");
+    		}
+    	}
+    	else{
+    		$res['msg'] = 1;
+    		$res['error'] = '参数错误！';
+    	}
+    	echo json_encode($res);
+    }
     
 }
 ?>
