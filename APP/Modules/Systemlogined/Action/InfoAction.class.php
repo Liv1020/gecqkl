@@ -279,7 +279,7 @@
 			$advpos=M("advpos");
 			import("@.ORG.Util.Page");// 导入分页类
 			$count      = $adv->where()->count();// 查询满足要求的总记录数
-	        $Page       = new Page($count,5);// 实例化分页类 传入总记录数
+	        $Page       = new Page($count,20);// 实例化分页类 传入总记录数
 			$adv_lst=$adv->where()->limit($Page ->firstRow.','.$Page -> listRows)->select();
 			foreach($adv_lst as $key=>$val){
 				$pos=$advpos->where(array("id"=>$val['pos_id']))->find();
