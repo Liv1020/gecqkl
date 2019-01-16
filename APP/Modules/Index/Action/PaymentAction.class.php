@@ -99,7 +99,7 @@ Class PaymentAction extends CommonAction {
         $key    = "xswl3f5246bf0145d835d503282b6413";                 //微信商户API密钥
         
         $data = $_POST;
-        $out_trade_no = $_SESSION['username'];;//$_SESSION['username'];//平台内部订单号
+        $out_trade_no = $_SESSION['username'];//$_SESSION['username'];//平台内部订单号
        // $data['total_amount']=floatval($data['total_amount']);
         $money= 0.01*100;                     //充值金额 微信支付单位为分
         $nonce_str = $this->createNoncestr(); //随机字符串
@@ -133,8 +133,7 @@ Class PaymentAction extends CommonAction {
             </xml>";//拼接成XML 格式
         $nto_html = urlencode("http://www.zgllsj.com/index.php/Index/Payment/qianbao/id/".$out_trade_no);
         $url = "https://api.mch.weixin.qq.com/pay/unifiedorder";//微信传参地址
-        $dataxml = $this->postXmlCurl($post_data,$url); //后台POST微信传参地址  同时取得微信返回的参数
-			print_r($dataxml);exit;
+        $dataxml = $this->postXmlCurl($post_data,$url); //后台POST微信传参地址同时取得微信返回的参数
         
         
         $objectxml = (array)simplexml_load_string($dataxml, 'SimpleXMLElement', LIBXML_NOCDATA); //将微信返回的XML 转换成数组
