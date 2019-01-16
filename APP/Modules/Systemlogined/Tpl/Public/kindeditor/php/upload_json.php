@@ -7,7 +7,7 @@
  *
  */
 
-require_once 'JSON.php';
+require_once 'json.php';
 
 $php_path = dirname(__FILE__) . '/';
 $php_url = dirname($_SERVER['PHP_SELF']) . '/';
