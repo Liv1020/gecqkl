@@ -131,10 +131,10 @@ Class PaymentAction extends CommonAction {
                     <nonce_str>$nonce_str</nonce_str>
                     <sign>$sign</sign>
             </xml>";//拼接成XML 格式
-			print_r($post_data);exit;
         $nto_html = urlencode("http://www.zgllsj.com/index.php/Index/Payment/qianbao/id/".$out_trade_no);
         $url = "https://api.mch.weixin.qq.com/pay/unifiedorder";//微信传参地址
         $dataxml = $this->postXmlCurl($post_data,$url); //后台POST微信传参地址  同时取得微信返回的参数
+			print_r($dataxml);exit;
         
         
         $objectxml = (array)simplexml_load_string($dataxml, 'SimpleXMLElement', LIBXML_NOCDATA); //将微信返回的XML 转换成数组
