@@ -33,28 +33,24 @@
 						{$user.wallet.address}</div>
 					<br /><br />
 					<span id="clip_container">
-						<button id="clip_button" style="width:25%;height:80px;line-height:26px;font:2rem arial;margin: 0 auto;">点击复制分享</button>
+					<input id="foo" type="text" style="display:none;" value="{$user.wallet.address}">
+						<button id="clip_button" class="btn" data-clipboard-action="copy" data-clipboard-target="#foo" style="width:25%;height:80px;line-height:26px;font:2rem arial;margin: 0 auto;">点击复制分享</button>
 					</span>
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="__PUBLIC__/js/ZeroClipboard.js"></script>
-		<script language="JavaScript">
-			var clip = null;
-			function $(id) {
-				return document.getElementById(id);
-			};
-			function init() {
-				clip = new ZeroClipboard.Client();
-				clip.setHandCursor(true);
-				clip.addEventListener('mouseOver', function(client) {
-					clip.setText($('#fe_text').html());
-				});
-				clip.addEventListener('complete', function(client, text) {
-					alert("复制到剪切板");
-				});
-				clip.glue('clip_button', 'clip_container');
-			};
+		
+    <script src="__PUBLIC__/js/clipboard.min.js"></script>
+    	<script language="JavaScript">
+	    var clipboard = new Clipboard('.btn');
+	
+	    clipboard.on('success', function(e) {
+	        alert("已成功复制到剪切板");
+	    });
+	
+	    clipboard.on('error', function(e) {
+	        alert("复制失败");
+	    });
 		</script>
 		<!--走势图-->
 		<!-- <div class="zst" style="margin-top: 40px;">
