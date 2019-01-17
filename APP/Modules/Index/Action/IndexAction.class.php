@@ -419,7 +419,7 @@
 			$sclhquqq->add($scl);
 			
 		}
-		$new=M('announce')->where("pid = 17")->find();
+		$new=M('announce')->where("tid = 17")->find();
 		$this->assign('new',$new);
 		$this->display();
 	}
