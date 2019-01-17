@@ -419,6 +419,9 @@
 			$sclhquqq->add($scl);
 			
 		}
+		$new=M('announce')->where("pid = 17")->find();
+		$this->assign('new',$new);
+		$this->display();
 	}
 	/**
 	 * 生产力记录
