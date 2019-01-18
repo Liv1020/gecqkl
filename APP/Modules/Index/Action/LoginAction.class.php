@@ -139,9 +139,8 @@
 					
 					$this->assign('rememberusername',$rememberusername);
 					$this->assign('rememberpassword',$rememberpassword);
-					$this->display("index_tel");
+					$this->display();
 				}
-			 	
 
 			
 		}
