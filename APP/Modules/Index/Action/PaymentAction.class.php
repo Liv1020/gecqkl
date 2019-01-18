@@ -88,7 +88,57 @@ Class PaymentAction extends CommonAction {
         echo "<script>location.href='".$objectxml['mweb_url']."&redirect_url=".$nto_html."'</script>";
         //header($objectxml['mweb_url']);
 	}
-	
+	/**
+	 * 开通钱包支付
+	 * Enter description here ...
+	 */
+	public function ktqianbao(){
+		$userip = $this->get_client_ip();     //获得用户设备IP
+        $appid  = "wx9a6756a449493e94";                  //应用APPID
+        $mch_id = "1464752502";                  //微信支付商户号
+        $key    = "xswl3f5246bf0145d835d503282b6413";                 //微信商户API密钥
+        
+        $data = $_POST;
+        $out_trade_no = $_SESSION['username'];//$_SESSION['username'];//平台内部订单号
+       // $data['total_amount']=floatval($data['total_amount']);
+        $money= 2*100;                     //充值金额 微信支付单位为分
+        $nonce_str = $this->createNoncestr(); //随机字符串
+        $body = "开通钱包";//内容
+        $total_fee = $money; //金额
+        $spbill_create_ip = $userip; //IP
+        //$notify_url = "http://www.zgllsj.com/index.php/index/payment/h5_notifys"; //回调地址
+        $notify_url = "http://www.zgllsj.com/Api/weixinh5/qianbao_url.php";
+        //$notify_url="http://www.zgllsj.com/index.php/Index/Payment/h5_notifys";
+
+        $trade_type = 'MWEB';//交易类型 具体看API 里面有详细介绍
+        $scene_info ='{"h5_info":{"type":"Wap","wap_url":"http://www.zgllsj.com","wap_name":"微信支付"}}';//场景信息 必要参数
+        $signA ="appid=$appid&attach=$out_trade_no&body=$body&mch_id=$mch_id&nonce_str=$nonce_str&notify_url=$notify_url&out_trade_no=$out_trade_no&scene_info=$scene_info&spbill_create_ip=$spbill_create_ip&total_fee=$total_fee&trade_type=$trade_type";
+        $strSignTmp = $signA . "&key=$key"; //拼接字符串  注意顺序微信有个测试网址 顺序按照他的来 直接点下面的校正测试 包括下面XML  是否正确
+        
+        $sign = strtoupper(MD5($strSignTmp)); // MD5 后转换成大写
+        
+        $post_data = "<xml>
+                    <appid>$appid</appid>
+                    <mch_id>$mch_id</mch_id>
+                    <body>$body</body>
+                    <out_trade_no>$out_trade_no</out_trade_no>
+                    <total_fee>$total_fee</total_fee>
+                    <spbill_create_ip>$spbill_create_ip</spbill_create_ip>
+                    <notify_url>$notify_url</notify_url>
+                    <trade_type>$trade_type</trade_type>
+                    <scene_info>$scene_info</scene_info>
+                    <attach>$out_trade_no</attach>
+                    <nonce_str>$nonce_str</nonce_str>
+                    <sign>$sign</sign>
+            </xml>";//拼接成XML 格式
+        $nto_html = urlencode("http://www.zgllsj.com/index.php/Index/Payment/qianbao/id/".$out_trade_no);
+        $url = "https://api.mch.weixin.qq.com/pay/unifiedorder";//微信传参地址
+        $dataxml = $this->postXmlCurl($post_data,$url); //后台POST微信传参地址同时取得微信返回的参数
+        
+        
+        $objectxml = (array)simplexml_load_string($dataxml, 'SimpleXMLElement', LIBXML_NOCDATA); //将微信返回的XML 转换成数组
+        echo "<script>location.href='".$objectxml['mweb_url']."&redirect_url=".$nto_html."'</script>";
+	}
     public function h5wxpays(){
     	/*$orders = M("orders");
     	$id = $_GET['id'];
@@ -345,6 +395,40 @@ public function createNoncestr( $length = 32 ){
 	    		$res['msg'] = 2;
 	    		$res['error'] = '请先确认付款成功！';
 	    		$res['url'] = U("Index/Shop/zyorder_info",array("oid"=>$od['oid']));
+    		}
+    	}
+    	else{
+    		$res['msg'] = 1;
+    		$res['error'] = '参数错误！';
+    	}
+    	echo json_encode($res);
+    }
+	/**
+     * 钱包开通支付回调页面
+     */
+    public function qianbao(){
+    	$id = $_GET['id'];
+    	$member = M("member");
+    	$info = $member->where(array("username"=>$id))->find();
+    	$this->assign("info",$info);
+    	$this->display();
+    }
+    /**
+     * 钱包支付回调ajax查询
+     */
+    public function qianbao_zf(){
+    	$id = $_POST['id'];
+    	$member = M("member");
+    	$od = $member->where(array("id"=>$id))->find();
+    	if($od){
+    		if($od['wallet_state'] == 1){
+	    		$res['msg'] = 3;
+	    		$res['url'] = U("Index/Index/index");
+    		}
+    		else{
+	    		$res['msg'] = 2;
+	    		$res['error'] = '请先确认付款成功！';
+	    		$res['url'] = U("Index/Financial/wallet_kt");
     		}
     	}
     	else{

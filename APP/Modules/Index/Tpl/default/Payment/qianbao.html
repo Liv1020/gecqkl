@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>支付成功</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/swiper-3.2.7.min.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a><div style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">支付完成</div></div></div>
+		
+		<div class="textarea">
+			<img class="zfwctp" src="__PUBLIC__/img/icon30.png" />
+			<span class="zfwcwz">支付完成</span>
+			<a class="zfwc" href="javascript:;" oid="{$info.id}">支付完成</a>
+			<a class="fanh" href="{:U('Index/index/index')}">返回我的农链</a>
+			
+<div style="clear:both;"></div>
+		</div>
+		
+		<include file="Public:footer" />
+	</body>
+	<script>
+	$(".zfwc").click(function(){
+		oid = $(this).attr("oid");
+		$.ajax({
+			url:'{:U("Index/Payment/qianbao_zf")}',
+			data:{id:oid},
+			type:'POST',
+			dataType:'json',
+			success:function(result){
+				console.log(result);
+				if(result.msg == 1){
+					alert(result.error);
+					location.href="{:U('Index/index/index')}";
+				}
+				else if(result.msg == 2){
+					alert(result.error);
+					location.href=result.url;
+				}
+				else if(result.msg == 3){
+					location.href=result.url;
+				}
+			},	
+		})
+	});
+	</script>
+</html>
