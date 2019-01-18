@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
 		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
 		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/js/swipe.js"></script>
 	</head>
 	
 	<style>
@@ -18,37 +19,36 @@
 		<div class="dbcd"><h2>农链庄园</h2></div>
 		<!--第二页顶部-->
 		<div class="t_top">
-			<div class="t_top_img" style="height:500px;">
-			<section>
-			<figure id="full_feature" class="swipslider">
-				<ul class="sw-slides" style="transition-duration: 50000ms; transition-timing-function: ease-out; transition-property: all; transform: translateX(-3840px);">
-					<volist name="adv_list" id="vo">
-					<li class="sw-slide">
-						<a href="{$vo.adv_url}">
-							<img src="{$vo.adv_pic}" alt="{$vo.adv_name}" width="100%" height="100%" />
-						</a>
-					</li>
-					</volist>
-					
-				</ul>
-			</figure>
-		</section>
+			<div class="t_top_img" style="min-height:465px;">
+				<div class="adv_list" style="overflow: hidden;">
+					<div class="swipe-wrap">
+						<volist name="adv_list" id="vo">
+							<div class="item">
+								<a href="{$vo.adv_url}">
+									<img src="{$vo.adv_pic}" alt="{$vo.adv_name}">
+								</a>
+							</div>
+						</volist>
+					</div>
+				</div>
 		<script type="text/javascript" src="__PUBLIC__/js/swipeslider.min.js"></script>
 		<script type="text/javascript">
-			$(window).load(function() {
-			      $('#full_feature').swipeslider();
-			      $('#content_slider').swipeslider({
-			        transitionDuration: 600,
-			        autoPlayTimeout: 10000,
-			        sliderHeight: '300px'
-			      });
-			      $('#responsiveness').swipeslider();
-			      $('#customizability').swipeslider({
-			        transitionDuration: 1500, 
-			        autoPlayTimeout: 4000, 
-			        timingFunction: 'cubic-bezier(0.38, 0.96, 0.7, 0.07)',
-			        sliderHeight: '30%'});
-			    });
+		$('.adv_list').each(function() {
+            if ($(this).find('.item').length < 2) {
+                return;
+            }
+
+            Swipe(this, {
+                startSlide: 2,
+                speed: 400,
+                auto: 3000,
+                continuous: true,
+                disableScroll: false,
+                stopPropagation: false,
+                callback: function(index, elem) {},
+                transitionEnd: function(index, elem) {}
+            });
+        });
 		</script>
 			</div>
 			
