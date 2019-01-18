@@ -1562,7 +1562,7 @@ public function myjiaoyis(){
 		//土地数量
 		$td_count = $order->where(array('user_id'=>$user_id))->field("count(id) as sum")->find();
 		//排行榜前十名
-		$u_list = $member->where(array("jinbi"=>array("lt",200)))->order("jinbi desc")->limit(0,10)->select();
+		$u_list = $member->where(array("jinbi"=>array("lt",300)))->order("jinbi desc")->limit(0,10)->select();
 		foreach($u_list as $key=>$val){
 			$u_scl = $sclhquqq->where(array("user_id"=>$val['id'],"end_time"=>array("gt",time())))->field("sum(scl) as zcl")->find();
 			$u_list[$key]['shengchanli'] = $u_scl['zcl']+$val['shengchanli'];
