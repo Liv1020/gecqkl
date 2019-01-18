@@ -880,5 +880,14 @@ white-space: nowrap;}
 .ewm_k a{display: block;margin: 120px auto 0;width: 25%;height: 80px;background: #FFA000;text-align: center;line-height: 80px;color: #fff;font-size: 2.8rem;border-bottom-left-radius: 20px;border-top-right-radius: 20px;}
 .xq{width: 100%;}
 .xq_nav{width: 80%;margin: 120px auto;min-height: 300px;border: 3px solid #fff;color: #fff;}
-
+.swipe-wrap > div {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+.swipe-wrap > div img{
+    float: left;
+    width: 100%;
+    position: relative;
+}
 
