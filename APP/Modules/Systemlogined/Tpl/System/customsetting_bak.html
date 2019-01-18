@@ -81,14 +81,14 @@
 												系统参数设置
 											</a>
 										</li>
-										<!--<li>
+										<li>
 											<a data-toggle="tab" href="#fenshi">
 												<i class="green icon-exchange bigger-110"></i>
 												分时K线控制
 											</a>
-										</li>-->
+										</li>
 
-									<!--<li>
+									<li>
 											<a data-toggle="tab" href="#withdrawconf">
 												<i class="green icon-credit-card bigger-110"></i>
 												货币提现设置
@@ -116,32 +116,32 @@
 												<i class="green icon-user  bigger-110"></i>
 												短信接口设置
 											</a>
-										</li>-->
+										</li>
 										
 									</ul>
 									<!--奖金配置-->
 									<div class="tab-content">
 										<div id="home" class="tab-pane in active">
 											<form class="form-horizontal" action="{:U(GROUP_NAME.'/System/bonusConf')}" method="post">	
-											<!--<div class="control-group">
+											<div class="control-group">
 														<label class="control-label" for="z_num">金种子总量</label>
 
 														<div class="controls">
 															<input type="text" id="z_num" name="z_num" value="{$config.z_num}" style=" width: 100px;" class="span3"/> 粒
 														</div>
-													</div>-->	
-											<!--<div class="control-group">
+													</div>	
+											<div class="control-group">
 														<label class="control-label" for="zs_num">免费申领</label>
 
 														<div class="controls">
 															<input type="text" id="zs_num" name="zs_num" value="{$config.zs_num}" style=" width: 100px;" class="span3"/> 块
 														</div>
-											</div>-->
+											</div>
 												<div class="control-group">
 													<label class="control-label" for="avg_cl">平均产量</label>
 
 													<div class="controls">
-														<input type="text" id="avg_cl" name="avg_cl" value="{$config.avg_cl}" style=" width: 100px;" class="span3"/> 粒/每日
+														<input type="text" id="avg_cl" name="zs_num" value="{$config.avg_cl}" style=" width: 100px;" class="span3"/> 粒/每日
 													</div>
 												</div>
 												<div class="control-group">
@@ -171,16 +171,16 @@
 														<div class="controls">
 															<input type="text" id="max_danjia" name="max_danjia" value="{$config.max_danjia}" style=" width: 150px;" class="span3"/>
 														</div>
-											</div> 
+											</div> -->
                                             
 											<div class="control-group">
 														<label class="control-label" for="qdzs">每天签到设置</label>
 
 														<div class="controls">
 															<!--签到总数<input type="text" id="qdzs" name="qdzs" value="{$config.qdzs}" style=" width: 50px;" class="span3"/>人次-->
-															<!--签到奖励<input type="text" id="qdjiangli" name="qdjiangli" value="{$config.qdjiangli}" style=" width: 50px;" class="span3"/>生产力-->
-														<!--</div>
-											</div>-->
+															签到奖励<input type="text" id="qdjiangli" name="qdjiangli" value="{$config.qdjiangli}" style=" width: 50px;" class="span3"/>生产力
+														</div>
+											</div>
                                            <!-- <div class="control-group">
 														<label class="control-label" for="everyday_rose">每日涨幅</label>
 
@@ -199,7 +199,7 @@
                                             
                                             
                                             
-                                           <!--<div class="control-group" style="display:none;">
+                                           <div class="control-group" style="display:none;">
 														<label class="control-label" for="everyday_last_time">上次更新时间</label>
 
 														<div class="controls">
@@ -245,7 +245,7 @@
 														<div class="controls">
 															<input type="text" id="max_cslkb" name="min_cslkb" value="{$config.min_cslkb}" style=" width: 150px;" class="span3"/>
 														</div>
-											</div>-->
+											</div>
                                             
                                             <!--<div class="control-group">
 														<label class="control-label" for="max_cslkb">出币条件要求</label>
@@ -258,7 +258,7 @@
 															每天卖出笔数<input type="text" id="max_sell" name="max_sell" value="{$config.max_sell}" style=" width: 100px;" class="span3"/>&nbsp;&nbsp;
 															购买单笔金额限制<input type="text" id="min_buyje" name="min_buyje" value="{$config.min_buyje}" style=" width: 100px;" class="span3"/>
 														</div>
-											</div>--><!--
+											</div>-->
                                             
                                             
                                              <div class="control-group">
@@ -267,7 +267,7 @@
 														<div class="controls">
 															<input type="text" id="tousu_time" name="tousu_time" value="{$config.tousu_time}" style=" width: 150px;" class="span3"/>小时
 														</div>
-											</div>-->
+											</div>
                                             
                                             										
 											<!--<div class="control-group">
@@ -286,7 +286,7 @@
 											</div>	-->
 
 
-											<!--<div class="control-group" style="display:none;">
+											<div class="control-group" style="display:none;">
 														<label class="control-label" for="tjj">团队收益</label>
 
 														<div class="controls">
@@ -337,15 +337,15 @@
 														<label class="control-label" for="adurl">推荐链接广告</label>
 
 														<div class="controls">
-															<input type="text" id="adurl" name="adurl" value=""  class="span3" /> 
+															<!--<input type="text" id="adurl" name="adurl" value=""  class="span3" /> -->
 															<textarea name="adurl" style="width:500px; height:80px;">{$config.adurl}</textarea>(如: 通知[adurl]广告广告
                                                         
                                                         </div>
-											</div>-->
+											</div>
                                             
                                             
                                             
-                                            <!--<div class="control-group">
+                                            <div class="control-group">
 														<label class="control-label" for="open_web">是否开启网站</label>
 
 														<div class="controls">
@@ -366,7 +366,7 @@
 														<div class="controls">
 															<input type="text" id="open_web_notice" name="open_web_notice" value="{$config.open_web_notice}"  class="span3"/> 
 														</div>
-											</div>--><!--
+											</div>
                                             
                                             
                                             <div class="control-group">
@@ -375,7 +375,7 @@
 														<div class="controls">
 															<input type="text" id="jiesuan_time" name="jiesuan_time" value="{$config.jiesuan_time}"  class="span3"/> 
 														</div>
-											</div>-->
+											</div>
 
 													<div class="form-actions">
 														<button type="submit" class="btn btn-info no-border">
@@ -493,7 +493,7 @@
 												</form>
 											</p>
 										</div>
-										<!--<div id="fenshi" class="tab-pane">
+										<div id="fenshi" class="tab-pane">
 												<form class="form-horizontal" action="{:U(GROUP_NAME.'/System/klineacl')}" method="post">
 													
 
@@ -512,7 +512,7 @@
 														</button>
 													</div>
 												</form>
-										</div>-->
+										</div>
 										<div id="transferconf" class="tab-pane">
 											<p>
 												<form class="form-horizontal" action="{:U(GROUP_NAME.'/System/transferConf')}" method="post">

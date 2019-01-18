@@ -46,6 +46,7 @@
 			
 			$config['z_num']      = I('post.z_num',0,'floatval');
 			$config['zs_num']      = I('post.zs_num',0,'floatval');
+			$config['avg_cl']      = I('post.avg_cl',0,'floatval');
 			$config['min_danjia']      = I('post.min_danjia',0,'floatval');
 			$config['max_danjia']      = I('post.max_danjia',0,'floatval');
 			$config['jiaoyi_shouxu']      = I('post.jiaoyi_shouxu',0,'floatval');
