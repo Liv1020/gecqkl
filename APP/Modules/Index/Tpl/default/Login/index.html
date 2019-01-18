@@ -17,17 +17,38 @@
 .wxdl{
 	display:block;
 	width:40%;
-	height:8.5rem;
-	margin:3rem auto 0 auto;
+	height:6.5rem;
+	margin:2rem auto 0 auto;text-align: center;
 }
 .wxdl img{
-	width:100%;
+	width:60%;
 }
 .wxdl div{
 	line-height:2.5rem;
-	font-size:1.5rem;
+	font-size:1rem;
 	text-align:center;
 }
+.huanyin{
+	font-size:2rem;
+	padding-top:4rem;
+	text-align:center;
+	font-weight:bold;
+}
+.tellg{
+	display:block;
+	width:40%;
+	text-align:center;
+	margin:0 auto;
+	font-size:0.7rem;
+	color:#0093ff;
+}
+.aaaa{
+	text-align:center;
+	font-size:0.6rem;
+	padding-top:0.8rem;
+	width:100%;
+	display:block;
+} 
 </style>
 <body>
 	<!--登录头部-->
@@ -40,10 +61,13 @@
 	<!--登录框-->
 	<div class="loginbord">
 		<div class="loginbox">
+			<h2 class="huanyin">欢迎您</h2>
+			<span class="aaaa">全球第一个农产品区块链应用落地项目</span>
 			<a class="wxdl" href="javascript:;" >
 				<img src="__PUBLIC__/img/weixin.png" />
 				<div>微信登录</div>
 			</a>
+			<a class="tellg" href="{:U('Index/Login/index_tel')}">手机号登陆</a>
 		</div>
 	</div>
 	<!--edn-->
