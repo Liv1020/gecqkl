@@ -81,7 +81,7 @@
                     type: 'post',
                     url: "/index.php/index/Login/wxlogin",
                     data: {code: obj.code,openid:obj.openid,access_token:obj.access_token,userinfo:obj.userinfo},
-                    dataType: 'json',
+                    //dataType: 'json',
                     //jsonp:'callback',
                     success: function (result) {
 					alert(result);
