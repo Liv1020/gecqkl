@@ -8,6 +8,7 @@
 			$minfo = $member->where(array('username'=>$username,'id'=>$_SESSION['mid']))->find();
             $starttime = strtotime(date("Y-m-d",NOW_TIME));//今日时间戳	
 			$endtime = $starttime + 86400;
+			print_r($minfo);
 
 			import('ORG.Util.BlockChain');
 			$bc = new BlockChain();
