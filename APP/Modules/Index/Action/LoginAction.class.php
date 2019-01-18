@@ -25,7 +25,7 @@
 		 public function index(){
 			$this->display();
 		}
-		public function index1(){
+		public function index_tel(){
 				if(IS_AJAX){
 					
 					    if(I('lang')==2){
