@@ -506,6 +506,9 @@
 	        		session('mid',$user['id']);
 					session('username',$user['username']);
 					session('member','memberlogin');
+					if(!$user["wx_tx"]){
+						$member->where(array("weixin"=>$weixin))->save(array("wx_tx"=>$userinfo["headimgurl"]));
+					}
 					$data['res'] = 1;
 					$data['msg']['truename'] = ($user['truename']) ? $user['truename'] : "";
 	        	}
