@@ -500,6 +500,7 @@
 	        if(!empty($_POST['code'])) {
 	        	$userinfo = $_POST['userinfo'];
 	        	$weixin = $userinfo['openid'];
+				print_r($userinfo);exit;
 	        	$user = $member->where(array("weixin"=>$weixin))->find();
 	        	if($user){
 	        		session('mid',$user['id']);
