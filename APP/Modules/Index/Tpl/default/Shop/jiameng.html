@@ -67,22 +67,22 @@
 		<form  method="post" action="{:U('Index/Shop/tijiaojiameng')}" style="margin-bottom:80px;font-size:14px" enctype="multipart/form-data">
 		<div class="person_wallet_recharge">
 		<if condition="!empty($member['username']) || !empty($member['truename']) || !empty($member['mobile'])">
-            <div class="pic">会员编号：&nbsp;&nbsp;&nbsp;{$member['username']}</div>
-            <div class="pic">商家姓名：&nbsp;&nbsp;&nbsp;{$member['truename']}</div>
-            <div class="pic">联系电话：&nbsp;&nbsp;&nbsp;{$member['mobile']}</div>
+            <div class="pic">会员编号：&nbsp;&nbsp;&nbsp;<input type="text" value="{$member['username']}" readonly /></div>
+            <div class="pic">商家姓名：&nbsp;&nbsp;&nbsp;<input type="text" value="{$member['truename']}" readonly /></div>
+            <div class="pic">联系电话：&nbsp;&nbsp;&nbsp;<input type="text" value="{$member['mobile']}" readonly /></div>
 		<else/>
-            <div class="pic">会员编号：&nbsp;&nbsp;&nbsp;<font color='red'>*请先完成实名认证</font></div>
-            <div class="pic">商家姓名：&nbsp;&nbsp;&nbsp;<font color='red'>*请先完成实名认证</font></div>
-            <div class="pic">联系电话：&nbsp;&nbsp;&nbsp;<font color='red'>*请先完成实名认证</font></div>
+            <div class="pic"><em style="color:red;">*</em>&nbsp;&nbsp;&nbsp;<font color='red'>*请先完成实名认证</font></div>
+            <div class="pic"><em style="color:red;">*</em>&nbsp;&nbsp;&nbsp;<font color='red'>*请先完成实名认证</font></div>
+            <div class="pic"><em style="color:red;">*</em>&nbsp;&nbsp;&nbsp;<font color='red'>*请先完成实名认证</font></div>
 		</if>
 			<if condition="$member['shopstatus'] eq 2">
-			<div class="pic">商户状态：&nbsp;&nbsp;&nbsp;<font color='red'>违规经营已被封停</font></div>
+			<div class="pic"><em style="color:red;">*</em>&nbsp;&nbsp;&nbsp;<font color='red'>违规经营已被封停</font></div>
 			</if>
 			<if condition="($member['shopstatus'] eq 0) or ($member['shopstatus'] eq 1)">
 				<if condition="!empty($member['shopname'])">
-						<div class="pic">店铺名称：&nbsp;&nbsp;&nbsp;{$member['shopname']}</div>
+						<div class="pic"><em style="color:red;">*</em>&nbsp;&nbsp;&nbsp;<input type="text" value="{$member['shopname']}" readonly /></div>
                		 <else/>
-				<div class="pic">店铺名称：
+				<div class="pic"><em style="color:red;">*</em>
 				<input type="text" placeholder="请输入店铺名称" name="shopname" style="line-height: 4rem;font-size:3rem;width: 69%;border-radius: 5px;border:none;padding-left: 5px;-webkit-appearance:none;" /></div>
 				</if> 
 			<!-- 	<if condition="$member['shoplevel'] eq 1"><div class="pic">加盟等级：&nbsp;&nbsp;&nbsp;普通商家<a href='{:U('Index/Shop/shengji')}'><input type='button' value='我要升级' style='margin-left:5px; padding:3px 7px; border:0px; border-radius:4px; color:#ffffff; background:#09F;'></a><br></div></if>
@@ -109,7 +109,7 @@
 
 			</if>
 		<if condition="empty($member['shoplevel']) || empty($member['shopname'])">
-		<button type="submit" class="botton" style="width: 100%;line-height: 5rem;border-radius: 1rem;font-size:3rem;border: 0px; background-color:#ff7387;margin-top: 5px;color: #FFFFFF;-webkit-appearance: none;">提 交</button>
+		<button type="submit" class="botton" style="width: 45%;line-height: 5rem;border-radius: 1rem;font-size:3rem;border: 0px; background-color:#ff7387;margin: 5px auto 0 auto;color: #FFFFFF;-webkit-appearance: none;">提 交</button>
             
 		</if>
 		</div>
