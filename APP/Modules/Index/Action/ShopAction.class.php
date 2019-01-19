@@ -1050,11 +1050,11 @@ Class  ShopAction extends CommonAction{
 		  }  //统计是否有符合数量的免费合约机
 	   	 $zs_count = M("order")->where(array("user"=>session('username'),"sid"=>1))->count();
 	   	 $zs_counts = M("order")->where(array("sid"=>1))->count();
-		 if($zs_counts >= C("z_num")){
+		 /*if($zs_counts >= C("z_num")){
 				echo '<script>alert("此类型免费农田已赠送完毕！");window.history.back(-1);</script>';
 				die;					
 
-			}
+			}*/
 			
 		 if($zs_count >= C('zs_num') && $id==1){
 				echo '<script>alert("你已经拥有足够数量的免费农田！");window.history.back(-1);</script>';
