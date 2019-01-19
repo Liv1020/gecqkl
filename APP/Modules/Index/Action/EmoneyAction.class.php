@@ -1562,7 +1562,7 @@ public function myjiaoyis(){
 		//首页顶部公告
 		$dbgg_list = $announce->where(array("tid"=>18))->order("addtime desc")->limit(0,5)->select();
 		//土地数量
-		$td_count = $order->where(array('user_id'=>$user_id,"end_time"=>array("lt",time())))->field("count(id) as sum")->find();
+		$td_count = $order->where(array('user_id'=>$user_id,"end_time"=>array("gt",time())))->field("count(id) as sum")->find();
 		//排行榜前十名
 		$u_list = $member->where(array("jinbi"=>array("lt",300)))->order("jinbi desc")->limit(0,10)->select();
 		foreach($u_list as $key=>$val){
