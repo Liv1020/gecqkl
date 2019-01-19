@@ -97,7 +97,7 @@
 		</script> -->
 		<!--充值列表-->
 		<form  method="post" action="{:U('Index/Shop/tijiaojiameng')}" style="margin-bottom:80px;font-size:14px" enctype="multipart/form-data">
-		<div class="person_wallet_recharge">
+		<div class="person_wallet_recharge" style="background:#359ceb;">
 		<if condition="!empty($member['username']) || !empty($member['truename']) || !empty($member['mobile'])">
             <div class="pic"><em style="color:red;">*</em>&nbsp;&nbsp;&nbsp;<input type="text" value="{$member['username']}" readonly /></div>
             <div class="pic"><em style="color:red;">*</em>&nbsp;&nbsp;&nbsp;<input type="text" value="{$member['truename']}" readonly /></div>
@@ -114,8 +114,7 @@
 				<if condition="!empty($member['shopname'])">
 						<div class="pic"><em style="color:red;">*</em>&nbsp;&nbsp;&nbsp;<input type="text" value="{$member['shopname']}" readonly /></div>
                		 <else/>
-				<div class="pic"><em style="color:red;">*</em>&nbsp;&nbsp;&nbsp;
-				<input type="text" placeholder="请输入店铺名称" name="shopname" style="line-height: 4rem;font-size:3rem;width: 69%;border-radius: 5px;padding-left: 5px;-webkit-appearance:none;" /></div>
+				<div class="pic"><em style="color:red;">*</em>&nbsp;&nbsp;&nbsp;<input type="text" placeholder="请输入店铺名称" name="shopname" style="line-height: 4rem;font-size:3rem;width: 69%;border-radius: 5px;padding-left: 5px;-webkit-appearance:none;" /></div>
 				</if> 
 			<!-- 	<if condition="$member['shoplevel'] eq 1"><div class="pic">加盟等级：&nbsp;&nbsp;&nbsp;普通商家<a href='{:U('Index/Shop/shengji')}'><input type='button' value='我要升级' style='margin-left:5px; padding:3px 7px; border:0px; border-radius:4px; color:#ffffff; background:#09F;'></a><br></div></if>
 				<if condition="$member['shoplevel'] eq 2"><div class="pic">加盟等级：&nbsp;&nbsp;&nbsp;铜牌商家<a href='{:U('Index/Shop/shengji')}'><input type='button' value='我要升级' style='margin-left:5px; padding:3px 7px; border:0px; border-radius:4px; color:#ffffff; background:#09F;'></a><br></div></if>
