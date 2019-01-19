@@ -26,7 +26,7 @@
 						<li><a href="javascript:;">农链世界~全球第一个农产品区块链落地应用项目</a></li>
 						<li><a href="javascript:;">测试上线,部分功能逐步完善开放，敬请体验</a></li>
 					</ul>
-					<ul class="swap"></ul>
+					<ul class="swap" style="margin-left:7%;"></ul>
 				</div>
 			</div>
 		</div>
@@ -362,8 +362,9 @@
 						<li><a href="{:U('Index/New/newsdetails',array('news_id'=>$vo['id']))}">{$vo.title}</a></li>
 						</volist> -->
 					<ul class="xw_news_li">
-						<li><a href="javascript:;">欢迎进入农链庄园</a></li>
-						<li><a href="javascript:;">推广分享VIP赢取158元现金奖励</a></li>
+						<volist name='announce_list' id='vo'>
+						<li><a href="javascript:;">{$vo.title}</a></li>
+						</volist>
 					</ul>
 					<ul class="xw_swap"></ul>
 				</div>
