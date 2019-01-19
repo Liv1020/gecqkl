@@ -28,20 +28,34 @@
 		padding-left: 5px;
 		-webkit-appearance:none;
 	}
+	textarea{
+		line-height: 4rem;
+		font-size:3rem;
+		height:16rem;
+		width: 70%;
+		border-radius: 5px;
+		padding-left: 5px;
+		-webkit-appearance:none;
+	}
+	.pic{
+		padding-left:15%;
+		min-height: 8rem;
+		line-height: 8rem;
+	}
 	</style>
 	
 		<!--确认订单-->
 		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>区域代理</div></div>
 			<div class="ddtb">
 			<ul>
-				<li style="width:33%;">
-					<a href="{:U('Index/shop/jiameng')}" >商家</a>
+				<li style="width:34%;">
+					<a href="{:U('Index/shop/jiameng')}" style="display:block;width:100%;height:100%;" >商家</a>
 					</li>
 				<li style="width:33%;background: #007AFF;">
-					<a href="{:U('Index/emoney/daili')}" style="color:#fff;" >代理</a>
+					<a href="{:U('Index/emoney/daili')}" style="color:#fff;display:block;width:100%;height:100%;" >代理</a>
 				</li>
 				<li style="width:33%;">
-					<a href="{:U('Index/emoney/guanggao')}" >广告</a>
+					<a href="{:U('Index/emoney/guanggao')}" style="display:block;width:100%;height:100%;" >广告</a>
 				</li>
 			</ul>
 		</div>
@@ -100,24 +114,24 @@
 					
 				</select>
 			</div>
-			<div class="pic">姓名：<br/>
+			<div class="pic"><em style="color:red;">*</em>
 				<input name="name" id="tel" placeholder="输入姓名" />
 			</div>
-			<div class="pic">联系电话：<br/>
+			<div class="pic"><em style="color:red;">*</em>
 				<input id="tel" placeholder="输入联系电话" name="tel" />
 			</div>
 			<a id="submit" class="botton" style="width: 100%;line-height: 5rem;border-radius: 1rem;font-size:3rem;border: 0px;display:block;text-align:center; background-color:#ff7387;margin-top: 5px;color: #FFFFFF;-webkit-appearance: none;">提 交</a>
 		<else/>
-			<div class="pic">代理区域：<br/>
+			<div class="pic"><em style="color:red;">*</em>
 				<span style="color:#969696;">{$area1.area_name}->{$area2.area_name}->{$area3.area_name}</span>
 			</div>
-			<div class="pic">姓名：<br/>
+			<div class="pic"><em style="color:red;">*</em>
 				<span style="color:#969696;">{$dlinfo.name}</span>
 			</div>
-			<div class="pic">联系电话：<br/>
+			<div class="pic"><em style="color:red;">*</em>
 				<span style="color:#969696;">{$dlinfo.tel}</span>
 			</div>
-			<div class="pic">状态：<br/>
+			<div class="pic"><em style="color:red;">*</em>
 				<span style="color:#969696;">
 				<if condition="$dlinfo.state eq 0">
 					审核中
