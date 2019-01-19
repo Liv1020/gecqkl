@@ -23,8 +23,9 @@
 				<div class="t_news">
 					<b>首页</b>
 					<ul class="news_li" style="margin-left:7%;">
-						<li><a href="javascript:;">农链世界~全球第一个农产品区块链落地应用项目</a></li>
-						<li><a href="javascript:;">测试上线,部分功能逐步完善开放，敬请体验</a></li>
+						<volist name='dbgg_list' id='vo'>
+						<li><a href="javascript:;">{$vo.title}</a></li>
+						</volist>
 					</ul>
 					<ul class="swap" style="margin-left:7%;"></ul>
 				</div>

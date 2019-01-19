@@ -1559,6 +1559,8 @@ public function myjiaoyis(){
 		$adv_list = $adv->where(array('pos_id'=>1))->select();
 		//公告
 		$announce_list = $announce->where(array("tid"=>3))->order("addtime desc")->limit(0,5)->select();
+		//首页顶部公告
+		$dbgg_list = $announce->where(array("tid"=>18))->order("addtime desc")->limit(0,5)->select();
 		//土地数量
 		$td_count = $order->where(array('user_id'=>$user_id))->field("count(id) as sum")->find();
 		//排行榜前十名
@@ -1571,6 +1573,7 @@ public function myjiaoyis(){
 		$this->assign("tdsum",$td_count["sum"]);
 		$this->assign("u_list",$u_list);
 		$this->assign("announce_list",$announce_list);
+		$this->assign("dbgg_list",$dbgg_list);
 		$this->assign("adv_list",$adv_list);
 		$this->assign('nl',$nl);
 		$this->assign('zz_list',$zz_list);	
