@@ -494,8 +494,8 @@
 						<volist name='u_list' id='v' >
 						<li>
 							<span class="m_one">
-							<if condition="$v.truename">
-							{$v.truename}123
+							<if condition="isset($v['truename'])">
+							{$v.truename}
 							<else/>
 							{$v.username}
 							</if>
