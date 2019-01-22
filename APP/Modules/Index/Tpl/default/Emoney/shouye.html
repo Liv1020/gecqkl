@@ -497,7 +497,7 @@
 							<if condition="$v['truename'] neq null">
 							{$v.truename}
 							<else/>
-							{$v.username}
+							***{$v.username|substr=###,-4}
 							</if>
 							</span>
 								<span class="m_two" style="width:40%;">{$v.jinbi}粒</span>
