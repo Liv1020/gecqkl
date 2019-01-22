@@ -16,6 +16,11 @@
 					exit;
 			}
 			
+			if($_COOKIE['mid'] && $_COOKIE['username']){
+				session('mid',$_COOKIE['mid']);
+				session('username',$_COOKIE['username']);
+				session('member','memberlogin');
+			}
 			
 			
 			
