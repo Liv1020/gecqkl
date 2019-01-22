@@ -104,6 +104,8 @@
 			session('username',null);
 			session('member',null);
 			session('usersecondlogin',null);
+			cookie('username',null);
+			cookie('mid',null);
 			$this->redirect(GROUP_NAME.'/Login/index');
 			//$this->redirect(U('Index/Login/index'));
 		}
