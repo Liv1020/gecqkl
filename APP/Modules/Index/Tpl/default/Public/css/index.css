@@ -445,6 +445,7 @@ white-space: nowrap;}
 .njrw_img img{width: 100%;height: 100%;}
 .njrw_nr{width: 100%;margin-top: 20px;background: #fff;float: left;}
 .njrw_nr li{width: 33.2%;height: 350px;background: #fff;float: left;border-right: 1px solid #C0C0C0;border-bottom: 1px solid #C0C0C0;text-align: center;}
+.njrw_nr li > a{display:blcok;width:100%;height:100%;}
 .njrw_nr li img{margin-top: 40px;width: 20%;}
 .njrw_nr li h2{margin: 20px 0 10px;font-size: 2.3rem;}
 .njrw_nr li p{font-size: 1.8rem;height:1.8rem;color: #888888;}
