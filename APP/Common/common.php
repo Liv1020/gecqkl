@@ -1096,7 +1096,7 @@ function sendSMS2($mobile, $code,$session_id){
 	$post_data = "u=".$userid."&p=".$sms_key."&m=".$mobile."&c=".rawurlencode("{$content}");
 	$target = "http://api.smsbao.com/sms";
 	$return = sendPost($post_data, $target); */
-	$qycode=rand(111111,999999);
+	$qycode=rand(1000,9999);
 	//$appkey = C('CODE_APIKEY'); //请用自己的appkey代替
 	$userid = C('CODE_ACCOUNT');
 	$pass = C('CODE_PASSWORD');
