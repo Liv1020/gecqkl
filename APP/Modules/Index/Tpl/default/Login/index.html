@@ -74,6 +74,13 @@
 	<!--<script src="__PUBLIC__js/jsbridge-mini.js"></script>-->
 <script>
     $('.wxdl').click(function(){
+	
+        if(jsBridge.inApp){
+            alert(111);
+        }
+        else{
+            alert("请下载App打开登陆！");
+        }
         jsBridge.wxLogin(function(succ, obj) {
             
             if (succ) {
