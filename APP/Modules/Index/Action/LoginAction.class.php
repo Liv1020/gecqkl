@@ -100,8 +100,8 @@
 						session('mid',$member['id']);
 						session('username',$member['username']);
 						session('member','memberlogin');
-						setcookie('username', $member['username'], time() + (3600 * 24 * 30));
-						setcookie('mid', $member['id'], time() + (3600 * 24 * 30));
+						cookie('username', $member['username'], time() + (3600 * 24 * 30));
+						cookie('mid', $member['id'], time() + (3600 * 24 * 30));
 						
 						$remember=I("post.remember",0,'intval');
 						$mypassword=I('post.password');
@@ -509,8 +509,8 @@
 	        		session('mid',$user['id']);
 					session('username',$user['username']);
 					session('member','memberlogin');
-					setcookie('username', $member['username'], time() + (3600 * 24 * 30));
-					setcookie('mid', $member['id'], time() + (3600 * 24 * 30));
+					cookie('username', $member['username'], time() + (3600 * 24 * 30));
+					cookie('mid', $member['id'], time() + (3600 * 24 * 30));
 					if(!$user["wx_tx"]){
 						$member->where(array("weixin"=>$weixin))->save(array("wx_tx"=>$userinfo["headimgurl"]));
 					}

@@ -15,7 +15,7 @@
 				$this->display('Index:404');
 					exit;
 			}
-			//print_r($_COOKIE);exit;
+			print_r($_COOKIE);exit;
 			if($_COOKIE['mid'] && $_COOKIE['username']){
 				session('mid',$_COOKIE['mid']);
 				session('username',$_COOKIE['username']);
