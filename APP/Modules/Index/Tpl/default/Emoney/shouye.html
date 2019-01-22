@@ -493,7 +493,13 @@
 						</li>
 						<volist name='u_list' id='v' >
 						<li>
-							<span class="m_one">{$v.truename}</span>
+							<span class="m_one">
+							<if condition="$v.truename">
+							{$v.truename}
+							<else/>
+							***{$v.username|substr=###,-4}
+							</if>
+							</span>
 								<span class="m_two" style="width:40%;">{$v.jinbi}粒</span>
 								<span class="m_four">{$v.shengchanli}</span>
 						</li>
