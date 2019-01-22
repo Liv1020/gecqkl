@@ -81,11 +81,11 @@
                     type: 'post',
                     url: "/index.php/index/Login/wxlogin",
                     data: {code: obj.code,openid:obj.openid,access_token:obj.access_token,userinfo:obj.userinfo},
-                    dataType: 'json',
+                    //dataType: 'json',
                     //jsonp:'callback',
                     success: function (result) {
-						alert(result.res);
-                    	if(result.res == 1){
+						alert(result);
+                    	/*if(result.res == 1){
                         	
                         	if(result.msg.truename == ""){
                         		location.href = "/index.php/index/PersonalSet/myInfo";
@@ -99,7 +99,7 @@
                         }
                     	else{
                         	alert('参数错误')
-                        }
+                        }*/
                     }
                 })
                // alert(JSON.stringify(obj));
