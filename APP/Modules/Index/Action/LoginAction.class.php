@@ -524,7 +524,6 @@
 	        } else {
 	        	$data['res'] = 3;
 	        }
-			print_r($data);
 	        echo json_encode($data);
         }
 		
