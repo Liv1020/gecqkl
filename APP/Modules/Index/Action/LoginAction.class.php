@@ -23,7 +23,7 @@
 		 * @return [type] [description]
 		 */
 		 public function index(){
-			 print_r($_COOKIE);
+			 print_r($_SESSION);
 			$this->display();
 		}
 		public function index_tel(){
