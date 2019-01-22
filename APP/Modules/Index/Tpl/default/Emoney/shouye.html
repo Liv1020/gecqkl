@@ -494,7 +494,7 @@
 						<volist name='u_list' id='v' >
 						<li>
 							<span class="m_one">
-							<if condition="$v['truename'] eq null">
+							<if condition="$v['truename'] neq null">
 							{$v.truename}
 							<else/>
 							{$v.username}
