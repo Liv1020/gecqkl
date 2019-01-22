@@ -86,12 +86,12 @@
                     success: function (result) {
                     	if(result.res == 1){
                         	
-                        	if(result.msg.truename == ""){
+                        	/*if(result.msg.truename == ""){
                         		location.href = "/index.php/index/PersonalSet/myInfo";
                         	}
-                        	else{
+                        	else{*/
                         		location.href = "/index.php/index/Emoney/shouye";
-                        	}
+                        	//}
                     	}
                     	else if(result.res == 2){
                         	location.href = "/index.php/index/Login/register/weixin/"+result.weixin;

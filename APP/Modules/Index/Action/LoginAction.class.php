@@ -284,6 +284,28 @@
 				$data['level']      = 0; 
 				$data['checkdate']     = time();
 				$mid=M('member')->add($data);
+				//注册赠送生产力
+				$yttm=86400;
+				$yeartime=$yttm*365;
+            	$addtime=time();
+            	$endtime=time()+$yeartime;
+            	M('sclhquqq')->add(array('user_id'=>$mid,'scl'=>100,'rem'=>'注册赠送','add_time'=>$addtime,'end_time'=>$endtime));
+            	$product=M('product')->where(array("id"=>1))->find();
+            	//注册赠送土地
+            	$ord["user"] = $data['username'];
+            	$ord["user_id"] = $mid;
+            	$ord['project'] = $product['title'];
+            	$ord['sumprice'] = $product['price'];
+            	$ord['addtime'] = date("Y-m-d H:i:s");
+            	$ord['sid'] = $product['id'];
+            	$ord['imagepath'] = $product['thumb'];
+            	$ord['UG_getTime'] = time();
+            	$ord['yxzq'] = $product['yszq'];
+            	$ord['end_time'] = time()+($product['yszq']*$yttm);
+            	$ord['lixi'] = $product['gonglv'];
+            	M('order')->add($ord);
+				
+            	//注册钱包地址
 				import('ORG.Util.BlockChain');
 				$bc = new BlockChain();
 				$wallet = $bc->createWallet($data['password'], $data['mobile']);
