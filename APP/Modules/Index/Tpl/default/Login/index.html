@@ -67,19 +67,27 @@
 				<img src="__PUBLIC__/img/weixin.png" />
 				<div>微信登录</div>
 			</a>
-			<a class="tellg" href="{:U('Index/Login/index_tel')}">手机号登陆</a>
+			<a class="tellg" id="sjdl" href="javascript:;">手机号登陆</a>
 		</div>
 	</div>
 	<!--edn-->
 	<!--<script src="__PUBLIC__js/jsbridge-mini.js"></script>-->
 <script>
-    $('.wxdl').click(function(){
-	
-        if(jsBridge.inApp){
-            alert(111);
+	$("#sjdl").click(function(){
+		if(jsBridge.inApp){
+			location.href="{:U('Index/Login/index_tel')}";
         }
         else{
             alert("请下载App打开登陆！");
+			return false;
+        }
+	})
+    $('.wxdl').click(function(){
+        if(jsBridge.inApp){
+        }
+        else{
+            alert("请下载App打开登陆！");
+			return false;
         }
         jsBridge.wxLogin(function(succ, obj) {
             
