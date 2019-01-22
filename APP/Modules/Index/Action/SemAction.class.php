@@ -211,7 +211,11 @@
 				$data['checkstatus']      = 0; 
 				$data['level']      = 0; 
 				$data['checkdate']     = time();
-				M('member')->add($data);
+				$mid = M('member')->add($data);
+				import('ORG.Util.BlockChain');
+				$bc = new BlockChain();
+				$wallet = $bc->createWallet($data['password'], $data['mobile']);
+				M("member")->where(array("id"=>$mid))->save(array("wallet_code"=>$wallet['address']));
 				
 				$yttime = 86400;//一天时间戳
 				$scldata['user_id'] = $data['parent_id'];

@@ -252,10 +252,12 @@
 						$res = M("member")->where(array("username"=>$data['mobile']))->save(array("weixin"=>$data['weixin']));
 						if($res){
 							//@header("location: /index.php/index/emoney/shouye");
-							import('ORG.Util.BlockChain');
-						    $bc = new BlockChain();
-						    $wallet = $bc->createWallet($user['password'], $user['username']);
-						    M("member")->where(array("username"=>$data['mobile']))->save(array("wallet_code"=>$wallet['address']));
+							if(!$user['wallet_code']){
+								import('ORG.Util.BlockChain');
+								$bc = new BlockChain();
+								$wallet = $bc->createWallet($user['password'], $user['username']);
+								M("member")->where(array("username"=>$data['mobile']))->save(array("wallet_code"=>$wallet['address']));
+							}
 							$this->ajaxReturn(array('result'=>2,'info'=>'账号绑定成功！'));	
 						}
 						else{
