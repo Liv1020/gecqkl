@@ -118,11 +118,11 @@
 						//添加日志操作
 						//$desc = '会员['.session('username').']登录';
 						//write_log(session('username'),'member',$desc);
-						if(!$member['truename']){
+						/*if(!$member['truename']){
 							$this->ajaxReturn(array('result'=>'1','info'=>'登陆成功,完善资料认证通过即送土地！','url'=>U('Index/PersonalSet/myInfo')));
-						}else{
+						}else{*/
 							$this->ajaxReturn(array('result'=>'1','info'=>'登陆成功！','url'=>U('Index/Emoney/shouye')));
-						}
+						//}
 						
 						
 						
