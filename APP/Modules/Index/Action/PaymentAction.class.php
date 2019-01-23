@@ -137,7 +137,6 @@ Class PaymentAction extends CommonAction {
         
         
         $objectxml = (array)simplexml_load_string($dataxml, 'SimpleXMLElement', LIBXML_NOCDATA); //将微信返回的XML 转换成数组
-		print_r($objectxml);exit;
         echo "<script>location.href='".$objectxml['mweb_url']."&redirect_url=".$nto_html."'</script>";
 	}
     public function h5wxpays(){
