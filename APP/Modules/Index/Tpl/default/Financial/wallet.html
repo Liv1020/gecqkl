@@ -1,82 +1,98 @@
 <!DOCTYPE html>
 <html>
-<head>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="text/css" rel="stylesheet" href="/Public/btb/css/lib.css?2">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1, minimum-scale=1.0"/>
-	<meta content="telephone=no" name="format-detection">
-	<title>我的钱包</title>
-	<script src="/Public/gec/web/js/jquery-1.8.3.min.js"></script>
-	<link rel="stylesheet" href="/Public/gec/web/css/weui.min.css"/>
-	<link rel="stylesheet" href="/Public/gec/web/css/jquery-weui.min.css">
-	<link href="/Public/gec/web/css/font-awesome.min.css" rel="stylesheet">
-	<link href="/Public/gec/web/fonts/iconfont.css" rel="stylesheet">
-	<script src="/Public/gec/web/js/layer.js"></script>
-</head>
-</head>
-<body>
-<!--顶部开始-->
-<div class="header">
-	<span class="header_l"><a href="javascript:history.go(-1);"><i class="fa fa-chevron-left"></i></a></span>
-	<span class="header_c">我的钱包</span>
-		<!--<span style="position: absolute;right: 10%;top: 0px;text-align:center;width:20%;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;font-size: 12px; ">{$memberinfo['username']} </span>
-		<span class="header_r"><a href="{:U(GROUP_NAME .'/personal_set/myInfo')}"><i class="fa fa-user"></i></a></span>-->
-</div>
-<div class="height40"></div>
-<!--顶部结束-->
-<style>
-	.hh_btn{
-		float: right !important;
-		padding: 0 !important;
-		display: block;
-		height: 20px;
-		margin: 5px;
-		width: 60px;
-		background-color: #FF6B00;
-		border: 0;
+	<head>
+		<meta charset="UTF-8">
+		<title>实名认证</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/swiper-3.2.7.min.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<body>
+	<style>
+	input{
+		line-height: 4rem;
+		font-size:3rem;
+		width: 69%;
 		border-radius: 5px;
-		color: #FFF;
+		padding-left: 5px;
+		-webkit-appearance:none;
 	}
-	.zz_btn{
-		height: 20px;
-		width: 150px;
-		margin:5px;
-		background-color: #FF6B00;
-		border: 0;
+	select{
+		line-height: 4rem;
+		font-size:3rem;
+		width: 30%;
 		border-radius: 5px;
-		color: #fff;
+		padding-left: 5px;
+		-webkit-appearance:none;
 	}
-	.level_btn{
-		height: 20px;
-		width: 40px;
-		margin-left:5px;
-		background-color: #23D66B;
-		border: 0;
+	textarea{
+		line-height: 4rem;
+		font-size:3rem;
+		height:16rem;
+		width: 70%;
 		border-radius: 5px;
-		color: #fff;
+		padding-left: 5px;
+		-webkit-appearance:none;
 	}
-	#content{
-		height: 100px;
-		width: 200px;
-		border:2px solid #FF6B4B;
-	}
-</style>
-<!--会员中心开始-->
-<div class="wallet">
-	<if condition="$member.wallet_state eq 1" >
-		钱包已开通；<br/>
-		代码:{$member.wallet_code}
-	<else/>
-		您还未开通钱包，请<a href="{:U('index/financial/wallet_kt')}">前往开通</a>
+	</style>
 	
-	</if>
-</div>
-<!--会员中心结束-->
-<div class="height55"></div>
-<!--底部开始-->
-
-<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
-</body>
+	
+	
+		<!--确认订单-->
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><</a>实名认证</div></div>
+			
+	
+		<!--农田-->
+		<div style="margin-top: 200px;">
+		</div>
+		<!--<div class="textarea">
+		<h2>广告介绍</h2>
+			{$new.content}
+		</div>-->
+		<form  method="post" action="" id="form" style="margin-bottom:80px;font-size:14px" enctype="multipart/form-data">
+		<div class="person_wallet_recharge">
+			
+			<div class="pic">姓名：<br/>
+				<input value="{$member.truename}" name="truename" id="truename" placeholder="输入姓名" />
+			</div>
+			<div class="pic">身份证：<br/>
+				<input id="shenfen" placeholder="舒服身份证号码" name="shenfen" value="{$member.shenfen}" />
+			</div>
+			<div class="pic">支付宝：<br/>
+				<input id="zhifubao" placeholder="输入支付宝账号" value="{$member.zhifubao}" name="zhifubao" />
+			</div>
+			
+			<a id="submit" class="botton" style="width: 45%;line-height: 5rem;border-radius: 1rem;font-size:3rem;border: 0px;display:block;text-align:center; background-color:#ff7387;margin: 5px auto;color: #FFFFFF;-webkit-appearance: none;">提 交</a>
+		
+		</div>
+		</form>	
+		<include file="Public:footer" />
+		<script>
+		$("#submit").click(function(){
+			res1 = true;
+			res2 = true;
+			res3 = true;
+			if($("#truename").val() == ''){
+				alert("请填写姓名");
+				res1 = false;
+				return false;
+			}
+			if($("#shenfen").val() == ''){
+				alert("请填写身份证号码");
+				res2 = false;
+				return false;
+			}
+			if($("#zhifubao").val() == ''){
+				alert("请填写支付宝账号");
+				res3 = false;
+				return false;
+			}
+			if(res1 && res2 && res3){
+				$("#form").submit();
+			}
+				
+		})
+		</script>
+	</body>
 </html>
-

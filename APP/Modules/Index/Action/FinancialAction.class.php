@@ -457,10 +457,21 @@ Class FinancialAction extends CommonAction{
     public function wallet(){
     	$mem=M("member");
     	$user_id=$_SESSION['mid'];
-    	$member=$mem->field("id,wallet_state,wallet_code")->where(array("id"=>$user_id))->find();
+    	$member=$mem->where(array("id"=>$user_id))->find();
     	
-    	
-    	
+    	if(IS_POST){
+    		$data['truename'] = $_POST['truename'];
+    		$data['shenfen'] = $_POST['shenfen'];
+    		$data['zhifubao'] = $_POST['zhifubao'];
+    		$res = $mem->where(array("id"=>$user_id))->save($data);
+    		if($res){
+    			$this->success("资料填写完成，可以开通钱包！",U('Index/Financial/wallet_kt'));
+    		}
+    		else{
+    			$this->error("资料录入失败！");
+    		}
+    		exit;
+    	}
     	$this->assign("member",$member);
     	$this->display();
     }
@@ -470,17 +481,10 @@ Class FinancialAction extends CommonAction{
     public function wallet_kt(){
     	$user_id=$_SESSION['mid'];
     	$mem=M("member");
-    	if(IS_POST){
-    		$wallet_code=mt_rand(1000000,9999999);
-    		$res=$mem->where("id = ".$user_id)->save(array("wallet_state"=>1,"wallet_code"=>$wallet_code));
-    		if($res){
-    			$this->success('开通成功！',"wallet");
-    		}
-    		else{
-    			$this->error("开通失败！");
-    		}
+    	$member=$mem->where(array("id"=>$user_id))->find();
+    	if($member['truename'] == ""){
+    		$this->error("请先进行实名认证！",U('Index/Financial/wallet'));
     	}
-    	
     	$this->display();
     }
 }
