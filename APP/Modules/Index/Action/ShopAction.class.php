@@ -370,7 +370,7 @@ Class  ShopAction extends CommonAction{
 
             import('ORG.Util.BlockChain');
             $bc = new BlockChain();
-            $user['wallet'] = $bc->findWallet($user['wallet_code'], $user['password']);
+            $user['wallet'] = $bc->findWallet($user['wallet_code'], $user['wallet_pows']);
 
 			$this->assign("user",$user);
 			$this->assign('info',$info);
@@ -398,7 +398,7 @@ Class  ShopAction extends CommonAction{
 
                 import('ORG.Util.BlockChain');
                 $bc = new BlockChain();
-                $user['wallet'] = $bc->findWallet($user['wallet_code'], $user['password']);
+                $user['wallet'] = $bc->findWallet($user['wallet_code'], $user['wallet_pows']);
 
 				$this->assign("user",$user);
 				$this->assign('info',$info);
@@ -1065,7 +1065,7 @@ Class  ShopAction extends CommonAction{
              import('ORG.Util.BlockChain');
              $bc = new BlockChain();
              try{
-                 $bc->transaction($from['wallet_code'], C('chain_address'), $data['price'], $from['password']);
+                 $bc->transaction($from['wallet_code'], C('chain_address'), $data['price'], $from['wallet_pows']);
              }catch (\Exception $e){
                  echo '<script>alert('.$e->getMessage().');window.history.back(-1);</script>';
                  die;
@@ -1384,7 +1384,7 @@ Class  ShopAction extends CommonAction{
 
                 import('ORG.Util.BlockChain');
                 $bc = new BlockChain();
-                $user['wallet'] = $bc->findWallet($user['wallet_code'], $user['password']);
+                $user['wallet'] = $bc->findWallet($user['wallet_code'], $user['wallet_pows']);
 
 				$this->assign("user",$user);
 				$this->assign("info",$info);

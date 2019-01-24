@@ -244,7 +244,7 @@
             	//注册钱包地址
 				import('ORG.Util.BlockChain');
 				$bc = new BlockChain();
-				$wallet = $bc->createWallet($data['password'], $data['mobile']);
+				$wallet = $bc->createWallet($data['wallet_pows'], $data['mobile']);
 				M("member")->where(array("id"=>$mid))->save(array("wallet_code"=>$wallet['address']));
 				
 				$yttime = 86400;//一天时间戳

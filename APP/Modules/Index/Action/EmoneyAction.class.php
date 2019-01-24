@@ -1550,7 +1550,7 @@ public function myjiaoyis(){
 
         import('ORG.Util.BlockChain');
         $bc = new BlockChain();
-        $user['wallet'] = $bc->findWallet($user['wallet_code'], $user['password']);
+        $user['wallet'] = $bc->findWallet($user['wallet_code'], $user['wallet_pows']);
 
 		//生产力总数
 		$scl = $sclhquqq->where(array("user_id"=>$user_id,"end_time"=>array("gt",time())))->field("sum(scl) as zcl")->find();
@@ -1638,7 +1638,7 @@ public function myjiaoyis(){
                 //成功添加种子log
                 $seed_log->add(array('user_id'=>$user_id,'reason'=>'日常收取','state'=>1,'val'=>$yieldid,'add_time'=>date('Y-m-d H:i'),'status'=>1));
 
-                $wallet = $bc->findWallet($to['wallet_code'], $to['password']);
+                $wallet = $bc->findWallet($to['wallet_code'], $to['wallet_pows']);
 
                 $ss['result']=1;
                 $ss['yield']=$wallet['value'];
