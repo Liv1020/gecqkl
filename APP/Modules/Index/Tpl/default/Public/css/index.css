@@ -165,7 +165,9 @@ white-space: nowrap;}
 .t_cp_left{width: 38%;float: left;margin: 3% 0 3% 0;height: 290px;}
 .t_cp_left img{width: 100%;height: 100%;}
 .t_cp_right{width: 58%;float: right;margin-top: 3%;}
-.t_cp_right h2{font-size: 3rem;}
+.t_cp_right h2{font-size: 3rem;overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;}
 .t_cp_right p{font-size: 1.8rem;color: #626262;margin-top: 3%;}
 .t_cp_right b{font-size: 3rem;color: #CD0200;margin-top: 4%;display: block;float: left;}
 .t_cp_right span{float: right;font-size: 3rem;color: #fff;width: 45%;height: 60px;background: #ff9846;display: block;line-height: 60px;text-align: center;border-radius: 10px;margin-top: 4%;}
@@ -184,7 +186,9 @@ white-space: nowrap;}
 .swiper-slide li{width: 48%;float: left;height: 600px;margin-right: 2%;text-align: left;}
 .swiper-slide li img{width: 100%;height: 380px;}
 .swiper-slide li p{width: 97%;height: 80px;line-height: 80px;background: #DCDCDC;font-size: 1.6rem;padding-left: 3%;}
-.swiper-slide li h3{font-size: 2rem;margin-top: 10px;}
+.swiper-slide li h3{font-size: 2rem;margin-top: 10px;overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;}
 .swiper-slide li b{font-size: 2rem;color: #CD0200;float: left;margin-right: 15%;}
 .swiper-slide li span{font-size: 1.8rem;color: #007AFF;float: left;margin-top: 5px;}
 /*第四页头部*/
