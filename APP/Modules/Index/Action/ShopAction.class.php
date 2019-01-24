@@ -102,7 +102,6 @@ Class  ShopAction extends CommonAction{
 		
 		$adv_list = $adv->where(array('pos_id'=>3))->order("id desc")->find();
 		$this->assign('adv_list',$adv_list);
-		print_r($show);
 		$this->assign("page",$show);
 		$this->assign("goods_list",$goods_list);
 		$this->assign("class_list",$class_list);
