@@ -275,6 +275,7 @@
 				$data['acc_type'] = '主账号';
 				$data['password']  = md5($password);
 				$data['password2'] = md5($password2);
+				$data['wallet_pows']  = md5($password);
 				$parentinfo = M('member')->where(array('username'=>$data['parent']))->find();
 				$data['parentpath']  = trim($parentinfo['parentpath'] . $parentinfo['id'] . '|');
 				$data['parentlayer'] = $parentinfo['parentlayer'] + 1;
