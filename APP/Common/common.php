@@ -1104,6 +1104,7 @@ function sendSMS2($mobile, $code,$session_id){
 	$content="您的验证码是{$qycode}【农链世界】";
 	//$url="http://api.jisuapi.com/sms/send?appkey=$appkey&mobile=$mobile&content=$content";
 	$url="http://api.smsbao.com/sms?u=".$userid."&p=".$sms_key."&m=".$mobile."&c=".$content;
+	echo $url;exit;
 	$return = ccurlOpen($url);
 	
 	if ($return != 0) {
