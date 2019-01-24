@@ -89,23 +89,23 @@
 			$jsonxml = json_encode(simplexml_load_string($testxml, 'SimpleXMLElement', LIBXML_NOCDATA));
 			$result = json_decode($jsonxml, true);//转成数组
 			file_put_contents('1.txt',json_encode($result));
-			 $d_key=I('get.u','','trim');//$d_keyid=encrypt("t24GWvVczWju",'D','xyb8888');
+			$d_key=I('get.u','','trim');//$d_keyid=encrypt("t24GWvVczWju",'D','xyb8888');
 			 
-			 if(!is_int($d_key)){
-				  $d_key=str_replace('AAABBB','/',$d_key);
-			      $uid =encrypt($d_key,'D','xyb8888');
-			 }else{
-				 $uid =$d_key; 		 
+			if(!is_int($d_key)){
+				$d_key=str_replace('AAABBB','/',$d_key);
+			    $uid =encrypt($d_key,'D','xyb8888');
+			}else{
+				$uid =$d_key; 		 
 			}
 			 
 			 
 			
-			 $uid =intval($uid);
-			 $userinfo = M('member')->where(array('id'=>$uid))->find();
-			 if(!$userinfo){
-				 //halt("错误的访问请求!");
-				 $this->error('错误的访问请求!');
-			 }
+			$uid =intval($uid);
+			$userinfo = M('member')->where(array('id'=>$uid))->find();
+			if(!$userinfo){
+				//halt("错误的访问请求!");
+				$this->error('错误的访问请求!');
+			}
 
 			
 			$this->assign('uid',$uid);			
