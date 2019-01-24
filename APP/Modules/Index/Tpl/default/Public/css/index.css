@@ -183,7 +183,8 @@ white-space: nowrap;}
 .swiper2 .swiper-slide {height: calc(100vh - 50px);background-color: #fff;color: #fff;text-align: center;box-sizing: border-box !important;overflow-x: hidden !important;}
 .three_tu{width: 100%;height: 460px;margin-bottom: 20px;background: #fff;}
 .three_tu img{width: 100%;height: 100%;}
-.swiper-slide li{width: 48%;float: left;height: 600px;margin-right: 2%;text-align: left;}
+.swiper-slide li:nth-of-type(odd){width: 48%;float: left;height: 600px;margin-right: 2%;text-align: left;}
+.swiper-slide li:nth-of-type(even){width: 48%;float: left;height: 600px;margin-left: 2%;text-align: left;}
 .swiper-slide li img{width: 100%;height: 380px;}
 .swiper-slide li p{width: 97%;height: 80px;line-height: 80px;background: #DCDCDC;font-size: 1.6rem;padding-left: 3%;}
 .swiper-slide li h3{font-size: 2rem;margin-top: 10px;overflow: hidden;
