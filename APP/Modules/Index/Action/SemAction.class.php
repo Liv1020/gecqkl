@@ -84,11 +84,11 @@
 		
 		//注册推广
 		 public function regSem(){
-			 header("Content-type:text/html;charset=utf-8");	
 			$testxml  = file_get_contents("php://input");
 			$jsonxml = json_encode(simplexml_load_string($testxml, 'SimpleXMLElement', LIBXML_NOCDATA));
 			$result = json_decode($jsonxml, true);//转成数组
 			file_put_contents('1.txt',json_encode($result));
+			 header("Content-type:text/html;charset=utf-8");	
 			$d_key=I('get.u','','trim');//$d_keyid=encrypt("t24GWvVczWju",'D','xyb8888');
 			 
 			if(!is_int($d_key)){
