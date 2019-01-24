@@ -77,7 +77,7 @@ Class  ShopAction extends CommonAction{
 		
 		$count=$goods_model->where()->count();
 		$Page  = new Page($count,10);
-		$show[$key] = $Page -> show();
+		$show = $Page -> show();
 		$goods=$goods_model->where(array("pad1"=>$val['cid']))->limit($Page ->firstRow.','.$Page -> listRows)->select();
 		foreach($goods as $k=>$v){
 			$gpic=explode(",",$v['gpic']);
