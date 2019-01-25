@@ -457,7 +457,7 @@ white-space: nowrap;}
 .njrw_nr li span{font-size: 1.8rem;width: 55%;background: #FF9846;display: block;margin: 0 auto;line-height: 50px;margin-top: 10px;border-radius: 10px;color: #fff;}
 /*圣酒市场单页顶部*/
 .sjsc_top{width: 100%;height: 100px;line-height: 100px;background: #fff;text-align: center;position: fixed;left: 0;top: 0;font-size: 3rem;font-weight: 900;}
-.sjsc_top .fh{float: left;width: 20%;text-align: left;}
+.sjsc_top .fh{float: left;width: 20%;text-align: left;font-size:90px;}
 .sjsc_top .gz{float: right;font-size: 2rem;width: 20%;text-align: right;}
 .sjsc_a{width: 100%;background: #fff;float: left;}
 
