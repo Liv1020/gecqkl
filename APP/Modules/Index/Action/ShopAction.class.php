@@ -76,7 +76,7 @@ Class  ShopAction extends CommonAction{
 		$class_list=$classify->where("parentid = 0")->select();
 		
 		$count=$goods_model->where()->count();
-		$Page  = new Page($count,10);
+		$Page  = new Page($count,50);
 		$show = $Page -> show();
 		$goods=$goods_model->where(array("pad1"=>$val['cid']))->limit($Page ->firstRow.','.$Page -> listRows)->select();
 		foreach($goods as $k=>$v){
