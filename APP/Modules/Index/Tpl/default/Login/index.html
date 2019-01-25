@@ -62,12 +62,12 @@
 	<div class="loginbord">
 		<div class="loginbox">
 			<h2 class="huanyin">欢迎您</h2>
-			<span class="aaaa">全球第一个农产品区块链应用落地项目</span>
+			<span class="aaaa">请选择登陆方式</span>
+			<a class="tellg" id="sjdl" href="javascript:;">手机号登陆</a>
 			<a class="wxdl" href="javascript:;" >
 				<img src="__PUBLIC__/img/weixin.png" />
 				<div>微信登录</div>
 			</a>
-			<a class="tellg" id="sjdl" href="javascript:;">手机号登陆</a>
 		</div>
 	</div>
 	<!--edn-->
@@ -78,8 +78,9 @@
 			location.href="{:U('Index/Login/index_tel')}";
         }
         else{
-            alert("请下载App打开登陆！");
-			location.href="https://www.yimenapp.net/down/123747";
+            /*alert("请下载App打开登陆！");
+			location.href="https://www.yimenapp.net/down/123747";*/
+			location.href="{:U('Index/Login/index_tel')}";
 			return false;
         }
 	})
