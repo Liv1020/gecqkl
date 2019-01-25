@@ -558,7 +558,7 @@
         		$member = M("Member");
         		$user = $member->where(array("username"=>$data['mobile']))->find();
         		if($user){
-					if($user['weixin'] == ""){
+					if(!$user['weixin']){
 						$res = M("member")->where(array("username"=>$data['mobile']))->save(array("weixin"=>$data['weixin']));
 						if($res){
 							if(!$user['wallet_code']){
