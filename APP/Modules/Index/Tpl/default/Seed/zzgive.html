@@ -36,11 +36,8 @@
 							<select class="zshy" name="suser_id">
 								<foreach name="mem_list" item="item">
 								<option value="{$item.id}">
-								<if condition="$item.truename">
-								{$item.truename}
-								<else/>
+								{$item.truename}->
 								{$item.username}
-								</if>
 								
 								</option>
 								</foreach>
