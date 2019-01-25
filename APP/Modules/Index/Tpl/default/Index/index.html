@@ -51,7 +51,7 @@
 					<ul>
 						<!-- <li><a href="{:U('Index/index/scljilu')}"><img src="__PUBLIC__/img/nl.png"><p>我的生产力</p></a></li> -->
 						
-						<if condition="$member.truename neq null" >
+						<if condition="$minfo.truename neq null" >
 							<li><a href="{:U('Index/index/money')}"><img src="__PUBLIC__/img/xj.png"><p>零钱</p></a></li>
 						<else/>
 							<li><a href="javascript:alert('请先完成实名认证');location.href='{:U('Index/Financial/wallet')}'"><img src="__PUBLIC__/img/xj.png"><p>零钱</p></a></li>
