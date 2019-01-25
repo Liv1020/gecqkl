@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>注册</title>
+	<link href="/Public/kj/css/layer.css" type="text/css" rel="stylesheet">
+	<link href="/Public/kj/css/register.css" rel="stylesheet" type="text/css">
+	<script src="/Public/kj/js/jquery.min.js"></script>
+	<script src="/Public/kj/js/rem.js"></script>
+	<script src="/Public/kj/js/safari.js"></script>
+	<script src="/Public/kj/js/layer.js"></script>
+	<script src="/Public/kj/js/login/Register.js"></script>
+</head>
+<style>
+
+.huanyin{
+	font-size:1.5rem;
+	padding-top:1.5rem;
+	padding-bottom:1rem;
+	text-align:center;
+	font-weight:bold;
+}
+</style>
+<body>
+<!--登录头部-->
+<div class="loginbg">
+    <div class="title"><span><img src="/Public/kj/img/icon1.png"></span></div>
+</div>
+<!--edn-->
+<!--登录框-->
+<div class="loginbord" style="margin-top: -7.125rem;">
+    <div class="loginbox Registerbox" style="height:11.5875rem;">
+    <h2 class="huanyin">欢迎您</h2>
+        <form class="formpot" method="post"  action="" id="myform" >
+            <div class="login-inpt Register-inpt">
+                <ul>
+                    <input type="hidden" name="weixin" value="{$weixin}" />
+                    <li class="phone">
+                        <label>手机号</label>
+                        <div class="inpt-lit">
+                            <input type="text" name="mobile" id="mobile" placeholder="请输入手机号码">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </form>
+        <div class="loginbtn">
+            <button id="">认证手机号码</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	$(".loginbtn").click(function(){
+			$.ajax({
+				url:'{:U("Index/login/weixinrz")}',
+				type:'POST',
+				data:$("#myform").serialize(),
+				dataType:'json',
+				success:function(json){
+					console.log(json);
+					alert(json.info);						
+					if(json.result == 1){
+						window.location.href='{:U("Index/Emoney/shouye")}';
+					}
+					else if(json.result == 2){
+						
+					}
+					else if(json.result == 3){
+						$("#mobile").val("");
+						$("#mobile").focus();   
+					}
+					else if(json.result == 4){
+						window.location.href="/index.php/index/Login/register/weixin/{$weixin}";
+					}
+					
+					
+				},
+				error:function(){
+						alert("网络故障");	
+				}
+					
+				
+				
+			})	
+		
+	})
+
+
+</script>
+<!--edn-->
+</body>
+</html>

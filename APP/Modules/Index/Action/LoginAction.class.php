@@ -550,7 +550,47 @@
 	        echo json_encode($data);
         }
 		
-		
+		 public function weixinrz(){
+        	$weixin = $_GET['weixin'];
+        	if(IS_AJAX){
+        		$data['mobile'] = I('post.mobile','');
+        		$data['weixin'] = I('post.weixin','');
+        		$member = M("Member");
+        		$user = $member->where(array("username"=>$data['mobile']))->find();
+        		if($user){
+					if($user['weixin'] == ""){
+						$res = M("member")->where(array("username"=>$data['mobile']))->save(array("weixin"=>$data['weixin']));
+						if($res){
+							if(!$user['wallet_code']){
+								import('ORG.Util.BlockChain');
+								$bc = new BlockChain();
+								$wallet = $bc->createWallet($user['wallet_pows'], $user['username']);
+								M("member")->where(array("username"=>$data['mobile']))->save(array("wallet_code"=>$wallet['address']));
+							}
+							/*账号绑定成功保存session，cookie*/
+							session('mid',$user['id']);
+							session('username',$user['username']);
+							session('member','memberlogin');
+							cookie('username', $member['username'], time() + (3600 * 24 * 30));
+							cookie('mid', $member['id'], time() + (3600 * 24 * 30));
+							$this->ajaxReturn(array('result'=>1,'info'=>'账号绑定成功！'));	
+						}
+						else{
+							$this->ajaxReturn(array('result'=>2,'info'=>'账号绑定失败！'));	
+						}
+					}
+					else{
+						$this->ajaxReturn(array('result'=>3,'info'=>'该手机号码已绑定微信，无法再次绑定，请更换手机号'));
+					}
+				}
+				else{
+					$this->ajaxReturn(array('result'=>4,'info'=>'对不起，该手机号未注册，请先注册账号！'));
+				}
+        		exit;
+        	}
+        	$this->assign("weixin",$weixin);
+        	$this->display();
+        }
 		
 		
 		
