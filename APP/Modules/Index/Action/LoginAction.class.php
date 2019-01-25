@@ -580,7 +580,7 @@
 						}
 					}
 					else{
-						$this->ajaxReturn(array('result'=>3,'info'=>'该手机号码已绑定微信，无法再次绑定，请更换手机号'.strlen($user['weixin'])));
+						$this->ajaxReturn(array('result'=>3,'info'=>'该手机号码已绑定微信，无法再次绑定，请更换手机号'.$user['weixin']));
 					}
 				}
 				else{
