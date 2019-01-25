@@ -557,6 +557,7 @@
         		$data['weixin'] = I('post.weixin','');
         		$member = M("Member");
         		$user = $member->where(array("username"=>$data['mobile']))->find();
+				print_r($user);
         		if($user){
 					if(strlen($user['weixin']) == 0){
 						$res = M("member")->where(array("username"=>$data['mobile']))->save(array("weixin"=>$data['weixin']));
@@ -580,7 +581,7 @@
 						}
 					}
 					else{
-						$this->ajaxReturn(array('result'=>3,'info'=>'该手机号码已绑定微信，无法再次绑定，请更换手机号'.$user['weixin']));
+						$this->ajaxReturn(array('result'=>3,'info'=>'该手机号码已绑定微信，无法再次绑定，请更换手机号'));
 					}
 				}
 				else{
