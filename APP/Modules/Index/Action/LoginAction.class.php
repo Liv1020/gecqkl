@@ -557,7 +557,7 @@
         		$data['weixin'] = I('post.weixin','');
         		$member = M("Member");
         		$user = $member->where(array("username"=>$data['mobile']))->find();
-				print_r($user);
+				print_r($data);
         		if($user){
 					if(strlen($user['weixin']) == 0){
 						$res = M("member")->where(array("username"=>$data['mobile']))->save(array("weixin"=>$data['weixin']));
