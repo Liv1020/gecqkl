@@ -24,9 +24,10 @@
 	width:60%;
 }
 .wxdl div{
-	line-height:2.5rem;
+	line-height:1rem;
 	font-size:1rem;
 	text-align:center;
+	color:#009fff;
 }
 .huanyin{
 	font-size:2rem;
@@ -65,8 +66,12 @@
 		<div class="loginbox">
 			<h2 class="huanyin">欢迎您</h2>
 			<span class="aaaa">请选择登陆方式</span>
-			<a class="tellg" id="sjdl" href="javascript:;">手机号登陆</a>
-			<a class="wxdl" href="javascript:;" >
+			<!--<a class="tellg" id="sjdl" href="javascript:;">手机号登陆</a>-->
+			<a class="wxdl" id="sjdl" href="javascript:;" >
+				<img src="__PUBLIC__/img/shoujidenglu.png" />
+				<div>手机号登陆</div>
+			</a>
+			<a class="wxdl" id="wxdl" href="javascript:;" >
 				<img src="__PUBLIC__/img/weixin.png" />
 				<div>微信登录</div>
 			</a>
@@ -86,7 +91,7 @@
 			return false;
         }
 	})
-    $('.wxdl').click(function(){
+    $('#wxdl').click(function(){
         if(jsBridge.inApp){
         }
         else{
