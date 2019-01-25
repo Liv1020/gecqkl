@@ -558,7 +558,7 @@
         		$member = M("Member");
         		$user = $member->where(array("username"=>$data['mobile']))->find();
         		if($user){
-					if($user['weixin'] == ""){
+					if(strlen($user['weixin']) == 0){
 						$res = M("member")->where(array("username"=>$data['mobile']))->save(array("weixin"=>$data['weixin']));
 						if($res){
 							if(!$user['wallet_code']){
@@ -580,7 +580,7 @@
 						}
 					}
 					else{
-						$this->ajaxReturn(array('result'=>3,'info'=>'该手机号码已绑定微信，无法再次绑定，请更换手机号'.$user['weixin']));
+						$this->ajaxReturn(array('result'=>3,'info'=>'该手机号码已绑定微信，无法再次绑定，请更换手机号'.strlen($user['weixin'])));
 					}
 				}
 				else{
