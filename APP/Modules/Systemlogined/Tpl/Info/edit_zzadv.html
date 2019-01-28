@@ -105,7 +105,6 @@
 								         <if condition="$info.pic">
 											<input type="hidden" name="pic" value="{$info.pic}" />
 										<else/>
-											<input name="pic" type="file" class="upload_input" onchange="change(this)"/>
 										</if>
 								        <img class="delete" onclick="deleteImg(this)" src="__PUBLIC__/images/delete.png"<if condition="$info.pic">style="display:block;"</if> />
         
@@ -188,6 +187,9 @@
 			  //删除
 			  var deleteImg = function(obj){
 			    $(obj).parent().find('input').val('');
+			    $(obj).parent().append('<input name="pic" type="file" class="upload_input" onchange="change(this)"/>');
+				
+											
 			    $(obj).parent().find('img.preview').attr("src","");
 			    //IE9以下
 			    $(obj).parent().find('img.preview').css("filter","");
