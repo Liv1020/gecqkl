@@ -426,6 +426,30 @@
 		$this->display();
 	}
 	/**
+	 * 农链基地
+	 */
+	public function caozuo(){
+		/*$user_id=$_SESSION['mid'];
+		$member=M('member');
+		$sclhquqq=M("sclhquqq");
+		$user=$member->where(array("id"=>$user_id))->find();
+		//30天时间戳
+		$endtm = 86400*30;
+		if($user['cz_scl'] == 0){
+			$member->where(array("id"=>$user_id))->save(array('cz_scl'=>5,'cz_time'=>time()));
+			$scl['user_id'] = $user_id;
+			$scl['scl'] = 5;
+			$scl['rem'] = '操作指南';
+			$scl['add_time'] = time();
+			$scl['end_time'] = time()+$endtm;
+			$sclhquqq->add($scl);
+			
+		}*/
+		$new=M('announce')->where("tid = 19")->find();
+		$this->assign('new',$new);
+		$this->display();
+	}
+	/**
 	 * 生产力记录
 	 */
 	public function scljilu(){

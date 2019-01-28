@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{$new.title}</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/swiper-3.2.7.min.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<style>
+	.textarea{
+		text-indent:0 !important;
+	}
+	.textarea img{
+		max-width:100%
+	}
+	</style>
+	<body>
+		<!--订单详情-->
+		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><img src="__PUBLIC__/img/fhxy.png" height="50px" /></a><div style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">{$new.title}</div></div></div>
+		<!--订单地址-->
+		<div class="textarea">
+			{$new.content}
+		</div>
+		
+		<include file="Public:footer" />
+	</body>
+</html>
