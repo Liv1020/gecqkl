@@ -428,7 +428,7 @@
 	/**
 	 * 农链基地
 	 */
-	public function caozuo(){
+	public function nljd(){
 		/*$user_id=$_SESSION['mid'];
 		$member=M('member');
 		$sclhquqq=M("sclhquqq");
