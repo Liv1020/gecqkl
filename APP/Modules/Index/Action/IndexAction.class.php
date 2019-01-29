@@ -674,6 +674,41 @@
 		$this->display();
 	}
 	/**
+	 * ajax生成海报
+	 */
+	public function haibao(){
+		$e_keyid=encrypt(session('mid'),'E','xyb8888');
+		
+		$e_keyid=str_replace('/','AAABBB',$e_keyid);
+		
+		$tuiguangma = "http://".$_SERVER['SERVER_NAME'].U('Index/Sem/regSem',array('u'=>$e_keyid));
+		$erwei = M("member")->where(array('username'=>session('username')))->getField("erwei");
+		
+		if(!$erwei){
+			Vendor('phpqrcode.phpqrcode');
+			//生成二维码图片
+			$object = new QRcode;
+			$level=3;
+			$size=1.7;
+			$errorCorrectionLevel =intval($level) ;//容错级别
+			$matrixPointSize = $size;//生成图片大小
+			$path = "Public/erwei/";
+			// 生成的文件名
+			$fileName = $path.session('username').'.png';
+			$object->png($tuiguangma,$fileName, $errorCorrectionLevel, $matrixPointSize, 2);
+			import('ORG.Util.Image');
+			$Image = new Image();		
+			
+			define('THINKIMAGE_WATER_CENTER', 5);
+			$Image->water(PUBLIC_PATH.'/encard.jpg',$fileName,$fileName,100,array(240,350));	
+            $erwei = '/'.$fileName;		
+			M("member")->where(array('username'=>session('username')))->setField("erwei",$erwei);
+		}
+		/*海报生成S*/
+		$user=M("member")->where(array("id"=>session('mid')))->find();
+		$haibao = getbgqrcode(".".$erwei,$user['username']);
+	}
+	/**
 	 * 公益池
 	 */
 	public function gongyichi(){
