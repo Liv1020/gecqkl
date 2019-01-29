@@ -7,24 +7,54 @@
 		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
 		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
 		<script src="//gate.myapp.ltd/cdn/jsbridge-mini.js"></script>
+		<script src="__PUBLIC__/js/html2canvas.min.js"></script>
+		
+		<script src="__PUBLIC__/js/canvas2image.js"></script>
+		<script src="__PUBLIC__/js/base64.js"></script>
 	</head>
-	<body style="background: #e94846;">
-		<div class="fx">
-			<div class="row">
-				<div class="fx_top">
-					<img src="__PUBLIC__/img/hy jx.png">
-				</div>
-				<div class="fx_nav">
-					<b>邀请码：</b><span>{$username}</span>
-					<img src="__PUBLIC__/img/sq.png">
-				</div>
-				<div class="fx_bottom">
-					<a onclick="toshare()" href="javascript:;" ><img src="{$erwei}" class="ewm"></a>
-					<p>点击此二维码即可成为<br />农链VIP会员</p>
-					<img src="__PUBLIC__/img/logo.png" class="fx_logo">
-					<div style="clear: both;"></div>
+	<style>
+	.anniu{
+		background: #e94846;
+		margin-top:-2px;
+	}
+	.anniu a{
+		width:35%;
+		margin:2rem 7.5%;
+		float:left;
+		display:block;
+		font-size:3rem;
+		line-height:5rem;
+		height:5rem;
+		text-align:center;
+		background:#ffca01;
+		border-radius:5rem;
+	}
+	</style>
+	<body >
+		<div id="content" style="background: #e94846;">
+			<div class="fx">
+				<div class="row">
+					<div class="fx_top">
+						<img src="__PUBLIC__/img/hy jx.png">
+					</div>
+					<div class="fx_nav">
+						<b>邀请码：</b><span>{$username}</span>
+						<img src="__PUBLIC__/img/sq.png">
+					</div>
+					<div class="fx_bottom">
+						<a><img src="{$erwei}" class="ewm"></a>
+						<p>保存图片<br />打开微信识别<br />农链VIP会员</p>
+						<img src="__PUBLIC__/img/logo.png" class="fx_logo">
+						<div style="clear: both;"></div>
+					</div>
 				</div>
 			</div>
+		</div>
+		
+		<div id="images" style="display:none;"></div>
+		<div class="anniu">
+			<a onclick="toshare()" href="javascript:;">分享链接</a>
+			<a id="btnSave" href="javascript:;">保存图片</a><div style="clear:both;"></div>
 		</div>
 	</body>
 </html>
@@ -35,7 +65,7 @@ function toshare(){
 	//分享到，0 微信朋友圈，1 微信好友，2 QQ好友，3 QQ空间；未指定则弹出分享菜单
 	to : '',
 	//标题，未指定则为当前页面 title 标题
-	title : "农链世界是全球第一个农产品区块链应用落地项目，推荐分享VIP，赚取158元现金奖励",
+	title : "推广",
 	//链接，未指定则为当前页面链接
 	link : "{$tuiguangma}",
 	//图标，未指定则为 App 图标
@@ -57,4 +87,54 @@ function toshare(){
 	title: "指定分享出去的标题"
 	});*/
 }
+
+/*生成canvas图形*/
+
+//获取按钮id
+var btnSave = document.getElementById("btnSave");
+//获取内容id
+var content = document.getElementById("content");
+
+var Download = document.getElementById("Download");
+//进行canvas生成
+btnSave.onclick = function(){
+	html2canvas(content, {
+     onrendered: function(canvas) {
+     	//添加属性
+     	canvas.setAttribute('id','thecanvas');
+			//读取属性值
+			// var value= canvas.getAttribute('id');
+         document.getElementById('images').appendChild(canvas);
+     }
+	});
+	setTimeout(function(){
+	var oCanvas = document.getElementById("thecanvas");
+
+	/*自动保存为png*/
+	// 获取图片资源
+	var img_data1 = Canvas2Image.saveAsPNG(oCanvas, true).getAttribute('src');
+	saveFile(img_data1, 'abc');
+
+
+	/*下面的为原生的保存，不带格式名*/
+	// 这将会提示用户保存PNG图片
+	// Canvas2Image.saveAsPNG(oCanvas);
+},1000);
+	//$("#Download").click();
+	
+}
+</script>
+<script>
+
+
+// 保存文件函数
+var saveFile = function(data, filename){
+    var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
+    save_link.href = data;
+    save_link.download = filename;
+   
+    var event = document.createEvent('MouseEvents');
+    event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+    save_link.dispatchEvent(event);
+};
 </script>
