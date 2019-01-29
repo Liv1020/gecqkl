@@ -54,7 +54,7 @@
 		<div id="images" style="display:none;"></div>
 		<div class="anniu">
 			<a onclick="toshare()" href="javascript:;">分享链接</a>
-			<a id="btnSave" href="javascript:;">保存图片</a><div style="clear:both;"></div>
+			<a onclick="haibao()" id="btnSave" href="javascript:;">保存图片</a><div style="clear:both;"></div>
 		</div>
 	</body>
 </html>
@@ -87,11 +87,19 @@ function toshare(){
 	title: "指定分享出去的标题"
 	});*/
 }
-
+function haibao(){
+	jsBridge.shareImage({
+	  //0 微信朋友圈
+	  //1 微信好友
+	  //2 QQ好友
+	  //to    : 0,
+	  imgUrl: "http://www.zgllsj.com/index.php/index/index/haibao"
+	}); 
+}
 /*生成canvas图形*/
 
 //获取按钮id
-var btnSave = document.getElementById("btnSave");
+/*var btnSave = document.getElementById("btnSave");
 //获取内容id
 var content = document.getElementById("content");
 
@@ -110,19 +118,17 @@ btnSave.onclick = function(){
 	setTimeout(function(){
 	var oCanvas = document.getElementById("thecanvas");
 
-	/*自动保存为png*/
 	// 获取图片资源
 	var img_data1 = Canvas2Image.saveAsPNG(oCanvas, true).getAttribute('src');
 	saveFile(img_data1, 'abc');
 
 
-	/*下面的为原生的保存，不带格式名*/
 	// 这将会提示用户保存PNG图片
 	// Canvas2Image.saveAsPNG(oCanvas);
 },1000);
 	//$("#Download").click();
 	
-}
+}*/
 </script>
 <script>
 
