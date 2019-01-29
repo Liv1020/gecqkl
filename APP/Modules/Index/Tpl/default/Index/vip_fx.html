@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html style="background: #1e27a2;">
+<html>
 	<head>
 		<meta charset="utf-8" />
-		<title>VIP商品分享</title>
-		<link rel="stylesheet" href="__PUBLIC__/css/new_file.css" />
+		<title></title>
 		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
 		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
 		<script src="//gate.myapp.ltd/cdn/jsbridge-mini.js"></script>
 	</head>
-	<body>
+	<body style="background: #e94846;">
 		<div class="fx">
 			<div class="row">
-				<img src="{$info.gpic}">
-				<div class="xq_nav">
-					{$info.g_content}
+				<div class="fx_top">
+					<img src="__PUBLIC__/img/hy jx.png">
 				</div>
-			</div>
-			
-		</div>
-		<div class="ewm">
-			<div class="row">
-				<div class="ewm_k">
-					<img src="{$erwei}">
-					<a onclick="toshare()" href="javascript:;">分享</a>
+				<div class="fx_nav">
+					<b>邀请码：</b><span>{$username}</span>
+					<img src="__PUBLIC__/img/sq.png">
+				</div>
+				<div class="fx_bottom">
+					<a onclick="toshare()" href="javascript:;" ><img src="{$erwei}" class="ewm"></a>
+					<p>点击此二维码即可成为<br />农链VIP会员</p>
+					<img src="__PUBLIC__/img/logo.png" class="fx_logo">
+					<div style="clear: both;"></div>
 				</div>
 			</div>
 		</div>

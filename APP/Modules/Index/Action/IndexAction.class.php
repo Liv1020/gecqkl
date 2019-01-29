@@ -667,8 +667,8 @@
 		$this->assign('tuiguangma',$tuiguangma);
 //		$adurl=C('adurl');
 //		$adurl2=str_replace('[adurl]',$tuiguangma,$adurl);
-//		$user=M("member")->where(array("id"=>session('mid')))->find();
-//		$this->assign("username",$user['username']);
+		$user=M("member")->where(array("id"=>session('mid')))->find();
+		$this->assign("username",$user['username']);
 //		$this->assign('tuiguangma',$tuiguangma);
 //		$this->assign('adurl2',$adurl2);
 		$this->display();
