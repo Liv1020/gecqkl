@@ -706,7 +706,6 @@
 		}
 		/*海报生成S*/
 		$user=M("member")->where(array("id"=>session('mid')))->find();
-		print_r($user);exit;
 		$haibao = getbgqrcode(".".$erwei,$user['username']);
 		echo $haibao;
 	}
