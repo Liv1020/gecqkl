@@ -212,8 +212,8 @@ Class SeedAction extends CommonAction{
 		}
 		else{
 			$where = "parent_id = ".$user_id;
-		}
-		$mem_list = $member->where($where)->select();
+		}//$where
+		$mem_list = $member->where()->select();
 
         import('ORG.Util.BlockChain');
         $bc = new BlockChain();
