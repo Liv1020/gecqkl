@@ -1863,7 +1863,7 @@ function getbgqrcode($erwei,$title){
 	$logourl = imagecreatefrompng($logourl);
 	$erweimaurl = imagecreatefrompng($erweimaurl);
 	$image_3 = imageCreatetruecolor(imagesx($beijing),imagesy($beijing));
-	$color = imagecolorallocate($image_3, 255, 255, 255);
+	$color = imagecolorallocate($image_3, 0, 0, 0);
 	imagefill($image_3, 0, 0, $color);
 	imageColorTransparent($image_3, $color);
 	imagecopyresampled($image_3,$beijing,0,0,0,0,imagesx($beijing),imagesy($beijing),imagesx($beijing),imagesy($beijing));   
