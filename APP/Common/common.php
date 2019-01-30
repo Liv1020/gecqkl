@@ -1879,6 +1879,7 @@ function getbgqrcode($erwei,$title){
     imagecopymergegray($image_3,$erweimaurl, 275,680,0,0,90,90, 99);//imagecopymerge
     //生成图片
    	//imagepng($image_3);//在浏览器上显示
+	print_r($image_3);
 	return imagepng($image_3,"./Public/haibao/".$title.".png");//保存到本地
     imagedestroy($image_3);
 }
