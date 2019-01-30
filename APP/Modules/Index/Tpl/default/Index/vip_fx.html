@@ -89,23 +89,23 @@ function toshare(){
 }
 function haibao(){
 	var username = $("#usname").html();
-	/*$.ajax({
+	$.ajax({
 			type:'post',
 			url:"/index.php/index/index/haibao",	
 			data:{}, 
  			dataType:'json',
 			success:function(result){
-				if(result){*/
+				if(result){
 					jsBridge.shareImage({
 					  //0 微信朋友圈
 					  //1 微信好友
 					  //2 QQ好友
 					  //to    : 0,
-					  imgUrl: "http://www.zgllsj.com/Public/erwei/"+username+".png"
+					  imgUrl: "http://www.zgllsj.com/haibao/"+username+".png"
 					});
-				/*}
+				}
 			}
-		});*/
+		});
 	 
 }
 /*生成canvas图形*/
