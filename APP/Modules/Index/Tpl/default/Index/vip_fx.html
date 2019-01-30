@@ -38,7 +38,7 @@
 						<img src="__PUBLIC__/img/hy jx.png">
 					</div>
 					<div class="fx_nav">
-						<b>邀请码：</b><span>{$username}</span>
+						<b>邀请码：</b><span id="usname">{$username}</span>
 						<img src="__PUBLIC__/img/sq.png">
 					</div>
 					<div class="fx_bottom">
@@ -88,6 +88,7 @@ function toshare(){
 	});*/
 }
 function haibao(){
+	var username = $("#usname").html();
 	/*$.ajax({
 			type:'post',
 			url:"/index.php/index/index/haibao",	
@@ -100,7 +101,7 @@ function haibao(){
 					  //1 微信好友
 					  //2 QQ好友
 					  //to    : 0,
-					  imgUrl: "http://www.zgllsj.com/Public/erwei/{$username}.png"
+					  imgUrl: "http://www.zgllsj.com/Public/erwei/"+username+".png"
 					});
 				/*}
 			}
