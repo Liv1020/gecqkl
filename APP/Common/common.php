@@ -1852,7 +1852,7 @@ function encrypt2($string,$operation,$key=''){
 
 
 function getbgqrcode($erwei,$title){
- 	header("content-type: image/png");//如果要看报什么错，可以先注释调这个header
+ 	//header("content-type: image/png");//如果要看报什么错，可以先注释调这个header
     
 	$nickname = $title;//微信昵称
 	$erweimaurl = $erwei;//二维码
@@ -1878,7 +1878,7 @@ function getbgqrcode($erwei,$title){
 	//imagecopymerge($image_3,$erweimaurl, 120,100,0,0,imagesx($erweimaurl),imagesy($erweimaurl), 100);
     imagecopymergegray($image_3,$erweimaurl, 275,680,0,0,90,90, 99);//imagecopymerge
     //生成图片
-   	imagepng($image_3);//在浏览器上显示
+   	//imagepng($image_3);//在浏览器上显示
 	return imagepng($image_3,$title.".png");//保存到本地
     imagedestroy($image_3);
 }
