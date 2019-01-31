@@ -388,6 +388,7 @@
 		$user_id=$_SESSION['mid'];
 		$member=M('member');
 		$sclhquqq=M("sclhquqq");
+		$shangxueyuan = M("shangxueyuan");
 		$user=$member->where(array("id"=>$user_id))->find();
 		//30天时间戳
 		$endtm = 86400*30;
@@ -400,6 +401,9 @@
 			$scl['end_time'] = time()+$endtm;
 			$sclhquqq->add($scl);
 		}
+		$list = $shangxueyuan->where()->select();
+		$this->assign("list",$list);
+		$this->display();
 	}
 	/**
 	 * 操作指南

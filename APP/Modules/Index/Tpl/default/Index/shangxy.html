@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>VIP商品</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/js/swipe.js"></script>
+	</head>
+	<style>
+	#full_feature{
+		padding-top:465px !important;
+	}
+	</style>
+	<body>
+		<!--顶部菜单-->
+		<div class="dbcd"><h2>商学院</h2></div>
+		<!--第二页顶部-->
+		
+		<!--第二页产品-->
+		<div class="t_cp" style="margin-top: 106px;">
+			<ul>
+			<foreach name="list" item="ty">
+		    	<li>
+					<div class="row">
+							<div class="t_cp_left">
+								<a href="{$ty.video_url}">
+									<img src="{$ty.video_url}">
+								</a>
+							</div>
+							<div class="t_cp_right">
+								<a href="{$ty.video_url}">
+									<h2>{$ty.title}</h2>
+								</a>
+							</div>
+							<div style="clear:both;"></div>
+					</div>
+				</li>
+	    	</foreach>
+				
+				
+			</ul>
+		</div>
+		<!--底部导航-->
+		
+		<include file="Public:footer" />
+	</body>
+</html>

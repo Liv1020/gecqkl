@@ -456,5 +456,57 @@
 				$this->error("删除失败！");
 			}
 		}
+		
+		/**
+		 * 商学院添加
+		 */
+		public function add_sxy(){
+			$shangxueyuan = M("shangxueyuan");
+			if($_POST){
+				$dest_folder   = './Public/sxy/'.date('Ymd',time()).'/';   //上传图片保存的路径
+				$video_url = $_POST['video_url'];
+				
+				if(!file_exists($dest_folder)){
+					mkdir($dest_folder,0777); // 创建文件夹，并给予最高权限
+					chmod($dest_folder,0777);
+				  }
+				  
+				if($_FILES['video_url']['error']===0){
+					 $tmp_namey = $_FILES["video_url"]["tmp_name"];
+	                 $ay=explode(".",$_FILES["video_url"]["name"]);  //截取文件名跟后缀
+	                 $prename = $ay[0];
+	                 $namey = time().mt_rand(1,9).".".$ay[1];;  // 文件的重命名 （日期+随机数+后缀）
+	                 $uploadfiley = $dest_folder.$namey;     // 文件的路径
+	                 move_uploaded_file($tmp_namey, $uploadfiley);
+	                 $video_url=ltrim($uploadfiley,'.');
+				}
+				$data['video_url']=$video_url;
+				$data['title']=$_POST['title'];
+				$data['add_time']=date("Y-m-d H:i:s");
+				$res = $shangxueyuan->add($data);
+				if($res){
+					$this->success("添加成功！",U("Info/sxy"));
+				}
+				else{
+					$this->error("添加失败！");
+				}
+				exit;
+			}
+			$this->display();
+		}
+		/**
+		 * 商学院删除
+		 */
+		public function sxy_del(){
+			$id = $_GET['id'];
+			$shangxueyuan = M("shangxueyuan");
+			$res = $shangxueyuan->where(array("id"=>$id))->delete();
+			if($res){
+				$this->success("删除成功！",U('Info/sxy'));
+			}
+			else{
+				$this->error("删除失败！");
+			}
+		}
 	}
 ?>
