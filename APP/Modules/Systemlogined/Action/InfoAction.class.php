@@ -458,6 +458,19 @@
 		}
 		
 		/**
+		 * 商学院列表
+		 */
+		public function sxy(){
+			$shangxueyuan = M("shangxueyuan");
+			import("@.ORG.Util.Page");// 导入分页类
+			$count      = $shangxueyuan->where()->count();// 查询满足要求的总记录数
+	        $Page       = new Page($count,10);// 实例化分页类 传入总记录数
+			$list = $shangxueyuan->where()->limit($Page ->firstRow.','.$Page -> listRows)->order("id desc")->select();
+			$show       = $Page->show();// 分页显示输出
+			$this->assign("list",$list);
+			$this->display();
+		}
+		/**
 		 * 商学院添加
 		 */
 		public function add_sxy(){
