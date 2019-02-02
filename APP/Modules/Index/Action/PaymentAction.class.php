@@ -2,9 +2,9 @@
 Class PaymentAction extends CommonAction {
 	public function h5wxpay(){
 		$userip = $this->get_client_ip();     //获得用户设备IP
-        $appid  = "wx9a6756a449493e94";                  //应用APPID
-        $mch_id = "1464752502";                  //微信支付商户号
-        $key    = "xswl3f5246bf0145d835d503282b6413";                 //微信商户API密钥
+        $appid  = "wx25753f30873c0ae1";                  //应用APPID
+        $mch_id = "1521578571";                  //微信支付商户号
+        $key    = "nlsjfmq0co401px44h1gcyqmf44uwoit";                 //微信商户API密钥
         
         $data = $_POST;
         $out_trade_no = $data['onumber'];//平台内部订单号
@@ -46,9 +46,9 @@ Class PaymentAction extends CommonAction {
 	}
 	public function zyh5wxpay(){
 		$userip = $this->get_client_ip();     //获得用户设备IP
-        $appid  = "wx9a6756a449493e94";                  //应用APPID
-        $mch_id = "1464752502";                  //微信支付商户号
-        $key    = "xswl3f5246bf0145d835d503282b6413";                 //微信商户API密钥
+        $appid  = "wx25753f30873c0ae1";                  //应用APPID
+        $mch_id = "1521578571";                  //微信支付商户号
+        $key    = "nlsjfmq0co401px44h1gcyqmf44uwoit";                 //微信商户API密钥
         
         $data = $_POST;
         $out_trade_no = $data['onumber'];//平台内部订单号
@@ -94,9 +94,9 @@ Class PaymentAction extends CommonAction {
 	 */
 	public function ktqianbao(){
 		$userip = $this->get_client_ip();     //获得用户设备IP
-        $appid  = "wx9a6756a449493e94";                  //应用APPID
-        $mch_id = "1464752502";                  //微信支付商户号
-        $key    = "xswl3f5246bf0145d835d503282b6413";                 //微信商户API密钥
+        $appid  = "wx25753f30873c0ae1";                  //应用APPID
+        $mch_id = "1521578571";                  //微信支付商户号
+        $key    = "nlsjfmq0co401px44h1gcyqmf44uwoit";                 //微信商户API密钥
         
         $data = $_POST;
         $out_trade_no = $_SESSION['username'];//$_SESSION['username'];//平台内部订单号
@@ -144,9 +144,9 @@ Class PaymentAction extends CommonAction {
     	$id = $_GET['id'];
     	$data = $orders->where(array("oid"=>$id))->find();*/
     	$data = $_POST;
-        $appid  = "wx9a6756a449493e94";                  //应用APPID
-        $mch_id = "1464752502";                  //微信支付商户号
-        $key    = "xswl3f5246bf0145d835d503282b6413";                 //微信商户API密钥
+        $appid  = "wx25753f30873c0ae1";                  //应用APPID
+        $mch_id = "1521578571";                  //微信支付商户号
+        $key    = "nlsjfmq0co401px44h1gcyqmf44uwoit";                 //微信商户API密钥
     	$data['total_amount']=floatval($data['total_amount']);
      	$subject = $data['subject'];//商品描述
      	$total_amount = $data['total_amount']*100;
