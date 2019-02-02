@@ -71,10 +71,10 @@
 				<img src="__PUBLIC__/img/shoujidenglu.png" />
 				<div>手机号登陆</div>
 			</a>
-			<!--<a class="wxdl" id="wxdl" href="javascript:;" >
+			<a class="wxdl" id="wxdl" href="javascript:;" >
 				<img src="__PUBLIC__/img/weixin.png" />
 				<div>微信登录</div>
-			</a>-->
+			</a>
 		</div>
 	</div>
 	<!--edn-->
@@ -85,9 +85,9 @@
 			location.href="{:U('Index/Login/index_tel')}";
         }
         else{
-            /*alert("请下载App打开登陆！");
-			location.href="https://www.yimenapp.net/down/123747";*/
-			location.href="{:U('Index/Login/index_tel')}";
+            alert("请下载App打开登陆！");
+			location.href="https://www.yimenapp.net/down/123747";
+			//location.href="{:U('Index/Login/index_tel')}";
 			return false;
         }
 	})
