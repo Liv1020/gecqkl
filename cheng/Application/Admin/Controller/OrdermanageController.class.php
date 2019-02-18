@@ -149,7 +149,7 @@ class OrdermanageController extends Controller{
 			die();
 		}
 		$username = $_SESSION['uname'];
-		$data['status'] = 1;
+		$data['status'] = 2;
 		$orderslist = M("orders");
 		// 遍历出来的是一维数组。select遍历的二维数组。
 		$orderslist->where(array('username' => $username,"o_type"=>0,'onumber' => $onumber))->save($data);
