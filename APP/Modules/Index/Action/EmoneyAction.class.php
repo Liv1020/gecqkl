@@ -1570,6 +1570,13 @@ public function myjiaoyis(){
 			$u_list[$key]['shengchanli'] = $u_scl['zcl']+$val['shengchanli'];
 			$u_list[$key]['truename'] = $this->substr_cut($val['truename']);
 		}
+		
+		$sttime = 86400*10;
+		$syq = 1;
+		if($user['regdate'] < time()-$sttime && $user['wallet_state'] == 0 && empty($zz_list)){
+			$syq = 2;
+		}
+		$this->assign("syq",$syq);
 		$this->assign("tdsum",$td_count["sum"]);
 		$this->assign("u_list",$u_list);
 		$this->assign("announce_list",$announce_list);

@@ -15,6 +15,18 @@
 	.shouzz{
 		display:none;
 	}
+	.syq{
+		width:100%;
+		height:304px;
+		position: absolute;
+	    top: 0px;
+	    background: rgba(255, 255, 255, 0.43);
+	}
+	.syq h2{
+		line-height:304px;
+		font-size:3rem;
+		color:#ff5454;
+	}
 	</style>
 	<body >
 		<!--公告-->
@@ -86,7 +98,11 @@
 					<ul class="aa" id="aa">
 					</ul>
 					<img src="__PUBLIC__/img/zhongzi.gif" class="qiu">
-
+					<if condition="$syq eq 2">
+					<div class="syq">
+						<h2>试玩十天后需开通钱包继续生产</h2>
+					</div>
+					</if>
 				</div>
 				<div class="tb_bottom">
 					<ul>
