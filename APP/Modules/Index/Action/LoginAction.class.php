@@ -594,7 +594,10 @@
 		
 		
 		
-		
+		public function yscl(){
+			
+			$this->display();
+		}
 		
 		
 		
