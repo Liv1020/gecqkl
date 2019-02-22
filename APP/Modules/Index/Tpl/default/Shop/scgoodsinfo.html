@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
 		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
 		<script type="text/javascript" src="__PUBLIC__/js/payfor.js" ></script>
+		<script type="text/javascript" src="__PUBLIC__/js/swipe.js"></script>
 	</head>
 	
 	<style>
@@ -19,33 +20,36 @@
 		<div class="nj_top"><div class="row"><a href="javascript:history.go(-1);"><img src="__PUBLIC__/img/fhxy.png" height="50px" /></a>商品</div></div>
 		<!--商品内容-->
 		<div class="spnr">
-			<div class="spnr_img">
-			<section>
-				<figure id="full_feature" class="swipslider">
-					<ul class="sw-slides" style="transition-duration: 50000ms; transition-timing-function: ease-out; transition-property: all; transform: translateX(-3840px);">
-						  <volist name='sxw_goodsPic' id='vo' >
-						    <li class="sw-slide"><img src="/cheng/Public/Goodsuploads/{$vo}" /></li>
-						  </volist>
-						
-					</ul>
-				</figure>
-			</section>
+			<div class="t_top_img" style="min-height:465px;">
+				<div class="adv_list" style="overflow: hidden;">
+					<div class="swipe-wrap">
+						<volist name="sxw_goodsPic" id="vo">
+							<div class="item">
+								<a href="{$vo.adv_url}">
+									<img src="/cheng/Public/Goodsuploads/{$vo}" alt="">
+								</a>
+							</div>
+						</volist>
+					</div>
+				</div>
 		<script type="text/javascript" src="__PUBLIC__/js/swipeslider.min.js"></script>
 		<script type="text/javascript">
-			$(window).load(function() {
-			      $('#full_feature').swipeslider();
-			      $('#content_slider').swipeslider({
-			        transitionDuration: 600,
-			        autoPlayTimeout: 10000,
-			        sliderHeight: '300px'
-			      });
-			      $('#responsiveness').swipeslider();
-			      $('#customizability').swipeslider({
-			        transitionDuration: 1500, 
-			        autoPlayTimeout: 4000, 
-			        timingFunction: 'cubic-bezier(0.38, 0.96, 0.7, 0.07)',
-			        sliderHeight: '30%'});
-			    });
+		$('.adv_list').each(function() {
+            if ($(this).find('.item').length < 2) {
+                return;
+            }
+
+            Swipe(this, {
+                startSlide: 2,
+                speed: 400,
+                auto: 3000,
+                continuous: true,
+                disableScroll: false,
+                stopPropagation: false,
+                callback: function(index, elem) {},
+                transitionEnd: function(index, elem) {}
+            });
+        });
 		</script>
 			</div>
 			<div class="row">
