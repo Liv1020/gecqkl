@@ -321,6 +321,12 @@ Class  ShopAction extends CommonAction{
 	 * 庄园商品
 	 */
 	public function zygoodsinfo(){
+		$uid = $_SESSION['mid'];
+		$member = M("Member");
+		$tjrs = $member->where(array("parent_id"=>$uid))->count();
+		if($tjrs < 10){
+			$this->error("购买开心兑产品需要推广人数达到10人才可以购买开心兑产品",U("Index/shop/jzzgoods"));
+		}
 		$items = M('jzzgoods');
 		$itemsdata = $items->find($_GET['gid']);
 		//$spjiage = sprintf("%.2f", $itemsdata['goldprice'] / $rmb_hl / $gao);
