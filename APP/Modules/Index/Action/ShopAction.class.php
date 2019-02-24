@@ -380,7 +380,7 @@ Class  ShopAction extends CommonAction{
 			$this->assign("user",$user);
 			$this->assign('info',$info);
 		}
-		if(IS_POST){
+		if(IS_POST){print_R($_POST);
 			$data['jzzg_id'] = $_POST['jzzg_id'];
 			$data['jzzg_num'] = $_POST['jzzg_num'];
 			$data['jzzg_name'] = $_POST['jzzg_name'];
