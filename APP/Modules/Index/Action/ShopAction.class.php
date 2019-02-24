@@ -397,10 +397,10 @@ Class  ShopAction extends CommonAction{
 			$data['add_time'] = time();
 			$res=$jhorder->add($data);
 			if($res){
-				$info=$jhorder->where(array("oid"=>$res))->find();
+				$info=$jhorder->where(array("id"=>$res))->find();
 				$member->where(array("id"=>$_SESSION['mid']))->setDec('jinbi',$info['jzzg_price']);
 				$user=$member->where(array("id"=>$_SESSION['mid']))->find();
-print_R($info);
+
                 import('ORG.Util.BlockChain');
                 $bc = new BlockChain();
                 $user['wallet'] = $bc->findWallet($user['wallet_code'], $user['wallet_pows']);
