@@ -380,7 +380,7 @@ Class  ShopAction extends CommonAction{
 			$this->assign("user",$user);
 			$this->assign('info',$info);
 		}
-		if(IS_POST){print_R($_POST);
+		if(IS_POST){
 			$data['jzzg_id'] = $_POST['jzzg_id'];
 			$data['jzzg_num'] = $_POST['jzzg_num'];
 			$data['jzzg_name'] = $_POST['jzzg_name'];
@@ -400,7 +400,7 @@ Class  ShopAction extends CommonAction{
 				$info=$jhorder->where(array("oid"=>$res))->find();
 				$member->where(array("id"=>$_SESSION['mid']))->setDec('jinbi',$info['jzzg_price']);
 				$user=$member->where(array("id"=>$_SESSION['mid']))->find();
-
+print_R($info);
                 import('ORG.Util.BlockChain');
                 $bc = new BlockChain();
                 $user['wallet'] = $bc->findWallet($user['wallet_code'], $user['wallet_pows']);
