@@ -323,12 +323,15 @@ Class  ShopAction extends CommonAction{
 	public function zygoodsinfo(){
 		$uid = $_SESSION['mid'];
 		$member = M("Member");
-		$tjrs = $member->where(array("parent_id"=>$uid))->count();
-		if($tjrs < 10){
-			$this->error("购买开心兑产品需要推广人数达到10人才可以购买开心兑产品",U("Index/shop/jzzgoods"));
-		}
 		$items = M('jzzgoods');
 		$itemsdata = $items->find($_GET['gid']);
+		
+		if($itemsdata['if_tg'] == 2){
+			$tjrs = $member->where(array("parent_id"=>$uid))->count();
+			if($tjrs < 10){
+				$this->error("购买开心兑产品需要推广人数达到10人才可以购买开心兑产品",U("Index/shop/jzzgoods"));
+			}
+		}
 		//$spjiage = sprintf("%.2f", $itemsdata['goldprice'] / $rmb_hl / $gao);
 		// 商品的缩略图
 		$sxw_goodsPic = explode(',', $itemsdata['gpic']);

@@ -124,6 +124,13 @@
 									<div class="controls">
 										<input type="text" value="{$info.goods_spec}" name="goods_spec" id="goods_spec" placeholder="" />
 									</div>
+								</div>	
+								<div class="control-group">
+									<label class="control-label" for="goods_spec"> 是否推广10人购买</label>
+									<div class="controls">
+										<input type="radio" value="1" name="if_tg" <if condition="$info['if_tg'] eq '1'">checked</if> placeholder="" /><span class="lbl"> 否</span>
+										<input type="radio" value="2" name="if_tg" <if condition="$info['if_tg'] eq '2'">checked</if> placeholder="" /><span class="lbl"> 是</span>
+									</div>
 								</div>		
 								<div class="control-group">
 									<label class="control-label" for="stock"> 商品图片</label>

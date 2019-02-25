@@ -296,6 +296,7 @@
     			$data['center']=$_POST['center'];
     			$data['gintroduce']=$_POST['gintroduce'];
     			$data['goods_spec']=$_POST['goods_spec'];
+    			$data['if_tg']=$_POST['if_tg'];
     			$data['gpic']=$goodsimgs;
 				$res=$jzzgoods->add($data);
 				if($res){
@@ -348,6 +349,7 @@
     			$data['center']=$_POST['center'];
     			$data['gintroduce']=$_POST['gintroduce'];
     			$data['goods_spec']=$_POST['goods_spec'];
+    			$data['if_tg']=$_POST['if_tg'];
     			$data['gpic']=$goodsimgs;
 				$res=$jzzgoods->where(array("gid"=>$id))->save($data);
 				if($res){
