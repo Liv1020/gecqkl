@@ -43,10 +43,10 @@
 					<input type="hidden" name="shangname" value="{$gds.gname}" />
 					<input type="hidden" name="goods_num" value="{$num}" />
 					<input type="hidden" name="goods_price" value="{$gds.goldprice}" />
-					<input type="hidden" name="order_price" value="{$gds.odprice}" />
+					<input type="hidden" name="order_price" value="{$gds['odprice']+$gds['postage']}" />
 						<h2>{$gds.gname}</h2>
 						<p>规格：{$gds.goods_spec}</p>
-						<p style="width: 60%;float: left;">购买数量：{$num}</p><span>售价：￥{$gds.goldprice}</span>
+						<p style="width: 60%;float: left;">购买数量：{$num}</p><span>售价：￥{$gds.goldprice}+￥{$gds.postage}</span>
 					</div>
 				</div>
 				<div class="by"><b>邮费：<span>包邮</span></b></div>
@@ -56,7 +56,7 @@
 		<!--提交订单-->
 		<div class="tjdd">
 			<div class="row">
-				<div class="tjdd_l">合计：<span>￥{$gds.odprice}</span></div>
+				<div class="tjdd_l">合计：<span>￥{$gds['odprice']+$gds['postage']}</span></div>
 				
 			</div>
 			<div class="tjdd_r"><input type="submit" value="提交订单" /></div>
