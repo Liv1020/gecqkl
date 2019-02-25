@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
-class GoodsIssueController extends Controller{
+class GoodsIssueController extends AdminController{
 	public function index(){
 		$classifydata = M('classify');
 		$goods = M('goods');

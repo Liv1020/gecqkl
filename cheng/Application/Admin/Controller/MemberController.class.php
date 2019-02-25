@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
-class MemberController extends Controller {
+class MemberController extends AdminController {
     public function index(){
         $user = M("member");                                        
         $num = $user ->field('count(*) count') -> find();

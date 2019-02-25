@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
-class GoodsUpController extends Controller{
+class GoodsUpController extends AdminController{
 	/**
 	*分页显示上架商品
 	*/

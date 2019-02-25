@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
-class OrdermanageController extends Controller{
+class OrdermanageController extends AdminController{
 	/**
 	*
 	*显示所有订单
