@@ -71,7 +71,9 @@ white-space: nowrap;}
 .xw_t_news {height: 100px;color: #626262;padding-left: 10px;overflow: hidden;position: relative}
 .xw_t_news font{font-size: 2.3rem;color:#000;line-height: 100px;font-weight: 700;display: inline-block}
 .xw_news_li,.xw_swap {font-size: 1.8rem;line-height: 100px;display: inline-block;position: absolute;top: 0;}
-.xw_news_li a,.xw_swap a {color: #626262;font-size:2.2rem;font-weight:bold;}
+.xw_news_li a,.xw_swap a {color: #626262;font-size:2.2rem;font-weight:bold;overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;}
 .xw_swap {top: 100px}
 /*轮播*/
 .swipslider {position: relative;overflow: hidden;display: block;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;margin: 0;}
