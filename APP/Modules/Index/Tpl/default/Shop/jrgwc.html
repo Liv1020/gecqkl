@@ -46,10 +46,10 @@
 					<input type="hidden" name="order_price" value="{$gds['odprice']+$gds['postage']}" />
 						<h2>{$gds.gname}</h2>
 						<p>规格：{$gds.goods_spec}</p>
-						<p style="width: 60%;float: left;">购买数量：{$num}</p><span>售价：￥{$gds.goldprice}+￥{$gds.postage}</span>
+						<p style="width: 60%;float: left;">购买数量：{$num}</p><span>售价：￥{$gds.goldprice}</span>
 					</div>
 				</div>
-				<div class="by"><b>邮费：<span>包邮</span></b></div>
+				<div class="by"><b>邮费：<span>￥{$gds.postage}</span></b></div>
 				<div class="nl"><b>购买赠送<span>{$gds.songnl}产力</span></b></div>
 			</div>
 		</div>
