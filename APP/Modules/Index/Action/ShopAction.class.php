@@ -310,6 +310,7 @@ Class  ShopAction extends CommonAction{
 		$sxw_goodsPic = explode(',', $ginfo['gpic']);
 		$info['pic']=$sxw_goodsPic[0];
 		$info['gpic']=$ginfo['gpic'];
+		$info['postage']=$ginfo['postage'];
 		$info['goods_spec']=$ginfo['goods_spec'];
 		//$info['songnl']=intval($gds['order_price']/3);
 		$adr=$address->where(array("user_id"=>$user_id,"if_default"=>1))->find();
