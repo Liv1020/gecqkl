@@ -62,6 +62,37 @@ class OrdermanageController extends AdminController{
 		$this->assign('active',2);
 		$this->display("index");
 	}
+	
+	/**
+	*
+	*显示未付款订单
+	*/
+	public function unpaid(){
+		// 实例化所要操纵做的数据表
+		// 订单表,用于分页操作
+		$orderslist = M("orders");
+		// 遍历出来的是一维数组。select遍历的二维数组。
+		$datatotal = $orderslist->field('count(*) count')->where(array('username' => $_SESSION['uname'],"o_type"=>0,'status' => 0))->find();
+		// 计算满足条件的数据总数
+		$totalnums = $datatotal['count'];
+		// 实例化分页类
+		$pages = new \Think\Page($totalnums,10);
+		// 获取分页的条件
+		$limit = $pages->firstRow.','.$pages->listRows;
+		// 空model类
+		$list = M();
+		// 订单详情表
+		$detailslist = M("ordersdetails");
+		// 全部订单
+		// 查询订单用户信息
+		$orders_data = $orderslist ->where(array('username' => $_SESSION['uname'],"o_type"=>0,'status' => 0))->limit($limit)->select();
+		
+		// 分配订单信息知道前台
+		$this->assign('page',$pages->show());
+		$this->assign('orders_data',$orders_data);
+		$this->assign('active',0);
+		$this->display("index");
+	}
 	// 已发货
 	public function deliverGoods(){
 		// 实例化所要操纵做的数据表
