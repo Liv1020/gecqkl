@@ -287,7 +287,7 @@ Class  ShopAction extends CommonAction{
 			$sxw_goodsPic = explode(',', $ginfo['gpic']);
 			$olist[$key]['gpic']=$sxw_goodsPic[0];
 			$olist[$key]['goods_spec']=$ginfo['goods_spec'];
-			$olist[$key]['songnl']=intval($val['order_price']*1);/0.15
+			$olist[$key]['songnl']=intval($val['order_price']*1);//0.15
 		}
 		$this->assign('state',$_GET['state']);
 		$this->assign('list',$olist);
