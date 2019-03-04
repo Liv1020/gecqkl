@@ -51,6 +51,12 @@ Class PaymentAction extends CommonAction {
         $key    = "nlsjfmq0co401px44h1gcyqmf44uwoit";                 //微信商户API密钥
         
         $data = $_POST;
+        $user_id = $_SESSION['mid'];
+        $user = M('member')->where(array("id"=>$user_id))->find();
+        import('ORG.Util.BlockChain');
+        $bc = new BlockChain();
+        $bc->transaction($user['wallet_code'], C('chain_address'),$data['jzz_num'], $user['wallet_pows']);//交易种子
+		
 		if($data['total_amount'] == 0){
         	$jhorder = M("jhorder");
         	$res = $jhorder->where(array('jho_number'=>$data['onumber']))->save(array('paymethod'=>1,'status'=>1));
