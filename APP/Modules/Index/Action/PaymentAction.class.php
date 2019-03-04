@@ -395,12 +395,12 @@ public function createNoncestr( $length = 32 ){
     	if($od){
     		if($od['paymethod'] == 1 && $od['status'] > 0){
 	    		$res['msg'] = 3;
-	    		$res['url'] = U("Index/Shop/zyorder_info",array("oid"=>$od['oid']));
+	    		$res['url'] = U("Index/Shop/zyorder_info",array("id"=>$od['oid']));
     		}
     		else{
 	    		$res['msg'] = 2;
 	    		$res['error'] = '请先确认付款成功！';
-	    		$res['url'] = U("Index/Shop/zyorder_info",array("oid"=>$od['oid']));
+	    		$res['url'] = U("Index/Shop/zyorder_info",array("id"=>$od['oid']));
     		}
     	}
     	else{
