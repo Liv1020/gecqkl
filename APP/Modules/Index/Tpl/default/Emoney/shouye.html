@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="__PUBLIC__/css/klys.css" />
 		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
 <script type="text/javascript" src="__PUBLIC__/js/swipe.js"></script>
+	    <script src="__PUBLIC__/js/jquery.tickerNews.min.js"></script>
 		 <!-- ShareTo Button BEGIN -->
     <!-- ShareTo Button END -->
 	</head>
@@ -34,12 +35,18 @@
 			<div class="row">
 				<div class="t_news">
 					<b>首页</b>
-					<ul class="news_li" style="margin-left:7%;">
-						<volist name='dbgg_list' id='vo'>
-						<li><a href="javascript:;">{$vo.title}</a></li>
-						</volist>
-					</ul>
-					<ul class="swap" style="margin-left:7%;"></ul>
+					<div class="TickerNews default_theme_3" >
+					    <div class="ti_wrapper">
+					        <div class="ti_slide">
+					            <div class="ti_content">
+								<volist name='dbgg_list' id='vo'>
+					                <div class="ti_news"><a href="javascript:;">{$vo.title}</a></div>
+								</volist>
+					            </div>
+					        </div>
+					    </div>
+				    </div>
+					
 				</div>
 			</div>
 		</div>
@@ -59,29 +66,6 @@
 			}
 		});
 	});
-			function b() {
-				t = parseInt(x.css('top'));
-				y.css('top', '80px');
-				x.animate({
-					top: t - 80 + 'px'
-				}, 'slow');
-				if(Math.abs(t) == h - 80) {
-					y.animate({
-						top: '0px'
-					}, 'slow');
-					z = x;
-					x = y;
-					y = z;
-				}
-				setTimeout(b, 3000);
-			}
-			$(document).ready(function() {
-				$('.swap').html($('.news_li').html());
-				x = $('.news_li');
-				y = $('.swap');
-				h = $('.news_li li').length * 80;
-				setTimeout(b, 3000);
-			})
 		</script>
 		<!--头部-->
 		<div class="tb">
@@ -374,43 +358,29 @@
 		<div class="xw">
 			<div class="row">
 				<div class="xw_t_news">
-					<font>最新播报：</font>
-				<!-- <volist name='announce_list' id='vo'>
-						<li><a href="{:U('Index/New/newsdetails',array('news_id'=>$vo['id']))}">{$vo.title}</a></li>
-						</volist> -->
-					<ul class="xw_news_li">
-						<volist name='announce_list' id='vo'>
-						<li><a href="javascript:;">{$vo.title}</a></li>
-						</volist>
-					</ul>
-					<ul class="xw_swap"></ul>
+					<font style="float:left;">最新播报：</font>
+					
+					<div style="width:74%;margin-left:1%;height:100px;line-height:100px;" class="TickerNews default_theme_3" >
+					    <div class="ti_wrapper">
+					        <div class="ti_slide">
+					            <div class="ti_content">
+								<volist name='announce_list' id='vo'>
+					                <div class="ti_news"><a style="color:#000;" href="javascript:;">{$vo.title}</a></div>
+								</volist>
+					            </div>
+					        </div>
+					    </div>
+				    </div>
+				
+						
+					
 				</div>
 			</div>
 		</div>
 		<script>
-			function font() {
-				tt = parseInt(xx.css('top'));
-				yy.css('top', '100px');
-				xx.animate({
-					top: tt - 100 + 'px'
-				}, 'slow');
-				if(Math.abs(tt) == hh - 100) {
-					yy.animate({
-						top: '0px'
-					}, 'slow');
-					z = xx;
-					xx = yy;
-					yy = z;
-				}
-				setTimeout(font, 3000);
-			}
-			$(document).ready(function() {
-				$('.xw_swap').html($('.xw_news_li').html());
-				xx = $('.xw_news_li');
-				yy = $('.xw_swap');
-				hh = $('.xw_news_li li').length * 100;
-				setTimeout(font, 3000);
-			})
+		$(function(){
+			_Ticker = $(".TickerNews").newsTicker();
+		});
 		</script>
 		<!--轮播图-->
 		<div class="adv_list" style="overflow: hidden;">
