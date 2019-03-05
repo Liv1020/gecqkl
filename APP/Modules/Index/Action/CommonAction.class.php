@@ -103,7 +103,7 @@
 	    $second2 = $second1;
 	    $second1 = $tmp;
 	  }
-	  return ($second1 - $second2) / 86400;
+	  return ($second1 - $second2) / 43200;
 	}
 	
 	/**
