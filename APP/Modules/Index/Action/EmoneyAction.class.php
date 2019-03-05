@@ -29,6 +29,9 @@
 		$gaojia=$config['danjia']*1.1;//最高出让价格
 		$dijia=$config['danjia']*0.9;//最低出让价格
 		$num=$config['min_cslkb'];//最低出让数量
+		import('ORG.Util.BlockChain');
+        $bc = new BlockChain();
+        $mem_info['wallet'] = $bc->findWallet($mem_info['wallet_code'], $mem_info['wallet_pows']);
 		if(IS_POST){
 			$data['user_id']=$_POST['mid'];//出让用户
 			$data['zz_price']=$_POST['price'];
