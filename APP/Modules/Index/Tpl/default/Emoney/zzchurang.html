@@ -29,7 +29,7 @@
 						<div class="crzz_3">
 							<h2>出让种子数量:</h2>
 							<input style="border-bottom: 1px solid #ccc;" type="text" onkeyup="value=value.replace(/[^\d]/g,'')" name="num" id="num" placeholder="输入数量不得低于{$num}粒" />
-							<p>最多出让：{:sprintf ($mem_info.wallet.value * 0.95)}粒</p>
+							<p>最多出让：{:sprintf ($mem_info['wallet']['value'] * 0.95)}粒</p>
 						</div>
 					</div>
 					<div class="crtj">
@@ -44,7 +44,7 @@
 <script>
    var dijia={$dijia};
    var gaojia={$gaojia};
-   var jinbi={:sprintf ($mem_info.wallet.value * 0.95)};
+   var jinbi={:sprintf ($mem_info['wallet']['value'] * 0.95)};
    var nums={$num};
 	$("#submit").click(function(){
 		res1=true;
