@@ -24,7 +24,7 @@
 		$zztrans=M("zztrans");
 		$config = include APP_PATH . '/Conf/system.php';
 		$mid=$_SESSION['mid'];
-		$mem_info=$member->field("id,username,jinbi,zhifubao")->where(array("id"=>$mid))->find();
+		$mem_info=$member->field("id,username,jinbi,zhifubao,wallet_code,wallet_pows")->where(array("id"=>$mid))->find();
 		$danjia=$config['danjia'];
 		$gaojia=$config['danjia']*1.1;//最高出让价格
 		$dijia=$config['danjia']*0.9;//最低出让价格
