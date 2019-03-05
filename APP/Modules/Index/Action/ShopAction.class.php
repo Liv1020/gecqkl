@@ -305,6 +305,7 @@ Class  ShopAction extends CommonAction{
 		$oid=$_GET['oid'];
 		$info=$orders->where(array("oid"=>$oid))->find();
 		$ginfo=$goods->where(array("gid"=>$info['goods_id']))->find();
+		$mem = $member->where(array('username'=>$ginfo['username']))->field('mobile')->find();
 		
 		$info['songnl']=intval($info['order_price']*1);//0.15
 		$sxw_goodsPic = explode(',', $ginfo['gpic']);
@@ -316,6 +317,7 @@ Class  ShopAction extends CommonAction{
 		$adr=$address->where(array("user_id"=>$user_id,"if_default"=>1))->find();
 		$this->assign("info",$info);
 		$this->assign("adr",$adr);
+		$this->assign("mem",$mem);
 		$this->display();
 	}
 	/**

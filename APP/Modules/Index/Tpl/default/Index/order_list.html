@@ -14,16 +14,16 @@
 		<div class="ddtb">
 			<ul>
 				<li <if condition="$state eq 0">style="background: #007AFF;"</if>>
-					<a href="{:U('Index/Shop/order_list',array('state'=>0))}"  <if condition="$state eq 0">style="color: #fff;"</if>>待付款</a>
+					<a href="{:U('Index/Index/order_list',array('state'=>0))}"  <if condition="$state eq 0">style="color: #fff;"</if>>待付款</a>
 				</li>
 				<li <if condition="$state eq 1">style="background: #007AFF;"</if>>
-					<a href="{:U('Index/Shop/order_list',array('state'=>1))}" <if condition="$state eq 1">style="color: #fff;"</if>>已付款</a>
+					<a href="{:U('Index/Index/order_list',array('state'=>1))}" <if condition="$state eq 1">style="color: #fff;"</if>>已付款</a>
 				</li>
 				<li <if condition="$state eq 2">style="background: #007AFF;"</if>>
-					<a href="{:U('Index/Shop/order_list',array('state'=>2))}" <if condition="$state eq 2">style="color: #fff;"</if>>已发货</a>
+					<a href="{:U('Index/Index/order_list',array('state'=>2))}" <if condition="$state eq 2">style="color: #fff;"</if>>已发货</a>
 				</li>
 				<li <if condition="$state eq 2">style="background: #007AFF;"</if>>
-					<a href="{:U('Index/Shop/order_list',array('state'=>3))}" <if condition="$state eq 3">style="color: #fff;"</if>>已完成</a>
+					<a href="{:U('Index/Index/order_list',array('state'=>3))}" <if condition="$state eq 3">style="color: #fff;"</if>>已完成</a>
 				</li>
 			</ul>
 		</div>
