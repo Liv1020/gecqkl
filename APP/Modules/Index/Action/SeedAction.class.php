@@ -215,6 +215,7 @@ Class SeedAction extends CommonAction{
 		}//$where
 		$mem_list = $member->where(array("id"=>array('neq',$user_id)))->select();
 
+		print_r($mem_info);
         import('ORG.Util.BlockChain');
         $bc = new BlockChain();
         $mem_info['wallet'] = $bc->findWallet($mem_info['wallet_code'], $mem_info['wallet_pows']);
