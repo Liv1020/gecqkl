@@ -598,7 +598,25 @@
 			
 			$this->display();
 		}
-		
+		/**
+		 * 关注公众号后公众号跳转链接
+		 * Enter description here ...
+		 */
+		public function gzhnum(){
+			$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		    $number = "";
+		    for ( $i = 0; $i < 8; $i++ )
+		    {
+		        $number .= $chars[ mt_rand(0, strlen($chars) - 1) ];
+		    }
+		    $gzhnum = M("gzhnum");
+		    $data['number'] = $number;
+		    $data['is_sy'] = 1;
+		    $data['add_time'] = date("Y-m-d H:i:s");
+		    $gzhnum->add($data);
+		    $this->assign("number",$number);
+			$this->display();
+		}
 		
 		
 		
