@@ -218,7 +218,6 @@ Class SeedAction extends CommonAction{
         import('ORG.Util.BlockChain');
         $bc = new BlockChain();
         $mem_info['wallet'] = $bc->findWallet($mem_info['wallet_code'], $mem_info['wallet_pows']);
-		print_r($mem_info['wallet']);
 		if(IS_POST){
 			$data['suser_id'] = $_POST['suser_id'];
 			$data['yield'] = $_POST['num'];
