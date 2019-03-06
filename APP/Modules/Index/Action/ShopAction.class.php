@@ -329,10 +329,10 @@ Class  ShopAction extends CommonAction{
 		$items = M('jzzgoods');
 		$itemsdata = $items->find($_GET['gid']);
 		
-		if($itemsdata['if_tg'] == 2){
+		if($itemsdata['if_tg'] > 0){
 			$tjrs = $member->where(array("parent_id"=>$uid))->count();
-			if($tjrs < 10){
-				$this->error("购买开心兑产品需要推广人数达到10人才可以购买开心兑产品",U("Index/shop/jzzgoods"));
+			if($tjrs < $itemsdata['if_tg']){
+				$this->error("购买此产品需要推广人数达到".$itemsdata['if_tg']."人才可以购买开心兑产品",U("Index/shop/jzzgoods"));
 			}
 		}
 		//$spjiage = sprintf("%.2f", $itemsdata['goldprice'] / $rmb_hl / $gao);
