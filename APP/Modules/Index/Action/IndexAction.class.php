@@ -524,6 +524,13 @@
 		$this->display();
 	}
 	/**
+	 * 农链客服专属群
+	 */
+	public function kfzsq(){
+		
+		$this->display();
+	}
+	/**
 	 * VIP商品
 	 */
 	public function vipgods(){
