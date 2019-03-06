@@ -1623,6 +1623,7 @@ public function myjiaoyis(){
 	public function ajaxwztp(){
 		$zz_adv = M("zzadv");
 		$adv_info = $zz_adv->order("rand()")->find();
+		$zz_adv->where(array("id"=>$adv_info["id"]))->setInc("click");
 		echo json_encode($adv_info);
 	}
 	/**
