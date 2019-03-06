@@ -41,11 +41,16 @@
 			{
 				$oinfo = $row;
 			}
+			$res = mysqli_query($conn,"select * from `ds_goods` where gid = ".$oinfo['goods_id']);
+	        while($row = mysqli_fetch_array($res))
+			{
+				$goods = $row;
+			}
 			if($oinfo['o_type'] >= 0){/*增加生产力 S*/
 				$user_id = $oinfo['uid'];
 				$yttime = 86400;//一天时间戳
 				$scldata['user_id'] = $user_id;
-				$scldata['scl'] = intval($oinfo['odprice']*1);//0.15
+				$scldata['scl'] = intval($goods['zsscl']*$oinfo['goods_num']);//0.15
 				$scldata['rem'] = '购买商品';
 				$scldata['add_time'] = time();
 				$scldata['end_time'] = time()+($yttime*365);

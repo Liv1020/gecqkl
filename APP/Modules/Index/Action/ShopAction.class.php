@@ -82,7 +82,7 @@ Class  ShopAction extends CommonAction{
 		foreach($goods as $k=>$v){
 			$gpic=explode(",",$v['gpic']);
 			$goods[$k]["gpic"]=$gpic[0];
-			$goods[$k]['songnl']=intval($v['goldprice']*1);//0.15
+			$goods[$k]['songnl']=intval($v['zsscl']);//0.15
 		}
 		$goods_list[]=$goods;
 		foreach($class_list as $key=>$val){
@@ -94,7 +94,7 @@ Class  ShopAction extends CommonAction{
 			foreach($goods as $k=>$v){
 				$gpic=explode(",",$v['gpic']);
 				$goods[$k]["gpic"]=$gpic[0];
-				$goods[$k]['songnl']=$v['goldprice']*1;//0.15
+				$goods[$k]['songnl']=$v['zsscl'];//0.15
 			}
 			$goods_list[]=$goods;
 		}
@@ -115,7 +115,7 @@ Class  ShopAction extends CommonAction{
 		$gao = C('max_danjia');
 		$rmb_hl = C('rmb_hl');
 		$itemsdata = $items->find($_GET['gid']);
-		$itemsdata['songnl']=intval($itemsdata['goldprice']*1);//0.15
+		$itemsdata['songnl']=intval($itemsdata['zsscl']);//0.15
 		// 商品的缩略图
 		$sxw_goodsPic = explode(',', $itemsdata['gpic']);
 		// 实例化评价表
@@ -178,7 +178,7 @@ Class  ShopAction extends CommonAction{
 		$num=$_GET['qty_item_1'];
 		$gds=$goods->where(array("gid"=>$goods_id))->find();
 		$gds['odprice']=$gds['goldprice']*$num;
-		$gds['songnl']=intval($gds['odprice']*1);//0.15
+		$gds['songnl']=intval($gds['zsscl']);//0.15
 		$sxw_goodsPic = explode(',', $gds['gpic']);
 		$gds['pic']=$sxw_goodsPic[0];
 		$address=M("address");
@@ -287,7 +287,7 @@ Class  ShopAction extends CommonAction{
 			$sxw_goodsPic = explode(',', $ginfo['gpic']);
 			$olist[$key]['gpic']=$sxw_goodsPic[0];
 			$olist[$key]['goods_spec']=$ginfo['goods_spec'];
-			$olist[$key]['songnl']=intval($val['order_price']*1);//0.15
+			$olist[$key]['songnl']=intval($ginfo['zsscl']*$val['goods_num']);//0.15
 		}
 		$this->assign('state',$_GET['state']);
 		$this->assign('list',$olist);
@@ -307,7 +307,7 @@ Class  ShopAction extends CommonAction{
 		$ginfo=$goods->where(array("gid"=>$info['goods_id']))->find();
 		$mem = $member->where(array('username'=>$ginfo['username']))->field('mobile')->find();
 		
-		$info['songnl']=intval($info['order_price']*1);//0.15
+		$info['songnl']=intval($ginfo['zsscl']*$info['goods_num']);//0.15
 		$sxw_goodsPic = explode(',', $ginfo['gpic']);
 		$info['pic']=$sxw_goodsPic[0];
 		$info['gpic']=$ginfo['gpic'];
