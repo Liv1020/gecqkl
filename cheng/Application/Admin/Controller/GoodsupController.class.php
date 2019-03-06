@@ -77,7 +77,7 @@ class GoodsUpController extends AdminController{
 		// 实例化goods对象，要准备进行修改操作
 		$mod = M('goods');
 		// 查询出要修改数据的字段
-		$goodsdata = $mod->field('gid,gclassification,gname,gattribute,postage,goods_spec,goldprice,goodnums,gpic,gintroduce,gspecifications,issale')->where(array('gid'=>$gid,'username'=>$_SESSION['uname']))->find();
+		$goodsdata = $mod->field('gid,gclassification,gname,gattribute,zsscl,postage,goods_spec,goldprice,goodnums,gpic,gintroduce,gspecifications,issale')->where(array('gid'=>$gid,'username'=>$_SESSION['uname']))->find();
 		if(empty($goodsdata)){
 			$this -> error('非法操作');
 		}else{
