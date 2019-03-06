@@ -367,10 +367,10 @@
 					$data['adv_pic']=$goodsimg;
 					$res=$adv->where(array("id"=>$_POST['id']))->save($data);
 					if($res){
-						$this->success("添加成功！",U('Info/adv'));
+						$this->success("修改成功！",U('Info/adv'));
 					}
 					else{
-						$this->error("添加失败！");
+						$this->error("修改失败！");
 					}
 					exit;
 				}
