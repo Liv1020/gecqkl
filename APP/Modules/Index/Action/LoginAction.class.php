@@ -603,12 +603,14 @@
 		 * Enter description here ...
 		 */
 		public function gzhnum(){
-			$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+			/*$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 		    $number = "";
 		    for ( $i = 0; $i < 8; $i++ )
 		    {
 		        $number .= $chars[ mt_rand(0, strlen($chars) - 1) ];
-		    }
+		    }*/
+			$number = $this->build_wallet_add();
+			echo $number;exit;
 		    $gzhnum = M("gzhnum");
 		    $data['number'] = $number;
 		    $data['is_sy'] = 1;
@@ -616,6 +618,22 @@
 		    $gzhnum->add($data);
 		    $this->assign("number",$number);
 			$this->display();
+		}
+		public function build_wallet_add(){
+			$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		    $number = "";
+		    for ( $i = 0; $i < 8; $i++ )
+		    {
+		        $number .= $chars[ mt_rand(0, strlen($chars) - 1) ];
+		    }
+		    $gzhnum = M("gzhnum");
+		    $gzh = $gzhnum->where(array('number'=>$number))->find();
+		    if($gzh){
+		    	$this->build_wallet_add();
+		    }
+		    else{
+		    	return $number;
+		    }
 		}
 		
 		
