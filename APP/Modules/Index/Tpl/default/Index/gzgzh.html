@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>关注公众号</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+	</head>
+	<style>
+	.wcrw{
+		height:25rem;
+		text-align:center;
+		border-bottom:1px solid #7b7b7b;
+	}
+	.wcrw img{
+		width:15%;
+		margin:3rem auto 0 auto;
+	}
+	.wcrw h2{
+		font-size:3rem;
+		margin-top:2rem;
+	}
+	.wcrw p{
+		font-size:2.5rem;
+		margin-top:2rem;
+	}
+	.wcrw input{
+		margin-top: 5.5rem;
+	    width: 50%;
+	    height: 5rem;
+	    font-size: 3rem;
+	    border: 1px solid;
+	}
+	.wcrw button{
+		width:45%;
+		display:block;
+	    margin: 2rem auto 0 auto;
+	    height: 5rem;
+	    font-size: 3rem;
+	}
+	.rwinfo h2{
+		font-size:2rem;
+		line-height:3rem;
+	}
+	.rwinfo li{
+		font-size:2rem;
+		line-height:3rem;
+	}
+	.rwinfo hr{
+		border:1px dashed #666;
+	}
+	</style>
+	<body style="background:#fff;">
+		<!--种子市场单页顶部-->
+		<div class="sjsc_top">
+			<div class="row"><a href="{:U('Index/index/index')}" class="fh"><img src="__PUBLIC__/img/fhxy.png" height="50px" /></a>关注微信公众号<a href="javascript:;" style="height:100px;" class="gz"></a></div>
+			<div class="menus menus2" style="margin: 0;">
+			
+		</div>
+		</div>
+		<div class="row" style="background: #fff;margin-top: 130px;">
+			<div class="wcrw" >
+			<if condition="$user['gzh_scl'] gt 0">
+				<img src="__PUBLIC__/img/duihao.png" />
+				<h2>任务完成</h2>
+				<p>您已成功领取过生产力</p>
+			<else/>
+				<form action="" method="post">
+					<input type="text" name="gzh_num" placeholder="请填写验证码"/>
+					<button type="submit">
+						审核验证码
+					</button>
+				</form>
+			</if>
+			</div>
+			<div class="rwinfo">
+				<h2>按照如下步骤完成关注微信公众号即可领取5点生产力:</h2>
+				<li>1.在微信公众号中搜索“粮链世界”并关注;</li>
+				<li>2.在酒链世界公众号中输入“领取生产力”获得跳转链接;</li>
+				<li>3.点击跳转链接获得验证码;</li>
+				<li>4.在上方方输入验证码，验证成功后即可领取生产力;</li>
+				<hr />
+				<li>说明：每个粮链用户仅有一次领取机会</li>
+			</div>
+		</div>
+		<include file="Public:footer" />
+		<script type="text/javascript" src="__PUBLIC__/js/tab.js" ></script>
+		
+	</body>
+</html>

@@ -490,6 +490,39 @@
 		}
 		$this->display();
 	}
+	
+	/**
+	 * 关注公众号
+	 */
+	public function gzgzh(){
+		$user_id = $_SESSION['mid'];
+		$member = M("member");
+		$gzhnum = M("gzhnum");
+		$sclhquqq = M("sclhquqq");
+		if(IS_POST){
+			$gzh_num = $_POST['gzh_num'];
+			echo $gzh_num;
+			$gzh = $gzhnum->where(array("number"=>$gzh_num))->find();
+			if($gzh){
+				if($gzh['is_sy'] == 1){
+					$gzhnum->where(array("number"=>$gzh_num))->save(array("is_sy"=>2));
+					$member->where(array("id"=>$user_id))->save(array('gzh_scl'=>5,'gzh_time'=>time()));
+					$member->where(array("id"=>$user_id))->setInc("shengchanli",5);
+					$this->success("任务已完成！",U('Index/index/gzgzh'));
+				}
+				else{
+					$this->error("该验证码已使用，请到公众号重新获取验证码！");
+				}
+			}
+			else{
+				$this->error("验证码不存在,请输入正确验证码!");
+			}
+			exit;
+		}
+		$user = $member->field("id,username,gzh_scl,gzh_time")->where("id = ".$user_id)->find();
+		$this->assign("user",$user);
+		$this->display();
+	}
 	/**
 	 * VIP商品
 	 */
