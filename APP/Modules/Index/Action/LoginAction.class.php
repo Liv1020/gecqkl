@@ -610,7 +610,6 @@
 		        $number .= $chars[ mt_rand(0, strlen($chars) - 1) ];
 		    }*/
 			$number = $this->build_wallet_add();
-			echo $number;exit;
 		    $gzhnum = M("gzhnum");
 		    $data['number'] = $number;
 		    $data['is_sy'] = 1;
