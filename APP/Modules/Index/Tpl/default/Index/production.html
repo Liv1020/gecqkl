@@ -92,11 +92,15 @@
 						</a>
 					</li>
 					<li>
-						<a href="">
+						<a href="{:U('Index/Index/gzgzh')}">
 							<img src="__PUBLIC__/img/wodefensi.png">
 							<h2>关注公众号</h2>
 							<p></p>
+							<if condition="$user['gzh_scl'] eq 0">
 							<span>+5产力</span>
+							<else/>
+							<span style="background:none;color:#000;">已完成</span>
+							</if>
 						</a>
 					</li>
 					<li>
