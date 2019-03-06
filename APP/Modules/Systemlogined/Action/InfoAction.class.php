@@ -335,6 +335,56 @@
 			
 		}
 		/**
+		 * 广告修改
+		 */
+		public function editadv(){
+			$adv=M("adv");
+			$advpos=M("advpos");
+			if($_GET['id']){
+				if(IS_POST){
+					$data['adv_name']=$_POST['adv_name'];
+					$data['adv_url']=$_POST['adv_url'];
+					$data['adv_rem']=$_POST['adv_rem'];
+					$data['pos_id']=$_POST['pos_id'];
+					//print_r($_FILES);
+					$dest_folder   = './Public/Adv/'.date('Ymd',time()).'/';   //上传图片保存的路径
+					
+					$goodsimg = array();//定义多图存放数组
+					$goodsimg=$_POST['adv_pic'];
+					if(!file_exists($dest_folder)){
+						mkdir($dest_folder,0777); // 创建文件夹，并给予最高权限
+						chmod($dest_folder,0777);
+					  }
+					if($_FILES['adv_pic']['error']==0){
+						 $tmp_namey = $_FILES["adv_pic"]["tmp_name"];
+		                 $ay=explode(".",$_FILES["adv_pic"]["name"]);  //截取文件名跟后缀
+		                 $prename = $ay[0];
+		                 $namey = time().mt_rand(1,9).".".$ay[1];;  // 文件的重命名 （日期+随机数+后缀）
+		                 $uploadfiley = $dest_folder.$namey;     // 文件的路径
+		                 move_uploaded_file($tmp_namey, $uploadfiley);
+		                 $goodsimg=ltrim($uploadfiley,'.');
+					}
+					$data['adv_pic']=$goodsimg;
+					$res=$adv->where(array("id"=>$_POST['id']))->save($data);
+					if($res){
+						$this->success("添加成功！",U('Info/adv'));
+					}
+					else{
+						$this->error("添加失败！");
+					}
+					exit;
+				}
+				$info = $adv->where(array("id"=>$_GET['id']))->find();
+				$pos=$advpos->select();
+				$this->assign("info",$info);
+				$this->assign("pos",$pos);
+				$this->display();
+			}
+			else{
+				$this->error("参数错误！");
+			}
+		}
+		/**
 		 * 广告删除
 		 */
 		public function advdel(){
