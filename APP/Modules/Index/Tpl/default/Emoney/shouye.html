@@ -451,28 +451,28 @@
 		</div>
 		<div class="menus menus2">
 			<div class="row">
-				<ul class="abc">
+				<!-- <ul class="abc">
 					<div class="bg"></div>
 					<li class="li"><span>出让种子</span></li>
 					<li class="li"><span>交易完成</span></li>
-				</ul>
+				</ul> -->
 				<div class="tab tab1 show">
 					<ol>
 						<li>
-							<span class="m_one">时间</span>
+							<span class="m_one"></span>
 							<span class="m_two">数量</span>
 							<span class="m_three">单价</span>
 							<span class="m_four">状态</span>
 						</li>
-						<volist name='jylist' id='v' >
+						<!-- <volist name='jylist' id='v' >
 						<li>
 							<span class="m_one">{$v.add_time|date='m-d h:i',###}</span>
 								<span class="m_two">{$v.zz_num}粒</span>
 								<span class="m_three">￥{$v.zz_price}</span>
 								<a class="m_four" style=" color: #ff9417;" onclick="gr(this,{$v.id})" href="javascript:;">立即购入</a>
 						</li>
-					  	</volist>
-					  	<!-- <li>
+					  	</volist> -->
+					  	<li>
 							<span class="m_one">玩家</span>
 							<span class="m_two" style="width:40%;">金种子</span>
 							<span class="m_four">生产力</span>
@@ -489,11 +489,11 @@
 								<span class="m_two" style="width:40%;">{$v.jinbi}粒</span>
 								<span class="m_four">{$v.shengchanli}</span>
 						</li>
-					  	</volist> -->
+					  	</volist> 
 
 					</ol>
 				</div>
-				<div class="tab tab1">
+				<!-- <div class="tab tab1">
 					<ol>
 						<li>
 							<span class="m_one">购入时间</span>
@@ -511,7 +511,7 @@
 					  	</volist>
 
 					</ol>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<!--<div class="kgd"><a href="{:U('Index/Emoney/zzjylist')}">点击查看更多></a></div>
