@@ -26,7 +26,10 @@
 					<div class="row">
 							<div class="t_cp_left">
 								<a href="{$ty.video_url}">
-									<img src="{$ty.video_url}">
+									<video style="height:100%;width:100%;" id="video" controls="controls">
+										<source src="{$ty.video_url}">
+									</video>
+									<!--<img src="{$ty.video_url}">-->
 								</a>
 							</div>
 							<div class="t_cp_right">
