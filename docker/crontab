@@ -1,4 +1,3 @@
-* * * * * echo "Hello world \n" >> /var/log/cron.log
-0 0 * * * curl http://www.zgllsj.com/index.php/systemlogined/DataTables/timetask >> /var/log/cron.log
-0 0 * * * curl http://www.zgllsj.com/index.php/systemlogined/DataTables/syncseed >> /var/log/cron.log
+0 0 * * * curl https://www.zgllsj.com/index.php/systemlogined/DataTables/timetask >> /var/log/cron.log
+0 0 * * * curl https://www.zgllsj.com/index.php/systemlogined/DataTables/syncseed >> /var/log/cron.log
 
