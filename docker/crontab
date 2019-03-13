@@ -1,3 +1,3 @@
-0 0 * * * curl https://www.zgllsj.com/index.php/systemlogined/DataTables/timetask >> /var/log/cron.log
-0 0 * * * curl https://www.zgllsj.com/index.php/systemlogined/DataTables/syncseed >> /var/log/cron.log
+0 0 * * * curl https://www.zgllsj.com/index.php/systemlogined/DataTables/timetask -k >> /var/log/cron.log
+0 0 * * * curl https://www.zgllsj.com/index.php/systemlogined/DataTables/syncseed -k >> /var/log/cron.log
 
