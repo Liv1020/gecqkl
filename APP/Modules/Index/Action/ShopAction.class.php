@@ -1021,7 +1021,7 @@ Class  ShopAction extends CommonAction{
    public function buy(){
 	   
 	      $userinfo = M("member")->where(array("username"=>session("username")))->find();
-		  if($userinfo['level']==0){
+		  /*if($userinfo['level']==0){
 			  alert('请先完善个人资料提交系统审核！',U('personal_set/myInfo'));
 		  }
 		  
@@ -1032,7 +1032,7 @@ Class  ShopAction extends CommonAction{
 		  
 		   if($userinfo['checkstatus']!=3){
 			  alert('资料信息正在审核！',U('personal_set/myInfo'));
-		  }
+		  }*/
 		  
 		  
 	      $product = M("product");
