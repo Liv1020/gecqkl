@@ -83,6 +83,7 @@
 							//$sclhquqq->add($pscldata);
 						}
 					}
+					file_put_contents('1.txt',json_encode("INSERT INTO `ds_sclhquqq` (user_id,scl,rem,add_time,end_time) VALUES ('".$scldata['user_id']."','".$scldata['scl']."','".$scldata['rem']."','".$scldata['add_time']."','".$scldata['end_time']."')"));
 				}
 			}/*增加生产力 E*/
 			else{/*计算返利 S*/
