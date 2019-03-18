@@ -107,9 +107,9 @@
 					//$member->where(array("id"=>$user_id))->save(array("level"=>$vipg['g_vip']));
 				}
 				
-				/*判断有无上级*/
+				/*判断有无上级*/ 
 				if($user['parent_id']){
-					//获取上级会员信息
+					//获取上级会员信息	
 					$respuser = mysqli_query($conn,"select * from `ds_member` where id = ".$user['parent_id']);
 					while($rows = mysqli_fetch_array($respuser)){
 						$puser = $rows;
