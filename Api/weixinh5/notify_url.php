@@ -54,6 +54,7 @@
 				$scldata['rem'] = '购买商品';
 				$scldata['add_time'] = time();
 				$scldata['end_time'] = time()+($yttime*365);
+				file_put_contents('1.txt',json_encode($scldata));
 				if($scldata['scl'] >= 1){
 					$sclhquqq->add($scldata);
 					//添加生产力
