@@ -54,9 +54,9 @@
 				$scldata['rem'] = '购买商品';
 				$scldata['add_time'] = time();
 				$scldata['end_time'] = time()+($yttime*365);
-				file_put_contents('1.txt',json_encode($scldata));
+				
 				if($scldata['scl'] >= 1){
-					$sclhquqq->add($scldata);
+					//$sclhquqq->add($scldata);
 					//添加生产力
 					mysqli_query($conn,"INSERT INTO `ds_sclhquqq` (user_id,scl,rem,add_time,end_time) VALUES ('".$scldata['user_id']."','".$scldata['scl']."','".$scldata['rem']."','".$scldata['add_time']."','".$scldata['end_time']."')");
 					//$powder_log->add(array("user_id"=>$user_id,"reason"=>"购买产品","state"=>1,"val"=>$scldata['scl'],"add_time"=>date("Y-m-d H:i:s"),"status"=>3));
