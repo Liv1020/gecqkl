@@ -124,7 +124,6 @@
 			}/*计算返利 E*/
 			//修改订单状态
 	 		mysqli_query($conn,"update `ds_orders` set paymethod = 1 , status = 1 where onumber = ".$onumber);
-					file_put_contents('1.txt',json_encode("update `ds_orders` set paymethod = 1 , status = 1 where onumber = ".$onumber));
 			mysqli_close($conn); //关闭 MySQL连接
             return sprintf("<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>");
         }
