@@ -24,7 +24,11 @@
 		$zztrans=M("zztrans");
 		$config = include APP_PATH . '/Conf/system.php';
 		$mid=$_SESSION['mid'];
-		$mem_info=$member->field("id,username,jinbi,zhifubao,wallet_code,wallet_pows")->where(array("id"=>$mid))->find();
+		$mem_info=$member->field("id,username,truename,jinbi,zhifubao,shenfen,wallet_code,wallet_pows")->where(array("id"=>$mid))->find();
+		if($member['truename'] == "" || $member['zhifubao'] == "" ||  $member['shenfen'] == ""){
+    		$this->error("请先进行实名认证！",U('Index/Financial/wallet'));
+			exit;
+    	}
 		$danjia=$config['danjia'];
 		$gaojia=$config['danjia']*1.1;//最高出让价格
 		$dijia=$config['danjia']*0.9;//最低出让价格

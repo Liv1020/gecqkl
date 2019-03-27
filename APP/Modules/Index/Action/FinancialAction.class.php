@@ -482,9 +482,9 @@ Class FinancialAction extends CommonAction{
     	$user_id=$_SESSION['mid'];
     	$mem=M("member");
     	$member=$mem->where(array("id"=>$user_id))->find();
-    	if($member['truename'] == ""){
+    	/*if($member['truename'] == ""){
     		$this->error("请先进行实名认证！",U('Index/Financial/wallet'));
-    	}
+    	}*/
     	$this->display();
     }
 }
