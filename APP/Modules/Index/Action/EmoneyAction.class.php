@@ -25,7 +25,7 @@
 		$config = include APP_PATH . '/Conf/system.php';
 		$mid=$_SESSION['mid'];
 		$mem_info=$member->field("id,username,truename,jinbi,zhifubao,shenfen,wallet_code,wallet_pows")->where(array("id"=>$mid))->find();
-		if($member['truename'] == "" || $member['zhifubao'] == "" ||  $member['shenfen'] == ""){
+		if($mem_info['truename'] == "" || $mem_info['zhifubao'] == "" ||  $mem_info['shenfen'] == ""){
     		$this->error("请先进行实名认证！",U('Index/Financial/wallet'));
 			exit;
     	}
