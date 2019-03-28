@@ -242,6 +242,7 @@ Class DataTablesAction extends Action
 				$n++;
 			}
 		}
+		echo "一共".($n+1)."没有土地";
 		$this->assign("mem",$mmm);
         $this->display();
     }
