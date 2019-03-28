@@ -229,11 +229,20 @@ Class DataTablesAction extends Action
 
     public function ceshi()
     {
-        $x1 = 36.101631;
-        $y1 = 103.758901;
-        $x2 = 36.108809;
-        $y2 = 103.731031;
-        echo $this->getDistance($x1, $y1, $x2, $y2);
+       $member = M("Member");
+		$order = M("Order");
+		$mem = $member->select();
+		$n = 0;
+		foreach($mem as $key=>$val){
+			$od = $order->field("count(*) as num")->where(array("user_id"=>$val['id'],"end_time"=>array("gt",time())))->find();
+			$mem[$key]['od'] = $od['num'];
+			if($od['num']==0){
+				$mmm[$n]['username'] = $val['username'];
+				$mmm[$n]['od'] = $od['num'];
+				$n++;
+			}
+		}
+		$this->assign("mem",$mmm);
         $this->display();
     }
 
