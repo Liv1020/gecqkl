@@ -45,7 +45,7 @@ set_time_limit(0);
 // 起用缓冲
 ob_implicit_flush();
 $ip = "39.106.161.182"; // IP地址
-$port = 3399; // 端口号
+$port = 8080; // 端口号
  
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP); // 创建一个SOCKET
 if ($socket)
