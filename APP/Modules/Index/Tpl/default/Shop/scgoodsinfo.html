@@ -86,7 +86,7 @@
 			<input type="hidden" name="goods_id" value="{$item.gid}" />
 				<div class="row">
 					<div class="p_number">
-						<div class="p_img"><img src="/cheng/Public/Goodsuploads/{$sxw_goodsPic[0]}"></div>
+						<div class="p_img"><img id="goodsimg" src="/cheng/Public/Goodsuploads/{$sxw_goodsPic[0]}"></div>
 						<div style="font-size:3rem;float: left;width: 65%;margin-left: 5%;padding: 50px 0 20px 0;">
 							<strong id="price_item_1" style="color: #CD0200;">￥{$item.goldprice}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff9846;font-size:2rem;">+{$item.songnl}生产力</span>
 						</div>
@@ -116,7 +116,7 @@
 				//链接，未指定则为当前页面链接
 				link : "",
 				//图标，未指定则为 App 图标
-				imgUrl: "https://www.zgllsj.com/cheng/Public/Goodsuploads/{$sxw_goodsPic[0]}",
+				imgUrl: $("#goodsimg").attr("src"),
 				//描述，如未指定，App 会尝试抓取页面 meta description content，<meta name="description" content="页面描述..." />
 				//均无描述内容则显示链接
 				desc: "" 
