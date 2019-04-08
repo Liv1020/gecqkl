@@ -1,14 +1,9 @@
 <?php
 //确保在连接客户端时不会超时  
-set_time_limit(0);  
+/*set_time_limit(0);  
 //设置IP和端口号  
 $address = "39.106.161.182";  
 $port = 3399; 
-/** 
- * 创建一个SOCKET  
- * AF_INET=是ipv4 如果用ipv6，则参数为 AF_INET6 
- * SOCK_STREAM为socket的tcp类型，如果是UDP则使用SOCK_DGRAM 
-*/  
 $sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP) or die("socket_create() fail:" . socket_strerror(socket_last_error()) . "/n");  
 //阻塞模式  
 socket_set_block($sock) or die("socket_set_block() fail:" . socket_strerror(socket_last_error()) . "/n");  
@@ -40,11 +35,11 @@ do { // never stop the daemon
 	}  
       
 } while (true);  
-socket_close($sock);  
+socket_close($sock);  */
 
 	// Server
 // 设置错误处理
-/*error_reporting(E_ALL);
+error_reporting(E_ALL);
 // 设置运行时间
 set_time_limit(0);
 // 起用缓冲
@@ -102,5 +97,5 @@ while (true) {
     socket_close($msg);
 }
 socket_close($socket); // 关闭SOCKET
-*/
+
 ?>
