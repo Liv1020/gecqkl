@@ -15,7 +15,7 @@ class HttpServer
      * @param string  $address 监听地址
      * @param integer $port    监听端口
      */
-    public function __construct($address = 'localhost', $port = 80)
+    public function __construct($address = '39.106.161.182', $port = 3399)
     {
         $this->port = $port;
         $this->address = $address;
