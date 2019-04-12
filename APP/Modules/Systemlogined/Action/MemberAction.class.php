@@ -445,7 +445,7 @@
 				$map['parent_id'] = array('eq',$pid);	
 			}
 			//$map['level'] = array('gt',0);
-			$map['checkstatus'] = array('eq',3);
+			//$map['checkstatus'] = array('eq',3);
 			$type=$_POST['type'];
 			$typename=$_POST['typename'];
 			
