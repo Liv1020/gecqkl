@@ -111,7 +111,7 @@ Class PaymentAction extends CommonAction {
         $key    = "nlsjfmq0co401px44h1gcyqmf44uwoit";                 //微信商户API密钥
         
         $data = $_POST;
-        $out_trade_no = $_SESSION['username'];//$_SESSION['username'];//平台内部订单号
+        $out_trade_no = $_SESSION['username'].date("Ymd");//$_SESSION['username'];//平台内部订单号
        // $data['total_amount']=floatval($data['total_amount']);
         $money= 2*100;                     //充值金额 微信支付单位为分
         $nonce_str = $this->createNoncestr(); //随机字符串

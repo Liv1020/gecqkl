@@ -17,7 +17,7 @@ $jsonxml = json_encode(simplexml_load_string($testxml, 'SimpleXMLElement', LIBXM
 $result = json_decode($jsonxml, true);//转成数组
 file_put_contents('1.txt', json_encode($result));
 if ($result) {
-    $onumber = $result['out_trade_no'];
+    $onumber = substr($result['out_trade_no'],0,11);
 
     $mysql_server_name = '39.106.45.147'; //改成自己的mysql数据库服务器
 
