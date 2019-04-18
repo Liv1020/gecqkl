@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>溯源商品</title>
+		<link rel="stylesheet" href="__PUBLIC__/css/index.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.1.min.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/js/swipe.js"></script>
+	</head>
+	<style>
+	#full_feature{
+		padding-top:465px !important;
+	}
+	</style>
+	<body>
+		<!--顶部菜单-->
+		<div class="nj_top" style="z-index:9999;"><div class="row"><a href="javascript:history.go(-1);"><img src="__PUBLIC__/img/fhxy.png" height="50px" /></a>溯源商品</div></div>
+		<!--第二页顶部-->
+		<!--第二页产品-->
+		<div class="t_cp" style="margin-top:100px;">
+			<ul>
+			<foreach name="goods_list" item="ty">
+		    	<li>
+					<div class="row">
+						<a href="__APP__/index/Shop/scgoodsinfo/gid/{$ty['gid']}">
+							<div class="t_cp_left"><img src="/cheng/Public/Goodsuploads/{$ty['gpic']}"></div>
+							<div class="t_cp_right"><h2>{$ty.gname}</h2>
+							<p>规格：（{$ty.goods_spec}）</p>
+							<b>￥{$ty.goldprice}</b>
+						</a>
+					</div>
+				</li>
+	    	</foreach>
+			</ul>
+			<if condition="$i eq 0">
+				<a href="" id="xiayiye"></a>
+				<div id="pages">{$page}</div>
+			</if>
+		</div>
+		<!--底部导航-->
+		
+		<include file="Public:footer" />
+	</body>
+	<style>
+		#pages{
+			display:none;
+		}
+		#xiayiye{
+			color:#929292;
+			width:100%;
+			height:5rem;
+			line-height:5rem;
+			text-align:center;
+			display:block;
+			border-top: 1px solid;
+			font-size:3rem;
+		}
+	</style>
+	<script>
+		$(function(){
+			xiayiyeurl = $("#next").attr("href");
+			if(xiayiyeurl){
+				var index = xiayiyeurl .lastIndexOf("\/");  
+				str  = xiayiyeurl .substring(index + 1,xiayiyeurl.length);
+				url="{:U('index/Shop/jzzshop')}/p/"+str;
+				$("#xiayiye").attr("href",url);
+				$("#xiayiye").html("下一页>>");
+			}
+			else{
+				$("#xiayiye").html("没有了");
+				$("#xiayiye").css("color","#cecece");
+			}
+		})
+	</script>
+</html>

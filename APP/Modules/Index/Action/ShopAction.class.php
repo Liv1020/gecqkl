@@ -168,6 +168,29 @@ Class  ShopAction extends CommonAction{
 		$this->display();
 	}
 	/**
+	 * 溯源商品
+	 */
+	public function sy_goods(){
+		$goods_model = M('goods');
+		import('ORG.Util.Page');
+		
+		$count=$goods_model->where(array("is_sy"=>1))->count();
+		$Page  = new Page($count,10);
+		$show = $Page -> show();
+		$goods=$goods_model->where(array("is_sy"=>1))->limit($Page ->firstRow.','.$Page -> listRows)->select();
+		foreach($goods as $k=>$v){
+			$gpic=explode(",",$v['gpic']);
+			$goods[$k]["gpic"]=$gpic[0];
+			$goods[$k]['songnl']=$v['zsscl'];//0.15
+		}
+		$goods_list=$goods;
+		
+		$this->assign("page",$show);
+		//$this->assign("pages",$shows);
+		$this->assign("goods_list",$goods_list);
+		$this->display();
+	}
+	/**
 	 * 商城产品购买
 	 */
 	public function jrgwc(){

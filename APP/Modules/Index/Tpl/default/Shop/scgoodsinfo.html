@@ -15,6 +15,13 @@
 	#full_feature{
 		padding-top:700px !important;
 	}
+	.sy_li{
+		text-align:left;
+		margin-left:0 2%;
+		width:96%;
+		height:3rem;
+		font-size:1.8rem;
+	}
 	</style>
 	<body>
 		<!--酿酒顶部-->
@@ -62,7 +69,10 @@
 		<div class="spxq" style="margin-bottom:30px;">
 			<div class="row">
 				<h2 style="text-align:left;font-size:1.8rem;">购买赠送<span style="color:#ff9846;">{$item.songnl}生产力</span>
-				<a style="float:right;" onclick="toshare()">分享</a></h2>
+				<a style="float:right;display:block;width:5rem;height:3rem;border-radius:2rem;margin:0 0.5rem;background:#6400ff;color:#fff;text-align:center;line-height:3rem;" href="http://{$item.monitor}">视频</a>
+				<if condition="$item['is_sy'] eq 1">
+				<a style="float:right;display:block;width:5rem;height:3rem;border-radius:2rem;margin:0 0.5rem;background:#6400ff;color:#fff;text-align:center;line-height:3rem;" onclick="toshare()">分享</a>
+				</if></h2>
 			</div>
 		</div>
 		<!--商品详情-->
@@ -73,11 +83,36 @@
 			</div>
 		</div>
 		<div class="spxq">
-			<div class="row">
-				<h2>商品详情</h2>
+			<div class="row" style="text-align:left;">
+				<h2 style="text-align:center;">商品详情</h2>
+				<if condition="$item['is_sy'] eq 1">
+					<li class="sy_li"><b>地域：</b>{$item.region}</li>
+					<li class="sy_li"><b>经度：</b>{$item.longitude}</li>
+					<li class="sy_li"><b>维度：</b>{$item.dimension}</li>
+					<div style="width:96%;margin:0 2% 1rem 2%;text-align:left;">
+					<b style="text-align:left;font-size:1.8rem;">养殖环境：</b>{$item.huanjing}</div>
+				</if>
+				<b style="text-align:left;font-size:1.8rem;">详细信息：</b>
 				{$item.gintroduce}
 			</div>
 		</div>
+		<if condition="$item['is_sy'] eq 1">
+		<div class="spxq" style="margin-top:-120px;">
+			<div class="row">
+				<h2>溯源信息</h2>
+					<li class="sy_li"><b>产地：</b>{$item.production}</li>
+					<li class="sy_li"><b>品种：</b>{$item.varieties}</li>
+					<li class="sy_li"><b>种场：</b>{$item.farm}</li>
+					<li class="sy_li"><b>苗龄：</b>{$item.seedlingage}</li>
+					<li class="sy_li"><b>防疫：</b>{$item.antiepidemic}</li>
+					<li class="sy_li"><b>喂食：</b>{$item.feed}</li>
+					<li class="sy_li"><b>环境：</b>{$item.environment}</li>
+					<li class="sy_li"><b>温度：</b>{$item.temperature}</li>
+					<li class="sy_li"><b>步数：</b>{$item.step}</li>
+				
+			</div>
+		</div>
+		</if>
 		<!--购买按钮-->
 		<div class="gman">立即购买</div>
 		<!--购买-->
