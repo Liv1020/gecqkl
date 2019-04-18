@@ -75,10 +75,10 @@ Class  ShopAction extends CommonAction{
 		import('ORG.Util.Page');
 		$class_list=$classify->where("parentid = 0")->select();
 		
-		$count=$goods_model->where()->count();
+		$count=$goods_model->where(array("is_sy"=>0))->count();
 		$Page  = new Page($count,50);
 		$show = $Page -> show();
-		$goods=$goods_model->where(array("pad1"=>$val['cid']))->limit($Page ->firstRow.','.$Page -> listRows)->select();
+		$goods=$goods_model->where(array("is_sy"=>0))->limit($Page ->firstRow.','.$Page -> listRows)->select();
 		foreach($goods as $k=>$v){
 			$gpic=explode(",",$v['gpic']);
 			$goods[$k]["gpic"]=$gpic[0];
@@ -86,10 +86,10 @@ Class  ShopAction extends CommonAction{
 		}
 		$goods_list[]=$goods;
 		foreach($class_list as $key=>$val){
-			$count=$goods_model->where(array("pid1"=>$val['cid']))->count();
+			$count=$goods_model->where(array("is_sy"=>0))->count();
 			/*$Page  = new Page($count,10);
 			$show[$key] = $Page -> show();*/
-			$goods=$goods_model->where(array("pid1"=>$val['cid']))->select();//limit($Page ->firstRow.','.$Page -> listRows)->
+			$goods=$goods_model->where(array("is_sy"=>0))->select();//limit($Page ->firstRow.','.$Page -> listRows)->
 			//print_r($goods);
 			foreach($goods as $k=>$v){
 				$gpic=explode(",",$v['gpic']);
