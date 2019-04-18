@@ -148,7 +148,20 @@ class OrdermanageController extends AdminController{
 		$this->assign('active',5);
 		$this->display("index");
 	}
-
+	/**
+	 * 订单完成操作
+	 */
+	public function order_wancheng(){
+		$onumber = I('get.onumber');
+		$orderslist = M("orders");
+		$res = $orderslist->where(array('onumber' => $onumber,'username' => $_SESSION['uname']))->save(array('status' => 3));
+		if($res){
+			$this->success("操作成功！",U("Ordermanage/completeDeal"));
+		}
+		else{
+			$this->error("操作失败！");
+		}
+	}
 	// 订单修改，发货，重新发货
 	public function orderState(){
 		$onumber = I('get.onumber');

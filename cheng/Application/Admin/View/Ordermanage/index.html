@@ -232,6 +232,7 @@
 												<th class="center" width="130px">快递单号</th> 
 												<th class="center" width="80px">订单状态</th>
 												<th class="center" width="80px">订单时间</th>
+												<th class="center" width="80px">操作</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -254,6 +255,12 @@
 															</switch>
 														</td>
                                                         <td class="center" >{$v.otime}</td>
+                                                        <td class="center" >
+															<a href="__CONTROLLER__/order_wancheng/onumber/{$v.onumber}">
+																<i class="green  icon-cloud-upload   bigger-120"></i>
+																完成
+															</a>
+														</td>
 												</tr>
 											</volist>
 											<tr style="height:50px;">
