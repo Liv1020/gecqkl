@@ -36,6 +36,7 @@
 			<form class="form-horizontal" role="form" action="__CONTROLLER__/updategoods" method="post" enctype="multipart/form-data">
 				<!-- 商品编号 -->
 				<input type="hidden" name="gid" value="{$goodsdata.gid}" />
+				<input type="hidden" name="issale" value="1"/>
 				<div class="form-group">
 					<label class="col-sm-2 control-label no-padding-right">商品类别：</label>
 					<div class="col-sm-10">
@@ -115,14 +116,14 @@
 						<textarea rows="20" class="col-sm-10" placeholder="参数规格" name="gspecifications" style="resize:none;" id="content1">{$goodsdata.gspecifications}</textarea>
 					</div>
 				</div>
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label class="col-sm-2 control-label no-padding-right">是否上架：</label>
 					<div class="col-sm-2" style="margin-top:3px;">
 						<input type="radio" name="issale" value="1" {$goodsdata['issale']?'checked':''}> 是
 						&nbsp;&nbsp;&nbsp;
 						<input type="radio" name="issale" value="0"  {$goodsdata['issale']?'':'checked'}> 否
 					</div>
-				</div>
+				</div> -->
 				<div class="clearfix form-actions">
 					<div class="col-md-offset-3 col-md-9">
 						<button type="submit" class="btn btn-info">
