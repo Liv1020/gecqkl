@@ -86,10 +86,10 @@ Class  ShopAction extends CommonAction{
 		}
 		$goods_list[]=$goods;
 		foreach($class_list as $key=>$val){
-			$count=$goods_model->where(array("is_sy"=>0))->count();
+			$count=$goods_model->where(array("pid1"=>$val['cid'],array("is_sy"=>0))->count();
 			/*$Page  = new Page($count,10);
 			$show[$key] = $Page -> show();*/
-			$goods=$goods_model->where(array("is_sy"=>0))->select();//limit($Page ->firstRow.','.$Page -> listRows)->
+			$goods=$goods_model->where(array("pid1"=>$val['cid'],array("is_sy"=>0))->select();//limit($Page ->firstRow.','.$Page -> listRows)->
 			//print_r($goods);
 			foreach($goods as $k=>$v){
 				$gpic=explode(",",$v['gpic']);
