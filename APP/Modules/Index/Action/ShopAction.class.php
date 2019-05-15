@@ -115,8 +115,12 @@ Class  ShopAction extends CommonAction{
 		$gao = C('max_danjia');
 		$rmb_hl = C('rmb_hl');
 		$itemsdata = $items->find($_GET['gid']);
-		
-		echo $this->getRealyAddress(11351.7488,2234.1888);
+		$area = "";
+		if($itemsdata['is_sy']){
+			$address = $this->regeo($itemsdata['longitude'],$itemsdata['dimension']);
+			$area = $address['regeocode']['formatted_address'];
+		}
+		$this->assign("area",$area);
 		$itemsdata['songnl']=intval($itemsdata['zsscl']);//0.15
 		// 商品的缩略图
 		$sxw_goodsPic = explode(',', $itemsdata['gpic']);
@@ -1449,41 +1453,37 @@ Class  ShopAction extends CommonAction{
 			$this->assign("odlist",$odlist);
 			$this->display();
 		}
-			/**
-     * [getRealyAddress 获取具体位置]
-     * @author sunlq 2018-02-28
-     * @param  [type] $lat [纬度]
-     * @param  [type] $lng [经度]
-     * @return [type]      [description]
-     */
-	public function getRealyAddress($lat,$lng){
-		$address = '';
-		if($lat && $lng){
-			$arr = $this->changeToBaidu($lat,$lng);
-			print_r($arr);
-			$url = 'http://api.map.baidu.com/geocoder/v2/?callback=&location='.$arr['y'].','.$arr['x'].'.&output=json&pois=1&ak=QTE5yhcUjSMX4S1xZDxVZn6eKliaPPT1';
-			$content = file_get_contents($url);
-			$place = json_decode($content,true);
-			$address = $place['result']['formatted_address'];
-		}
-		return $address;
-		
-	}
 	/**
-     * [changeToBaidu 转换为百度经纬度]
-     * @author sunlq 2018-05-28
-     * @param  [type] $lat [description]
-     * @param  [type] $lng [description]
-     * @return [type]      [description]
-     */
-	public function changeToBaidu($lat,$lng){
-		$apiurl = 'http://api.map.baidu.com/geoconv/v1/?coords='.$lng.','.$lat.'&from=1&to=5&ak=QTE5yhcUjSMX4S1xZDxVZn6eKliaPPT1';
-		$file = file_get_contents($apiurl);
-		print_r($file);
-		$arrpoint = json_decode($file, true);
-		return $arrpoint['result'][0];
-	}
-}
+     * 根据经纬度获取地理位置-高德地图
+     * @param string $lon 经度
+     * @param string $lat 纬度
+     * @return array
+     */
+    public function regeo($lon, $lat)
+    {
+        // Key 是高德Web服务 Key。详细可以参考上方的请求参数说明。
+        // location(116.310003,39.991957) 是所需要转换的坐标点经纬度，经度在前，纬度在后，经纬度间以“,”分割
+        $location = $lon . "," . $lat;
+        /**
+         * url:https://restapi.amap.com/v3/geocode/regeo?output=xml&location=116.310003,39.991957&key=<用户的key>&radius=1000&extensions=all
+         * radius（1000）为返回的附近POI的范围，单位：米
+         * extensions 参数默认取值是 base，也就是返回基本地址信息
+         * extensions 参数取值为 all 时会返回基本地址信息、附近 POI 内容、道路信息以及道路交叉口信息。
+         * output（XML/JSON）用于指定返回数据的格式
+         */
+        $url = "https://restapi.amap.com/v3/geocode/regeo?output=JSON&location={$location}&key=11e5f66de0df1b6e62a430effa370da9&radius=1000&extensions=base";
+		
+        // 执行请求
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        $data = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($data, true);
+
+        return $result;
+    }
 
 
 
