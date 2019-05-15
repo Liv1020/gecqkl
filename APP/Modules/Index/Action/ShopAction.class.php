@@ -115,6 +115,8 @@ Class  ShopAction extends CommonAction{
 		$gao = C('max_danjia');
 		$rmb_hl = C('rmb_hl');
 		$itemsdata = $items->find($_GET['gid']);
+		
+		echo $this->getRealyAddress(11351.7488,2234.1888);
 		$itemsdata['songnl']=intval($itemsdata['zsscl']);//0.15
 		// 商品的缩略图
 		$sxw_goodsPic = explode(',', $itemsdata['gpic']);
@@ -1447,6 +1449,40 @@ Class  ShopAction extends CommonAction{
 			$this->assign("odlist",$odlist);
 			$this->display();
 		}
+			/**
+     * [getRealyAddress 获取具体位置]
+     * @author sunlq 2018-02-28
+     * @param  [type] $lat [纬度]
+     * @param  [type] $lng [经度]
+     * @return [type]      [description]
+     */
+	public function getRealyAddress($lat,$lng){
+		$address = '';
+		if($lat && $lng){
+			$arr = $this->changeToBaidu($lat,$lng);
+			print_r($arr);
+			$url = 'http://api.map.baidu.com/geocoder/v2/?callback=&location='.$arr['y'].','.$arr['x'].'.&output=json&pois=1&ak=QTE5yhcUjSMX4S1xZDxVZn6eKliaPPT1';
+			$content = file_get_contents($url);
+			$place = json_decode($content,true);
+			$address = $place['result']['formatted_address'];
+		}
+		return $address;
+		
+	}
+	/**
+     * [changeToBaidu 转换为百度经纬度]
+     * @author sunlq 2018-05-28
+     * @param  [type] $lat [description]
+     * @param  [type] $lng [description]
+     * @return [type]      [description]
+     */
+	public function changeToBaidu($lat,$lng){
+		$apiurl = 'http://api.map.baidu.com/geoconv/v1/?coords='.$lng.','.$lat.'&from=1&to=5&ak=QTE5yhcUjSMX4S1xZDxVZn6eKliaPPT1';
+		$file = file_get_contents($apiurl);
+		print_r($file);
+		$arrpoint = json_decode($file, true);
+		return $arrpoint['result'][0];
+	}
 }
 
 
