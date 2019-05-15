@@ -119,6 +119,10 @@ Class  ShopAction extends CommonAction{
 		if($itemsdata['is_sy']){
 			$address = $this->regeo($itemsdata['longitude'],$itemsdata['dimension']);
 			$area = $address['regeocode']['formatted_address'];
+			
+			if(is_array($area)){
+				$area = "无法获取地理位置";
+			}
 		}
 		$this->assign("area",$area);
 		$itemsdata['songnl']=intval($itemsdata['zsscl']);//0.15
