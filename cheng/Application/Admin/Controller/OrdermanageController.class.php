@@ -173,7 +173,9 @@ class OrdermanageController extends AdminController{
 			$this->error('非法操作');
 			die();
 		}
+		$goods_info = $goods->where(array('gid'=>$datatotal['goods_id']))->find();
 
+		$this->assign("goods_info",$goods_info);
 		$this->assign('onumber',$onumber);
 		$this->assign('datatotal',$datatotal);
 		$this->display();
@@ -184,6 +186,7 @@ class OrdermanageController extends AdminController{
 		$onumber = I('post.onumber');
 		$data['kuaidiname'] = I('post.kuaidiname');
 		$data['expressnum'] = I('post.expressnum');
+		$data['foot_number'] = empty(I('post.foot_number')) ? "" : I('post.foot_number');
 		if(empty($data['kuaidiname'])){
 			$this->error('快递名称不能为空');
 			die();
