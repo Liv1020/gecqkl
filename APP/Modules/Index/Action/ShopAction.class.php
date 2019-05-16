@@ -269,7 +269,7 @@ Class  ShopAction extends CommonAction{
 		$oid = $_GET['oid'];
 		$orders=M("orders");
 		if($oid){
-			$res=$orders->where(array("oid"=>$_GET['oid']))->update(array("status"=>3));
+			$res=$orders->where(array("oid"=>$_GET['oid']))->save(array("status"=>3));
 			if($res){
 				$this->success("确认收货成功！",Url("Shop/order_info",array("oid"=>$oid)));
 			}
