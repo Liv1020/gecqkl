@@ -116,8 +116,16 @@ Class  ShopAction extends CommonAction{
 		$rmb_hl = C('rmb_hl');
 		$itemsdata = $items->find($_GET['gid']);
 		$area = "";
+		$longitude = "";
+		$dimension = "";
 		if($itemsdata['is_sy']){
-			$address = $this->regeo($itemsdata['longitude'],$itemsdata['dimension']);
+			$longitude1 = substr($itemsdata['longitude'],0,3);
+			$longitude2 = substr($itemsdata['longitude'],3,strlen($itemsdata['longitude']))/60;
+			$longitude = $longitude1+$longitude2;
+			$dimension1 = substr($itemsdata['dimension'],0,2);
+			$dimension2 = substr($itemsdata['dimension'],2,strlen($itemsdata['dimension']))/60;
+			$dimension = $dimension1+$dimension2;
+			$address = $this->regeo($longitude,$dimension);
 			$area = $address['regeocode']['formatted_address'];
 			
 			if(is_array($area)){
@@ -125,6 +133,8 @@ Class  ShopAction extends CommonAction{
 			}
 		}
 		$this->assign("area",$area);
+		$this->assign("longitude",$longitude);
+		$this->assign("dimension",$dimension);
 		$itemsdata['songnl']=intval($itemsdata['zsscl']);//0.15
 		// 商品的缩略图
 		$sxw_goodsPic = explode(',', $itemsdata['gpic']);
@@ -360,14 +370,24 @@ Class  ShopAction extends CommonAction{
 		$ginfo=$goods->where(array("gid"=>$info['goods_id']))->find();
 		
 		$area = "";
+		$longitude = "";
+		$dimension = "";
 		if($ginfo['is_sy']){
-			$addres = $this->regeo($ginfo['longitude'],$ginfo['dimension']);
+			$longitude1 = substr($ginfo['longitude'],0,3);
+			$longitude2 = substr($ginfo['longitude'],3,strlen($ginfo['longitude']))/60;
+			$longitude = $longitude1+$longitude2;
+			$dimension1 = substr($ginfo['dimension'],0,2);
+			$dimension2 = substr($ginfo['dimension'],2,strlen($ginfo['dimension']))/60;
+			$dimension = $dimension1+$dimension2;
+			$addres = $this->regeo($longitude,$dimension);
 			$area = $addres['regeocode']['formatted_address'];
 			if(is_array($area)){
 				$area = "无法获取地理位置";
 			}
 		}
 		$this->assign("area",$area);
+		$this->assign("longitude",$longitude);
+		$this->assign("dimension",$dimension);
 		
 		$mem = $member->where(array('username'=>$ginfo['username']))->field('mobile')->find();
 		
