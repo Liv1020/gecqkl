@@ -48,6 +48,14 @@
 				</div>
 				<div class="by"><b>邮费：<span>￥{$info.postage}</span></b></div>
 				<div class="nl"><b>生产力：<span>{$info.songnl}产力</span></b></div>
+				
+				<if condition="$ginfo['is_sy'] eq 1">
+					<div class="nl"><b>经度：<span>{$ginfo.longitude}</span></b></div>
+					<div class="nl"><b>维度：<span>{$ginfo.dimension}</span></b></div>
+					<div class="nl"><b>地理位置：<span>{$area}</span></b></div>
+					<div class="nl"><b>步数：<span>{$info.step}</span></b></div>
+					<div class="nl"><b>温度：<span>{$info.temperature}</span></b></div>
+				</if>
 			</div>
 		</div>
 		<div class="xq">
@@ -65,6 +73,26 @@
 				<div class="fk_l"><a href="#">取消</a></div>
 				<div class="fk_r">
 					<a style="display:block;width:100%;height:100%;" href="{:U('Index/shop/scorder',array('oid'=>$info['oid']))}">付款</a>
+				</div>
+			<elseif condition="$info['status'] eq 2" />
+				<div class="fk_l">
+					<a href="javascript:;">
+				<if condition="$ginfo['is_sy'] eq 1">
+					已认领
+				<else/>
+					已发货
+				</if>
+				</a>
+				</div>
+				<div class="fk_r">
+					<a style="display:block;width:100%;height:100%;" href="{:U('Index/shop/shorder',array('oid'=>$info['oid']))}">
+					确认收货
+					</a>
+				</div>
+				<elseif condition="$info['status'] eq 3" />
+				<div class="fk_l"></div>
+				<div class="fk_r">
+					<a style="display:block;width:100%;height:100%;" href="javascript:;">订单已完成</a>
 				</div>
 			</if>
 		</div>

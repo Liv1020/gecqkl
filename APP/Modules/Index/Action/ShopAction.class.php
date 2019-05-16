@@ -261,6 +261,26 @@ Class  ShopAction extends CommonAction{
 		}
 		$this->display();
 	}
+	
+	/**
+	 * 订单确认收货
+	 */
+	public function shorder(){
+		$oid = $_GET['oid'];
+		$orders=M("orders");
+		if($oid){
+			$res=$orders->where(array("oid"=>$_GET['oid']))->update(array("status"=>3));
+			if($res){
+				$this->success("确认收货成功！",Url("Shop/order_info",array("oid"=>$oid)));
+			}
+			else{
+				$this->error("确认收货失败！");
+			}
+		}
+		else{
+			$this->error("订单参数错误！");
+		}
+	}
 	/**
 	 * 订单添加
 	 */
@@ -338,6 +358,17 @@ Class  ShopAction extends CommonAction{
 		$oid=$_GET['oid'];
 		$info=$orders->where(array("oid"=>$oid))->find();
 		$ginfo=$goods->where(array("gid"=>$info['goods_id']))->find();
+		
+		$area = "";
+		if($ginfo['is_sy']){
+			$addres = $this->regeo($ginfo['longitude'],$ginfo['dimension']);
+			$area = $addres['regeocode']['formatted_address'];
+			if(is_array($area)){
+				$area = "无法获取地理位置";
+			}
+		}
+		$this->assign("area",$area);
+		
 		$mem = $member->where(array('username'=>$ginfo['username']))->field('mobile')->find();
 		
 		$info['songnl']=intval($ginfo['zsscl']*$info['goods_num']);//0.15
@@ -348,6 +379,7 @@ Class  ShopAction extends CommonAction{
 		$info['goods_spec']=$ginfo['goods_spec'];
 		//$info['songnl']=intval($gds['order_price']/3);
 		$adr=$address->where(array("user_id"=>$user_id,"if_default"=>1))->find();
+		$this->assign("ginfo",$ginfo);
 		$this->assign("info",$info);
 		$this->assign("adr",$adr);
 		$this->assign("mem",$mem);
