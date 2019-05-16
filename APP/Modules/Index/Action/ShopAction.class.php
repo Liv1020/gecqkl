@@ -271,7 +271,7 @@ Class  ShopAction extends CommonAction{
 		if($oid){
 			$res=$orders->where(array("oid"=>$_GET['oid']))->save(array("status"=>3));
 			if($res){
-				$this->success("确认收货成功！",Url("Shop/order_info",array("oid"=>$oid)));
+				$this->success("确认收货成功！",U("Shop/order_info",array("oid"=>$oid)));
 			}
 			else{
 				$this->error("确认收货失败！");
