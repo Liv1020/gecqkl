@@ -167,6 +167,7 @@ class OrdermanageController extends AdminController{
 		$onumber = I('get.onumber');
 		$username = $_SESSION['uname'];
 		$orderslist = M("orders");
+		$goods = M("goods");
 		// 遍历出来的是一维数组。select遍历的二维数组。
 		$datatotal = $orderslist->where(array('username' => $_SESSION['uname'],"o_type"=>0,'onumber' => $onumber))->find();
 		if(empty($datatotal)){
